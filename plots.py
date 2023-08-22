@@ -11,7 +11,6 @@ from mpl_toolkits.mplot3d import axes3d,Axes3D
 import numpy as np
 from matplotlib.ticker import AutoMinorLocator
 
-#write function for 2D plots
 
 def subplots_2D_graph(Y,ylabel,sub,leg): #eta, Y
     npoint=101
@@ -38,23 +37,22 @@ def subplots_2D_graph(Y,ylabel,sub,leg): #eta, Y
              y3[i] = Y(delta[3],eta[i])
              y4[i] = Y(delta[4],eta[i])
 
-    l1=plt.plot(eta, y0, color='orange', linestyle='-',linewidth=1.5)
-    l2=plt.plot(eta, y1, color='red', linestyle='-',linewidth=1.5)
-    l3=plt.plot(eta, y2, color='fuchsia', linestyle='-',linewidth=1.5)
-    l4=plt.plot(eta, y3, color='royalblue', linestyle='-',linewidth=1.5)
-    l5=plt.plot(eta, y4, color='green', linestyle='-',linewidth=1.5)
+    l1, =plt.plot(eta, y0, color='orange', linestyle='-',linewidth=1.5)
+    l2, =plt.plot(eta, y1, color='red', linestyle='-',linewidth=1.5)
+    l3, =plt.plot(eta, y2, color='fuchsia', linestyle='-',linewidth=1.5)
+    l4, =plt.plot(eta, y3, color='royalblue', linestyle='-',linewidth=1.5)
+    l5, =plt.plot(eta, y4, color='green', linestyle='-',linewidth=1.5)
     ax1.xaxis.set_minor_locator(AutoMinorLocator(5))
     ax1.yaxis.set_minor_locator(AutoMinorLocator(4))
     plt.ylabel(ylabel)
     if leg==1:
-        labels = ["$\Delta$=0","$\Delta$=2","$\Delta$=4","$\Delta$=6","$\Delta$=8","$\Delta$=10"]
-        plt.legend([l1, l2,l3,l4,l5], fontsize="6",labels=labels, loc="upper right")
+        labels1 = ["\u0394=0","\u0394=2","\u0394=4","\u0394=6","\u0394=8","\u0394=10"]
+        l=[l1,l2,l3,l4,l5]
+        plt.legend(l,labels1,fontsize="6", loc="upper right")
+    return ax1
+
+
     
-
-
-
-
-
 def plot_anim_3d(X,
                   Y,
                   Z,
@@ -100,3 +98,4 @@ def plot_anim_3d(X,
     
     print("3D Plot done !")
     return fig
+

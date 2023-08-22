@@ -1,67 +1,62 @@
 # -*- coding: utf-8 -*-
 """
-Created on Wed Aug 16 11:11:30 2023
+Created on Wed Aug 16 11:20:02 2023
 
 @author: viola
 """
-###########################################
-           #2D DIRAC MATERIALS#
-###########################################
 
 import numpy as np
 import matplotlib.pyplot as plt
-import matplotlib
-matplotlib.use('QtAgg')
 
-###########################################
-
-from functions import F0c,F1c,F2c,F0v,F1v,F2v,Gic,Giv
+from functions import F0c,F1c,F2c,F3c,F0v,F1v,F2v,F3v
 from plots import subplots_2D_graph,plot_anim_3d
 
-############## CONDUCTION BAND ##############
+###########################################
+       #2D PARABOLIC BAND MATERIALS#
+###########################################
 
-#units of sigma0, S0, k0 
+##############CONDUCTION BAND##############
+
+#TE quantities
+#units of sigma0, S0, k0 (find way to calculate C!!!) sigma0and k0 different wrt Dirac
 
 def sigmac(delta,eta):
-    return F0c(delta,eta)-Gic(0,delta,eta)
+    return 2*F1c(delta,eta)+(eta-delta)*2*F0c(delta,eta)
 
 def Sc(delta,eta):
-    return -(F1c(delta,eta)-Gic(1,delta,eta))/(F0c(delta,eta)-Gic(0,delta,eta))
+    return -(2*F2c(delta,eta)+(eta-delta)*2*F1c(delta,eta)) / (2*F1c(delta,eta)+(eta-delta)*2*F0c(delta,eta))#+small)
 
 def kec(delta,eta):
-    return (F2c(delta,eta)-Gic(2,delta,eta))-((F1c(delta,eta)-Gic(1,delta,eta))**2)/(F0c(delta,eta)-Gic(0,delta,eta))
+    return (F3c(delta,eta)+(eta-delta)*2*F2c(delta,eta)) - ((2*F2c(delta,eta)+(eta-delta)*2*F1c(delta,eta))**2/(2*F1c(delta,eta)+(eta-delta)*2*F0c(delta,eta)))#+small) )
 
-############## VALENCE BAND ##############
+##############VALENCE BAND##############
 
 #TE quantities 
 def sigmav(delta,eta):
-    return F0v(delta,eta)-Giv(0,delta,eta)
+    return -2*F1v(delta,eta)+(eta+delta)*(-2)*F0v(delta,eta)
 
 def Sv(delta, eta):
-    return -(F1v(delta,eta)-Giv(1,delta,eta))/(F0v(delta,eta)-Giv(0,delta,eta))
+    return -(-2*F2v(delta,eta)+(eta+delta)*(-2)*F1v(delta,eta)) / (-2*F1v(delta,eta)+(eta+delta)*(-2)*F0v(delta,eta))#+small)
 
 def kev(delta, eta):
-    return (F2v(delta,eta)-Giv(2,delta,eta))-((F1v(delta,eta)-Giv(1,delta,eta))**2)/(F0v(delta,eta)-Giv(0,delta,eta))
+    return (F3v(delta,eta)+(eta+delta)*(-2)*F2v(delta,eta)) - ((-2*F2v(delta,eta)+(eta+delta)*(-2)*F1v(delta,eta))**2/(-2*F1v(delta,eta)+(eta+delta)*(-2)*F0v(delta,eta)))#+small) )
 
-############## TE QUANTITIES OF THE MATERIAL ##############
+##############TE QUANTITIES OF THE MATERIAL##############
 def sigma(delta,eta):
-    return sigmac(delta,eta)+sigmav(delta,eta)
+     return sigmac(delta,eta)+sigmav(delta,eta)
 
 def S(delta,eta):
     return (sigmac(delta,eta)*Sc(delta,eta)+sigmav(delta,eta)*Sv(delta,eta))/(sigmac(delta,eta)+sigmav(delta,eta))
 
 def ke(delta,eta):
     return ((sigmac(delta,eta)*sigmav(delta,eta))/(sigmac(delta,eta)+sigmav(delta,eta)))*(Sc(delta,eta)-Sv(delta,eta))**2+kec(delta,eta)+kev(delta,eta)
-#def kp(x):
-#    return x*k0
 
 def ZT(delta,eta,rk):
     return ((S(delta,eta)**2)*sigma(delta,eta))/(ke(delta,eta)+rk)#+kp(x))
 
-
 ############## PLOTS ##############
 
-a=2
+a=0
 
 # 2D PLOTS
 
@@ -72,7 +67,7 @@ if a==0:
     subplots_2D_graph(sigma,'$\sigma(\sigma_0)$',2,0)
     subplots_2D_graph(ke, '$\kappa_e(\kappa_0)$', 3,0)
     subplots_2D_graph(ZT, 'ZT(S,$\sigma$,$\kappa_e$)', 4,0)
-
+    print(type(subplots_2D_graph(S,'S($S_0$)',1,1)))
 
 # 3D PLOTS 
 
@@ -94,7 +89,8 @@ if a==1:
     output = vectorized_function(delta,eta)
     ke1=output.astype(float)
     plot_anim_3d(eta, delta, ke1, '$\eta$', '$\Delta$', '$\kappa_{e}$($\eta$,$\Delta$)', '3D plot: 2D double-band Dirac material')
-        
+    
+    
     vectorized_function = np.vectorize(ZT)
     output = vectorized_function(delta,eta,1)
     ZT1=output.astype(float)
@@ -112,4 +108,4 @@ if a==2:
     
     rk1,delta1=np.meshgrid(np.linspace(1,5,npoint),np.linspace(0.002,15,npoint))
     
-    plot_anim_3d(2*delta1, rk1, ZTmax, '$E_{g}$','$\kappa_{L}$', '$ZT_{max}$($\Delta$,$\kappa_{L}$)', '3D plot: 2D double-band Dirac material')
+    plot_anim_3d(2*delta1, rk1, ZTmax, '$E_{g}$','$\kappa_{L}$', '$ZT_{max}$($\Delta$,$\kappa_{L}$)', '3D plot: 2D double--parabolic-band material')
