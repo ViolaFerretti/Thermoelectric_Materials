@@ -9,9 +9,11 @@ Created on Wed Aug 16 11:11:30 2023
 ###########################################
 
 #import numpy as np
-#import matplotlib.pyplot as plt
+import matplotlib.pyplot as plt
 import matplotlib
 matplotlib.use('TkAgg')
+
+from plots import subplots_2D_graph,complete_2d_plot
 
 ###########################################
 
@@ -61,19 +63,19 @@ def ZT_DBMD(delta,eta,rk):
 
 ############## PLOTS ##############
 
-#a=0
+# a=0
 
-# 2D PLOTS
+# #2D PLOTS
 
-#if a==0:
-#    complete_2d_plot(S_DBMD,sigma_DBMD,ke_DBMD,ZT_DBMD,0,10,-10,10,'TE quantities of 2D Dirac double-band material')
+# if a==0:
+#     complete_2d_plot(S_DBMD,sigma_DBMD,ke_DBMD,ZT_DBMD,0,10,1,-10,10,1,'TE quantities of 2D Dirac double-band material')
 
 #     plt.figure(figsize=(10,4))
 #     plt.suptitle('TE quantities of 2D Dirac double-band material')
-#     subplots_2D_graph(S_DBMD,'S($S_0$)',1,0,10,-10,10)
-#     subplots_2D_graph(sigma_DBMD,'$\sigma(\sigma_0)$',2,0,10,-10,10)
-#     subplots_2D_graph(ke_DBMD, '$\kappa_e(\kappa_0)$', 3,0,10,-10,10)
-#     subplots_2D_graph(ZT_DBMD, 'ZT(S,$\sigma$,$\kappa_e$)', 4,0,10,-10,10)
+#     subplots_2D_graph(S_DBMD,'S($S_0$)',1,0,10,1,-10,10,1)
+#     subplots_2D_graph(sigma_DBMD,'$\sigma(\sigma_0)$',2,0,10,1,-10,10,1)
+#     subplots_2D_graph(ke_DBMD, '$\kappa_e(\kappa_0)$', 3,0,10,1,-10,10,1)
+#     subplots_2D_graph(ZT_DBMD, 'ZT(S,$\sigma$,$\kappa_e$)', 4,0,10,1,-10,10,1)
 
 
 # 3D PLOTS 
