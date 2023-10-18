@@ -20,7 +20,7 @@ All three models are based on Boltzmann transport theory in the linear response 
 ## Using Anaconda
 ### 1. Clone the repository
 ```
-git clone https://github.com/ViolaFerretti/software_and_computing_project.git
+git clone https://github.com/ViolaFerretti/Thermoelectric_Quantities_Simulation.git
 
 ```
 ### 2. Install packages
@@ -49,7 +49,7 @@ Run the software with one of the environments, for example in Spyder.
 ## Using Windows
 ### 1. Clone the repository
 ```
-git clone https://github.com/ViolaFerretti/software_and_computing_project.git
+git clone https://github.com/ViolaFerretti/Thermoelectric_Quantities_Simulation.git
 
 ```
 ### 2. Install packages
