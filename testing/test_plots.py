@@ -5,12 +5,23 @@ Created on Tue Aug 22 11:24:35 2023
 @author: viola
 """
 
-DBM_Parabolic = __import__('2BM_Parabolic')
-from plots import subplots_2D_graph,plot_anim_3d
+import DBM_Parabolic
+import SBM_Parabolic
+
+#from models import DBM_Parabolic 
+#from models import SBM_Parabolic
+from plots import subplots_2D_graph,complete_2d_plot,subplots_2D_graph_SBM,complete_2d_plot_SBM,plot_anim_3d
 import matplotlib
 import matplotlib.pyplot as plt
+from matplotlib.figure import Figure
+import numpy as np
+
 # testing functions for data representation
-def test_subplots_2D_graph():
+
+### 2D ###
+
+# double-band models
+def test_subplots_2D_graph(): #fig,Y,ylabel,sub,delta,eta,rk
     """
     Test the 2D plot for an energy G
 
@@ -23,14 +34,66 @@ def test_subplots_2D_graph():
     Y = DBM_Parabolic.S
     ylabel = "Y"
     subplot_number = 1
-    legend=1
-
-    fig = subplots_2D_graph(Y,ylabel,subplot_number,legend)
+    #legend=1
+    delta=np.arange(0, 2, 0.5)
+    eta=np.arange(0,2,0.5)
+    rk=1
+    fig=Figure(figsize=(10,4))
+    
+    fig1 = subplots_2D_graph(fig,Y,ylabel,subplot_number,delta,eta,rk)
     plt.show()
     
-    assert isinstance(fig, matplotlib.axes.SubplotBase), "plot_2d test failed"
-    # can add more tests
+    assert isinstance(fig1, matplotlib.axes.SubplotBase), "subplots_2d_graph test failed"
     
+   
+    
+def test_complete_2d_plot(): 
+    
+    Y1=DBM_Parabolic.S
+    Y2=DBM_Parabolic.sigma
+    Y3=DBM_Parabolic.ke
+    Y4=DBM_Parabolic.ZT
+    delta=np.arange(0, 2, 0.5)
+    eta=np.arange(0,2,0.5)
+    rk=1
+    title='plot'
+    
+    fig2=complete_2d_plot(Y1,Y2,Y3,Y4,delta,eta,rk,title)
+    
+    assert isinstance(fig2, plt.Figure), "complete_2d_plot test failed"
+
+# single-band model
+def test_subplots_2D_graph_SBM(): 
+    
+    # test 1: Y=sigma 
+    Y = DBM_Parabolic.S
+    ylabel = "Y"
+    subplot_number = 1
+    #legend=1
+    eta=np.arange(0,2,0.5)
+    rk=1
+    fig=Figure(figsize=(10,4))
+    
+    fig1 = subplots_2D_graph_SBM(fig,Y,ylabel,subplot_number,eta,rk)
+    plt.show()
+    
+    assert isinstance(fig1, matplotlib.axes.SubplotBase), "subplots_2d_graph_SBM test failed"
+
+def test_complete_2d_plot_SBM():
+    
+    Y1=SBM_Parabolic.S
+    Y2=SBM_Parabolic.sigma
+    Y3=SBM_Parabolic.ke
+    Y4=SBM_Parabolic.ZT
+    eta=np.arange(0,2,0.5)
+    rk=1
+    title='plot'
+    
+    fig2=complete_2d_plot_SBM(Y1,Y2,Y3,Y4,eta,rk,title)
+    
+    assert isinstance(fig2, plt.Figure), "complete_2d_plot_SBM test failed"
+
+### 3D ###
 def test_plot_anim_3d():
     """
     function to test the ploting of the 3D plot with arrays
@@ -47,8 +110,9 @@ def test_plot_anim_3d():
     ylabel = "Y"
     zlabel = "Z"
     title = "3D Plot"
-
-    fig = plot_anim_3d(X, Y, Z, xlabel, ylabel, zlabel, title)
+    i=1
+    
+    fig = plot_anim_3d(X, Y, Z, xlabel, ylabel, zlabel, title,i)
 
     assert isinstance(fig, plt.Figure), "plot_anim_3d test failed"
 
