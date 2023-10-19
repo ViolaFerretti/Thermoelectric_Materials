@@ -1,5 +1,6 @@
 # Performance Simulation of Thermoelectric Materials
 Thermoelectric materials are able to convert a temperature gradient into electrical energy, or vice-versa. 
+The performance of such materials is indicated by the figure of merit called $ZT$: the higher $ZT$, the better the performance.
 Since the majority of primary energy is wasted as heat, the development of thermoelectric devices is essential
 to utilize this waste heat and convert it into useful electric power. To continue this research and to direct it towards the realization
 of novel thermoelectric materials, simulations that, based on the characteristics of the material, are able to compute the
