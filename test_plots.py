@@ -31,7 +31,7 @@ def test_subplots_2D_graph(): #fig,Y,ylabel,sub,delta,eta,rk
 
     """
     # test 1: Y=sigma 
-    Y = DBM_Parabolic.S
+    Y = DBM_Parabolic.S_DBMP
     ylabel = "Y"
     subplot_number = 1
     #legend=1
@@ -49,10 +49,10 @@ def test_subplots_2D_graph(): #fig,Y,ylabel,sub,delta,eta,rk
     
 def test_complete_2d_plot(): 
     
-    Y1=DBM_Parabolic.S
-    Y2=DBM_Parabolic.sigma
-    Y3=DBM_Parabolic.ke
-    Y4=DBM_Parabolic.ZT
+    Y1=DBM_Parabolic.S_DBMP
+    Y2=DBM_Parabolic.sigma_DBMP
+    Y3=DBM_Parabolic.ke_DBMP
+    Y4=DBM_Parabolic.ZT_DBMP
     delta=np.arange(0, 2, 0.5)
     eta=np.arange(0,2,0.5)
     rk=1
@@ -66,7 +66,7 @@ def test_complete_2d_plot():
 def test_subplots_2D_graph_SBM(): 
     
     # test 1: Y=sigma 
-    Y = DBM_Parabolic.S
+    Y = SBM_Parabolic.S_SBMP
     ylabel = "Y"
     subplot_number = 1
     #legend=1
@@ -81,10 +81,10 @@ def test_subplots_2D_graph_SBM():
 
 def test_complete_2d_plot_SBM():
     
-    Y1=SBM_Parabolic.S
-    Y2=SBM_Parabolic.sigma
-    Y3=SBM_Parabolic.ke
-    Y4=SBM_Parabolic.ZT
+    Y1=SBM_Parabolic.S_SBMP
+    Y2=SBM_Parabolic.sigma_SBMP
+    Y3=SBM_Parabolic.ke_SBMP
+    Y4=SBM_Parabolic.ZT_SBMP
     eta=np.arange(0,2,0.5)
     rk=1
     title='plot'
