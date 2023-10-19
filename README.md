@@ -340,7 +340,7 @@ For the second part, the software will save chemical potential, thermal lattice 
 
 # References
 - Microscopic Kinetics and Thermodynamics course by Professor L. Pasquini at University of Bologna
-- Mitra, Sunanda. Chalcogenide of type IV-VI$ _2$ for thermoelectric applications. Diss. Université Paris Saclay (COmUE), 2016.
+- Mitra, Sunanda. Chalcogenide of type $IV-VI_2$ for thermoelectric applications. Diss. Université Paris Saclay (COmUE), 2016.
 - Hung, Nguyen T., Ahmad RT Nugraha, and Riichiro Saito. "Universal curve of optimum thermoelectric figures of merit for bulk and low-dimensional semiconductors." Physical Review Applied 9.2 (2018): 024019.
-- Naithani, Harshita, Eckhard Müller, and Johannes de Boor. "Developing a two-parabolic band model for thermoelectric transport modelling using Mg2Sn as an example." Journal of Physics: Energy 4.4 (2022): 045002.
+- Naithani, Harshita, Eckhard Müller, and Johannes de Boor. "Developing a two-parabolic band model for thermoelectric transport modelling using $Mg_2Sn$ as an example." Journal of Physics: Energy 4.4 (2022): 045002.
 - Hasdeo, Eddwi H., et al. "Optimal band gap for improved thermoelectric performance of two-dimensional Dirac materials." Journal of Applied Physics 126.3 (2019).
