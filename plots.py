@@ -13,6 +13,7 @@ import numpy as np
 
 
 # plots for double band models
+#ok
 def subplots_2D_graph(fig,Y,ylabel,sub,delta,eta,rk): #eta, Y
     # delta=np.arange(delta_min, delta_max, delta_st)
     # eta=np.arange(eta_min,eta_max,eta_st)
@@ -47,6 +48,7 @@ def subplots_2D_graph(fig,Y,ylabel,sub,delta,eta,rk): #eta, Y
         ax1.set_xlabel('$\mu$ $(k_B T)$')
     return ax1
 
+#ok
 def complete_2d_plot(Y1,Y2,Y3,Y4,delta,eta,rk,title):
     fig=Figure(figsize=(10,4))
     fig.suptitle(title)
@@ -56,6 +58,7 @@ def complete_2d_plot(Y1,Y2,Y3,Y4,delta,eta,rk,title):
     subplots_2D_graph(fig,Y4, 'ZT(S,$\sigma$,$\kappa_e$)', 4,delta,eta,rk)
     return fig
 
+
 # plots for single band model
 def subplots_2D_graph_SBM(fig,Y,ylabel,sub,eta,rk): #eta, Y
     ax1=fig.add_subplot(2,2,sub)
@@ -63,10 +66,10 @@ def subplots_2D_graph_SBM(fig,Y,ylabel,sub,eta,rk): #eta, Y
     y0 = np.zeros(eta.size,float)
     if sub==4:
         for i in range(eta.size):
-             y0[i] = Y(eta[i],rk)
+              y0[i] = Y(eta[i],rk)
     else:
         for i in range(eta.size):
-             y0[i] = Y(eta[i])
+              y0[i] = Y(eta[i])
 
     l1, =ax1.plot(eta, y0, color='orange', linestyle='-',linewidth=1.5)
     ax1.xaxis.set_minor_locator(AutoMinorLocator(5))
@@ -76,6 +79,7 @@ def subplots_2D_graph_SBM(fig,Y,ylabel,sub,eta,rk): #eta, Y
         ax1.set_xlabel('$\mu$ $(k_B T)$')
     return ax1
 
+#ok
 def complete_2d_plot_SBM(Y1,Y2,Y3,Y4,eta,rk,title):
     fig=Figure(figsize=(10,4))
     fig.suptitle(title)
@@ -86,7 +90,7 @@ def complete_2d_plot_SBM(Y1,Y2,Y3,Y4,eta,rk,title):
     return fig
 
 
-    
+#okk 
 def plot_anim_3d(X,
                   Y,
                   Z,
