@@ -8,8 +8,6 @@ Created on Tue Aug 22 11:24:35 2023
 import DBM_Parabolic
 import SBM_Parabolic
 
-#from models import DBM_Parabolic 
-#from models import SBM_Parabolic
 from plots import subplots_2D_graph,complete_2d_plot,subplots_2D_graph_SBM,complete_2d_plot_SBM,plot_anim_3d
 import matplotlib
 import matplotlib.pyplot as plt
