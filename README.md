@@ -106,6 +106,10 @@ the possibilities of 2D Dirac materials as good thermoelectrics.
 
 To apply this model, write "DBMD" in the first window of the graphic interface. 
 
+*Example: select the Double-Parabolic-Band model*
+
+![Screenshot1](1_model_selection.png)
+
 ## 3.2 The simulation
 By solving the Boltzmann equations within the selected model and the relaxation-time approximation, one finds that the Seebeck coefficient $S$, the electric conductivity $\sigma$ and thermal electronic conductivity $\kappa_e$ are given by:
 ```math
@@ -131,6 +135,7 @@ If the chosen model is a double-band one, the next window allows the user to ins
 - minimum value of the chemical potential
 - maximum value of the chemical potential
 - step to consider in the chemical potential range
+- thermal lattice conductivity
   
 **Details on the calculations**
 $L_i$ is the transport integral, given by:
@@ -200,11 +205,16 @@ where $\kappa_L$ is the lattice thermal conductivity, which is kept fixed in thi
 If the chosen model is a double-band one, the next window allows the user to insert the following parameters:
 - minimum value of the energy gap
 - maximum value of the energy gap
+- step to consider in the energy gap range
 - minimum value of the chemical potential
 - maximum value of the chemical potential
-- step to consider in the energy gap range
 - step to consider in the chemical potential range
-  
+- thermal lattice conductivity 
+
+*Example: first part of the study with Double-Parabolic-Band model*
+
+![Screenshot2](2_first_part.png)
+
 **Details on the calculations**
 
 **(a) Double-parabolic-band model**
@@ -314,7 +324,11 @@ In this second part, the parameters to indicate are:
 - minimum of $r_{\kappa}$
 - maximum of $r_{\kappa}$
 - step to consider in the $r_{\kappa}$ range
-  
+
+*Example: second part of the study with Double-Parabolic-Band model*
+
+![Screenshot3](3_second_part.png)
+
 ### Single-parabolic-band model
 
 In the single-parabolic-band model, $ZT$ depends now on two parameters: the chemical potential (whose role was analyzed in the first part) and the thermal lattice conductivity. Therefore, now the software computes $ZT$ for a fixed chemical potential range (that can be checked and modified in the GUI.py file) and the selected $r_{\kappa}$ range.
@@ -334,6 +348,10 @@ By clicking on "Save", the user can save the data by specifying:
 In this way, for the first part, the software will save chemical potential and thermoelectric quantities in the case of single-parabolic-band model, and also the energy gap in the case of double-band models. 
 
 For the second part, the software will save chemical potential, thermal lattice conductivity and $ZT$ in the case of single-parabolic band, or thermal lattice conductivity, energy gap and $ZT$ for double-band models.
+
+*Example: save data of the second part of the study with Double-Parabolic-Band model*
+
+![Screenshot4](4_save_data.png)
 
 # 4. References
 - Microscopic Kinetics and Thermodynamics course by Professor L. Pasquini at University of Bologna
