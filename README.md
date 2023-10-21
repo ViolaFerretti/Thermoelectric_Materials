@@ -1,4 +1,4 @@
-# Performance Simulation of Thermoelectric Materials
+# Study of Thermoelectric Materials Performance
 This software allows to calculate properties of 2D thermoelectric materials depending on their band structure. This is useful to estimate the performance of thermoelectric materials and understand how they can be optimized.
 
 # 1. Introduction
