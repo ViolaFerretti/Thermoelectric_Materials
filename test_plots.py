@@ -4,24 +4,20 @@ Created on Tue Aug 22 11:24:35 2023
 
 @author: viola
 """
-
+# import necessary modules
 import DBM_Parabolic
 import SBM_Parabolic
-
 from plots import subplots_2D_graph,complete_2d_plot,subplots_2D_graph_SBM,complete_2d_plot_SBM,plot_anim_3d
+
 import matplotlib
 import matplotlib.pyplot as plt
 from matplotlib.figure import Figure
 import numpy as np
 
-# testing functions for data representation
-
-### 2D ###
-
-# double-band models
+# testing of functions for 2D plots for double band models
 def test_subplots_2D_graph(): #fig,Y,ylabel,sub,delta,eta,rk
     """
-    Test the 2D plot for an energy G
+    Test the 2D subplot of the chosen thermoelectric quantity
 
     Returns
     -------
@@ -33,12 +29,12 @@ def test_subplots_2D_graph(): #fig,Y,ylabel,sub,delta,eta,rk
     ylabel = "Y"
     subplot_number = 1
     #legend=1
-    delta=np.arange(0, 2, 0.5)
-    eta=np.arange(0,2,0.5)
-    rk=1
-    fig=Figure(figsize=(10,4))
+    delta = np.arange(0, 2, 0.5)
+    eta = np.arange(0,2,0.5)
+    rk = 1
+    fig = Figure(figsize=(10, 4))
     
-    fig1 = subplots_2D_graph(fig,Y,ylabel,subplot_number,delta,eta,rk)
+    fig1 = subplots_2D_graph(fig, Y, ylabel, subplot_number, delta, eta, rk)
     plt.show()
     
     assert isinstance(fig1, matplotlib.axes.SubplotBase), "subplots_2d_graph test failed"
@@ -47,54 +43,81 @@ def test_subplots_2D_graph(): #fig,Y,ylabel,sub,delta,eta,rk
     
 def test_complete_2d_plot(): 
     
-    Y1=DBM_Parabolic.S_DBMP
-    Y2=DBM_Parabolic.sigma_DBMP
-    Y3=DBM_Parabolic.ke_DBMP
-    Y4=DBM_Parabolic.ZT_DBMP
-    delta=np.arange(0, 2, 0.5)
-    eta=np.arange(0,2,0.5)
-    rk=1
-    title='plot'
+    """
+    Test the 2D figure containing all the computed thermoelectric quantities
+
+    Returns
+    -------
+    None.
+
+    """
     
-    fig2=complete_2d_plot(Y1,Y2,Y3,Y4,delta,eta,rk,title)
+    Y1 = DBM_Parabolic.S_DBMP
+    Y2 = DBM_Parabolic.sigma_DBMP
+    Y3 = DBM_Parabolic.ke_DBMP
+    Y4 = DBM_Parabolic.ZT_DBMP
+    delta = np.arange(0, 2, 0.5)
+    eta = np.arange(0, 2, 0.5)
+    rk = 1
+    title = 'plot'
+    
+    fig2=complete_2d_plot(Y1, Y2, Y3, Y4, delta, eta, rk, title)
     
     assert isinstance(fig2, plt.Figure), "complete_2d_plot test failed"
 
-# single-band model
+# testing of functions for 2D plots for single band model
 def test_subplots_2D_graph_SBM(): 
+    
+    """
+    Test the 2D subplot of the chosen thermoelectric quantity
+
+    Returns
+    -------
+    None.
+
+    """
     
     # test 1: Y=sigma 
     Y = SBM_Parabolic.S_SBMP
     ylabel = "Y"
     subplot_number = 1
     #legend=1
-    eta=np.arange(0,2,0.5)
-    rk=1
-    fig=Figure(figsize=(10,4))
+    eta = np.arange(0, 2, 0.5)
+    rk = 1
+    fig = Figure(figsize=(10, 4))
     
-    fig1 = subplots_2D_graph_SBM(fig,Y,ylabel,subplot_number,eta,rk)
+    fig1 = subplots_2D_graph_SBM(fig, Y, ylabel, subplot_number, eta, rk)
     plt.show()
     
     assert isinstance(fig1, matplotlib.axes.SubplotBase), "subplots_2d_graph_SBM test failed"
 
 def test_complete_2d_plot_SBM():
     
-    Y1=SBM_Parabolic.S_SBMP
-    Y2=SBM_Parabolic.sigma_SBMP
-    Y3=SBM_Parabolic.ke_SBMP
-    Y4=SBM_Parabolic.ZT_SBMP
-    eta=np.arange(0,2,0.5)
-    rk=1
-    title='plot'
+    """
+    Test the 2D figure containing all the computed thermoelectric quantities
+
+    Returns
+    -------
+    None.
+
+    """
     
-    fig2=complete_2d_plot_SBM(Y1,Y2,Y3,Y4,eta,rk,title)
+    Y1 = SBM_Parabolic.S_SBMP
+    Y2 = SBM_Parabolic.sigma_SBMP
+    Y3 = SBM_Parabolic.ke_SBMP
+    Y4 = SBM_Parabolic.ZT_SBMP
+    eta = np.arange(0, 2, 0.5)
+    rk = 1
+    title = 'plot'
+    
+    fig2=complete_2d_plot_SBM(Y1, Y2, Y3, Y4, eta, rk, title)
     
     assert isinstance(fig2, plt.Figure), "complete_2d_plot_SBM test failed"
 
-### 3D ###
+# testing of function for 3D plot
 def test_plot_anim_3d():
     """
-    function to test the ploting of the 3D plot with arrays
+    function to test the 3D plot 
 
     Returns
     -------
@@ -108,9 +131,9 @@ def test_plot_anim_3d():
     ylabel = "Y"
     zlabel = "Z"
     title = "3D Plot"
-    i=1
+    i = 1
     
-    fig = plot_anim_3d(X, Y, Z, xlabel, ylabel, zlabel, title,i)
+    fig = plot_anim_3d(X, Y, Z, xlabel, ylabel, zlabel, title, i)
 
     assert isinstance(fig, plt.Figure), "plot_anim_3d test failed"
 
