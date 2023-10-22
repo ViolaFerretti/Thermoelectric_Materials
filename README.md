@@ -108,7 +108,7 @@ To apply this model, write "DBMD" in the first window of the graphic interface.
 
 *Example: select the Double-Parabolic-Band model*
 
-![Screenshot1](1_model_selection.png)
+![Screenshot1](screenshots_for_readme/1_model_selection.png) 
 
 
 By solving the Boltzmann equations within the selected model and the relaxation-time approximation, one finds that the Seebeck coefficient $S$, the electric conductivity $\sigma$ and thermal electronic conductivity $\kappa_e$ are given by:
@@ -150,7 +150,9 @@ If the chosen model is a double-band one, the next window allows the user to ins
 
 *Example: first part of the study with Double-Parabolic-Band model*
 
-![Screenshot2](2_first_part.png)
+![Screenshot2](screenshots_for_readme/2_first_part.png)
+
+Note that the enetered parameters are defined as adimensional (see References for details).
 
 
 ### 3.2.2 Visualize data
@@ -187,7 +189,7 @@ In this second part, the parameters to indicate are:
 
 *Example: second part of the study with Double-Parabolic-Band model*
 
-![Screenshot3](3_second_part.png)
+![Screenshot3](screenshots_for_readme/3_second_part.png)
 
 ### 3.3.2 Visualize data
 ### Single-parabolic-band model
@@ -212,7 +214,7 @@ For the second part, the software will save chemical potential, thermal lattice 
 
 *Example: save data of the second part of the study with Double-Parabolic-Band model*
 
-![Screenshot4](4_save_data.png)
+![Screenshot4](screenshots_for_readme/4_save_data.png)
 
 # 4. References
 - Microscopic Kinetics and Thermodynamics course by Professor L. Pasquini at University of Bologna
