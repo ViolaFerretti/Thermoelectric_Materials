@@ -204,15 +204,15 @@ def test_sigmac_DBMD():
     value2 = 4 # example value for chemical potential
     
     expected_output = 0.6320015299793118 # expected result
-    assert np.allclose(sigmac_DBMD(value1, value2).astype(float), expected_output)
+    assert sigmac_DBMD(value1, value2).astype(float) == expected_output
 
     # test 2
     value1 = 1.5 # example value for energy gap
     value2 = 7 # example value for chemical potential
     
     expected_output = 0.9368293113655424 # expected result
-    assert np.allclose(sigmac_DBMD(value1, value2).astype(float), expected_output)
-
+    assert sigmac_DBMD(value1, value2).astype(float) == expected_output
+    
 def test_sigmav_DBMD():
     
     """
@@ -229,14 +229,14 @@ def test_sigmav_DBMD():
     value2 = 4 # example value for chemical potential
     
     expected_output = 0.001101975029276735 # expected result
-    assert np.allclose(sigmav_DBMD(value1, value2).astype(float), expected_output)
+    assert sigmav_DBMD(value1, value2).astype(float) == expected_output
     
     # test 2
     value1 = 1.5 # example value for energy gap
     value2 = 7 # example value for chemical potential
     
     expected_output = 0.00010346458581792292 # expected result
-    assert np.allclose(sigmav_DBMD(value1, value2).astype(float), expected_output)
+    assert sigmav_DBMD(value1, value2).astype(float) == expected_output
 
 def test_sigma_DBMD():
     
@@ -254,14 +254,14 @@ def test_sigma_DBMD():
     value2 = 4 # example value for chemical potential
     
     expected_output = 0.6331035050085886 # expected result
-    assert np.allclose(sigma_DBMD(value1, value2).astype(float), expected_output)
+    assert sigma_DBMD(value1, value2).astype(float) == expected_output
     
     # test 2
     value1 = 1.5 # example value for energy gap
     value2 = 7 # example value for chemical potential
     
     expected_output = 0.9369327759513603 # expected result
-    assert np.allclose(sigma_DBMD(value1, value2).astype(float), expected_output)
+    assert sigma_DBMD(value1, value2).astype(float) == expected_output
 
 def test_Sc_DBMD():
     
@@ -279,15 +279,14 @@ def test_Sc_DBMD():
     value2 = 4 # example value for chemical potential
     
     expected_output = -0.7473427239793451 # expected result
-    assert np.allclose(Sc_DBMD(value1, value2).astype(float), expected_output)
+    assert Sc_DBMD(value1, value2).astype(float) == expected_output
     
     # test 2
     value1 = 1.5 # example value for energy gap
     value2 = 7 # example value for chemical potential
     
     expected_output = -0.10200337819379099 # expected result
-    assert np.allclose(Sc_DBMD(value1, value2).astype(float), expected_output)
-
+    
 def test_Sv_DBMD():
     
     """
@@ -304,14 +303,14 @@ def test_Sv_DBMD():
     value2 = 4 # example value for chemical potential
     
     expected_output = 7.492339787057502 # expected result
-    assert np.allclose(Sv_DBMD(value1, value2).astype(float), expected_output)
+    assert Sv_DBMD(value1, value2).astype(float) == expected_output
     
     # test 2
     value1 = 1.5 # example value for energy gap
     value2 = 7 # example value for chemical potential
     
     expected_output = 9.932629860956144 # expected result
-    assert np.allclose(Sv_DBMD(value1, value2).astype(float), expected_output)
+    assert Sv_DBMD(value1, value2).astype(float) == expected_output
 
 def test_S_DBMD():
     
@@ -329,14 +328,14 @@ def test_S_DBMD():
     value2 = 4 # example value for chemical potential
     
     expected_output = -0.7330007967833999 # expected result
-    assert np.allclose(S_DBMD(value1, value2).astype(float), expected_output)
+    assert S_DBMD(value1, value2).astype(float) == expected_output
     
     # test 2
     value1 = 1.5 # example value for energy gap
     value2 = 7 # example value for chemical potential
     
     expected_output = -0.10089526329102308 # expected result
-    assert np.allclose(S_DBMD(value1, value2).astype(float), expected_output)
+    assert S_DBMD(value1, value2).astype(float) == expected_output
 
 def test_kec_DBMD():
     
@@ -354,14 +353,14 @@ def test_kec_DBMD():
     value2 = 4 # example value for chemical potential
     
     expected_output = 1.29197054949625 # expected result
-    assert np.allclose(float(kec_DBMD(value1, value2)), expected_output)
+    assert np.isclose(float(kec_DBMD(value1, value2)), expected_output)
     
     # test 2
     value1 = 1.5 # example value for energy gap
     value2 = 7 # example value for chemical potential
     
     expected_output = 2.79171801794985 # expected result
-    assert np.allclose(float(kec_DBMD(value1, value2)), expected_output)
+    assert np.isclose(float(kec_DBMD(value1, value2)), expected_output)
 
 def test_kev_DBMD():
     
@@ -379,14 +378,14 @@ def test_kev_DBMD():
     value2 = 4 # example value for chemical potential
     
     expected_output = 0.00141700695019598 # expected result
-    assert np.allclose(float(kev_DBMD(value1, value2)), expected_output)
+    assert np.isclose(float(kev_DBMD(value1, value2)), expected_output)
     
     # test 2
     value1 = 1.5 # example value for energy gap
     value2 = 7 # example value for chemical potential
    
     expected_output = 0.000127430727024787 # expected result
-    assert np.allclose(float(kev_DBMD(value1, value2)), expected_output)
+    assert np.isclose(float(kev_DBMD(value1, value2)), expected_output)
 
 def test_ke_DBMD():
     
@@ -404,14 +403,14 @@ def test_ke_DBMD():
     value2 = 4 # example value for chemical potential
     
     expected_output = 1.36807302691728 # expected result
-    assert np.allclose(float(ke_DBMD(value1, value2)), expected_output)
+    assert np.isclose(float(ke_DBMD(value1, value2)), expected_output)
     
     # test 2
     value1 = 1.5 # example value for energy gap
     value2 = 7 # example value for chemical potential
     
     expected_output = 2.8022625471581 # expected result
-    assert np.allclose(float(ke_DBMD(value1, value2)), expected_output)
+    assert np.isclose(float(ke_DBMD(value1, value2)), expected_output)
 
 def test_ZT_DBMD():
     
@@ -429,14 +428,14 @@ def test_ZT_DBMD():
     value2 = 4 # example value for chemical potential
     value3 = 1 # example value for thermal lattice conductivity
     expected_output = 0.143644340674808 # expected result
-    assert np.allclose(float(ZT_DBMD(value1, value2,1)), expected_output)
+    assert np.isclose(float(ZT_DBMD(value1, value2,1)), expected_output)
     
     # test 2
     value1 = 1.5 # example value for energy gap
     value2 = 7 # example value for chemical potential
     
     expected_output = 0.00250846407724928 # expected result
-    assert np.allclose(float(ZT_DBMD(value1, value2, value3)), expected_output)
+    assert np.isclose(float(ZT_DBMD(value1, value2, value3)), expected_output)
 
 # testing of specific functions of SBM_Parabolic model
 def test_func_Fi():

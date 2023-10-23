@@ -72,7 +72,8 @@ def make_window1(): # model selection
 
     """
     layout = [[sg.Text("Thermoelectric materials performance")],
-              [sg.Text('Model to apply'), sg.InputText(key='-IN_Model-')], #2P,2D,1P
+              # select model (DBMD,DBMP, SBMP)
+              [sg.Text('Model to apply'), sg.InputText(key='-IN_Model-')], 
               [sg.Button('Next >')],
               ]
     
@@ -96,13 +97,17 @@ def make_window2(): # DBMD, dependency on the energy gap and the chemical potent
     """
     
     layout = [[sg.Text("Thermoelectric materials performance: dependency on the energy gap and the chemical potential - Double-Dirac-Band Model")],
-              [sg.Text('Minimum energy gap'), sg.InputText(key='-IN_delta_min-')], #define Delta range
+              # set energy gap parameters
+              [sg.Text('Minimum energy gap'), sg.InputText(key='-IN_delta_min-')], 
               [sg.Text('Maximum energy gap'), sg.InputText(key='-IN_delta_max-')],
               [sg.Text('Energy gap step'), sg.InputText(key='-IN_delta_step-')],
-              [sg.Text('Minimum chemical potential'), sg.InputText(key='-IN_eta_min-')], #Define eta range
+              # set chemical potential parameters
+              [sg.Text('Minimum chemical potential'), sg.InputText(key='-IN_eta_min-')], 
               [sg.Text('Maximum chemical potential'), sg.InputText(key='-IN_eta_max-')],
               [sg.Text('Chemical potential step'), sg.InputText(key='-IN_eta_step-')],
+              # set thermal lattice conductivity
               [sg.Text('Lattice thermal conductivity'), sg.InputText(key='-IN_rk-')],
+              # space for 2D plots
               [sg.Canvas(key='-FIG0-')],
               [sg.Button('< Prev'),sg.Button('Show 2D Plots'), sg.Button('Save'), sg.Button('Show 3D Plots>'),sg.Button('Next >')],
               ]
@@ -129,6 +134,7 @@ def make_window2_3d(): # DBMD, 3D plot
     
     layout = [[sg.Text("Thermoelectric materials performance: dependency on the energy gap and the chemical potential - Double-Dirac-Band Model")],
               [sg.Text('3D plots')],
+              # spaces for 3D plots
               [sg.Canvas(key='-FIG1-'),sg.Canvas(key='-FIG2-')],
               [sg.Canvas(key='-FIG3-'),sg.Canvas(key='-FIG4-')],
               [sg.Button('< Prev'),sg.Button('Show 3D Plots'),sg.Button('Save'),sg.Button('Next >')],
@@ -155,13 +161,17 @@ def make_window3(): # DBMP, dependency on the energy gap and the chemical potent
     """
     
     layout = [[sg.Text("Thermoelectric materials performance: dependency on the energy gap and the chemical potential - Double-Parabolic-Band Model")],
-              [sg.Text('Minimum energy gap'), sg.InputText(key='-IN_delta_min-')], #define Delta range
+              # set energy gap parameters
+              [sg.Text('Minimum energy gap'), sg.InputText(key='-IN_delta_min-')], 
               [sg.Text('Maximum energy gap'), sg.InputText(key='-IN_delta_max-')],
               [sg.Text('Energy gap step'), sg.InputText(key='-IN_delta_step-')],
-              [sg.Text('Minimum chemical potential'), sg.InputText(key='-IN_eta_min-')], #Define eta range
+              # set chemical potential parameters
+              [sg.Text('Minimum chemical potential'), sg.InputText(key='-IN_eta_min-')], 
               [sg.Text('Maximum chemical potential'), sg.InputText(key='-IN_eta_max-')],
               [sg.Text('Chemical potential step'), sg.InputText(key='-IN_eta_step-')],
+              # set thermal lattice conductivity
               [sg.Text('Lattice thermal conductivity'), sg.InputText(key='-IN_rk-')],
+              # space for 2D plots
               [sg.Canvas(key='-FIG0-')],
               [sg.Button('< Prev'),sg.Button('Show 2D Plots'), sg.Button('Save'), sg.Button('Show 3D Plots >'),sg.Button('Next >')],
               ]
@@ -188,6 +198,7 @@ def make_window3_3d(): # DBMP, 3D plot
     
     layout = [[sg.Text("Thermoelectric materials performance: dependency on the energy gap and the chemical potential - Double-Parabolic-Band Model")],
               [sg.Text('3D plots')],
+              # spaces for 3D plots
               [sg.Canvas(key='-FIG1-'),sg.Canvas(key='-FIG2-')],
               [sg.Canvas(key='-FIG3-'),sg.Canvas(key='-FIG4-')],
               [sg.Button('< Prev'),sg.Button('Show 3D Plots'), sg.Button('Save'),sg.Button('Next >')],
@@ -212,10 +223,13 @@ def make_window4(): # SBMP, dependency on the energy gap and the chemical potent
     """
     
     layout = [[sg.Text("Thermoelectric materials performance: dependency on the energy gap and the chemical potential - Single-Parabolic-Band Model")],
-              [sg.Text('Minimum chemical potential'), sg.InputText(key='-IN_eta_min-')], #Define eta range
+              # set chemical potential parameters
+              [sg.Text('Minimum chemical potential'), sg.InputText(key='-IN_eta_min-')], 
               [sg.Text('Maximum chemical potential'), sg.InputText(key='-IN_eta_max-')],
               [sg.Text('Chemical potential step'), sg.InputText(key='-IN_eta_step-')],
+              # set thermal lattice conductivity
               [sg.Text('Lattice thermal conductivity'), sg.InputText(key='-IN_rk-')],
+              # space for 2D plots
               [sg.Canvas(key='-FIG0-')],
               [sg.Button('< Prev'),sg.Button('Show Plots'), sg.Button('Save'),sg.Button('Next >')],
               ]
@@ -240,9 +254,11 @@ def make_window5(): # DBMD, dependency on the thermal lattice conductivity
     """
     
     layout = [[sg.Text("Thermoelectric materials performance: dependency on the phonon thermal conductivity - Double-Dirac-Band Model")],
-              [sg.Text('Minimum lattice conductivity'), sg.InputText(key='-IN_rk_min-')], #Define eta range
+              # set thermal lattice conductivity parameters
+              [sg.Text('Minimum lattice conductivity'), sg.InputText(key='-IN_rk_min-')], 
               [sg.Text('Maximum lattice conductivity'), sg.InputText(key='-IN_rk_max-')],
               [sg.Text('Lattice conductivity step'), sg.InputText(key='-IN_rk_step-')],
+              # space for 3D plot
               [sg.Canvas(key='-FIG0-')],
               [sg.Button('< Choose Model'),sg.Button('Show Plot'), sg.Button('Save')],
               ]
@@ -268,9 +284,11 @@ def make_window6(): # DBMP, dependency on the thermal lattice conductivity
     """
     
     layout = [[sg.Text("Thermoelectric materials performance: dependency on the phonon thermal conductivity - Double-Parabolic-Band Model")],
-              [sg.Text('Minimum lattice conductivity'), sg.InputText(key='-IN_rk_min-')], #Define eta range
+              # set thermal lattice conductivity parameters
+              [sg.Text('Minimum lattice conductivity'), sg.InputText(key='-IN_rk_min-')], 
               [sg.Text('Maximum lattice conductivity'), sg.InputText(key='-IN_rk_max-')],
               [sg.Text('Lattice conductivity step'), sg.InputText(key='-IN_rk_step-')],
+              # space for 3D plot
               [sg.Canvas(key='-FIG0-')],
               [sg.Button('< Choose Model'),sg.Button('Show Plot'), sg.Button('Save')],
               ]
@@ -296,9 +314,11 @@ def make_window7(): # SBMP, dependency on the thermal lattice conductivity
     """
     
     layout = [[sg.Text("Thermoelectric materials performance: dependency on the phonon thermal conductivity - Single-Parabolic-Band Model")],
-              [sg.Text('Minimum lattice conductivity'), sg.InputText(key='-IN_rk_min-')], #Define eta range
+              # set thermal lattice conductivity parameters
+              [sg.Text('Minimum lattice conductivity'), sg.InputText(key='-IN_rk_min-')], 
               [sg.Text('Maximum lattice conductivity'), sg.InputText(key='-IN_rk_max-')],
               [sg.Text('Lattice conductivity step'), sg.InputText(key='-IN_rk_step-')],
+              # space for 3D plot
               [sg.Canvas(key='-FIG0-')],
               [sg.Button('< Choose Model'),sg.Button('Show Plot'), sg.Button('Save')],
               ]
@@ -324,6 +344,7 @@ def make_window8(): # save data
     """
     
     layout = [[sg.Text('Save the data')],
+              # indicate where to save the data
               [sg.Text('Path of the directory for the txt data file:'),sg.InputText(key='-IN_txt_path-')],
               [sg.Text('Name of the txt file:'),sg.InputText(key='-IN_txt_model'),sg.InputText(key='-IN_txt_part'),sg.InputText(key='-IN_txt_file-')],
               [sg.Button('Save txt'),sg.Button('Done')],

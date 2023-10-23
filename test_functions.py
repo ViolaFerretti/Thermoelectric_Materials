@@ -284,25 +284,25 @@ def test_func_Gi():
     i = 0
     
     expected_output = 1.701585269498187e-24
-    assert np.isclose(float(func_Gi(value3, i, value1, value2)), expected_output)
+    assert float(func_Gi(value3, i, value1, value2)) == expected_output
     
     # test 2: i = 1
     i = 1
     
     expected_output = 8.848243401390573e-23
-    assert np.isclose(float(func_Gi(value3, i, value1, value2)), expected_output)
+    assert float(func_Gi(value3, i, value1, value2)) == expected_output
     
     # test 3: i = 2
     i = 2
     
     expected_output = 4.601086568723097e-21
-    assert np.isclose(float(func_Gi(value3, i, value1, value2)), expected_output)
+    assert float(func_Gi(value3, i, value1, value2)) == expected_output
     
     # test 4: i = 3
     i = 3
     
     expected_output = 2.392565015736011e-19
-    assert np.isclose(float(func_Gi(value3, i, value1, value2)), expected_output)
+    assert float(func_Gi(value3, i, value1, value2)) == expected_output
 
 
 def test_Gic():
@@ -323,25 +323,25 @@ def test_Gic():
     i = 0
     
     expected_output = 3.581198434041771e-08
-    assert np.isclose(float(Gic(i, value1, value2)), expected_output)
+    assert float(Gic(i, value1, value2)) == expected_output
     
     # test 2: i = 1
     i = 1
     
     expected_output = 6.400404422663984e-07
-    assert np.isclose(float(Gic(i, value1, value2)), expected_output)
+    assert float(Gic(i, value1, value2)) == expected_output
     
     # test 3: i = 2
     i = 2
     
     expected_output = 1.1466614882245465e-05
-    assert np.isclose(float(Gic(i, value1, value2)), expected_output)
+    assert float(Gic(i, value1, value2)) == expected_output
     
     # test 4: i = 3
     i = 3
     
     expected_output = 0.0002059723191182534
-    assert np.isclose(float(Gic(i, value1, value2)), expected_output)
+    assert float(Gic(i, value1, value2)) == expected_output
   
 def test_Giv(): 
     
@@ -361,24 +361,24 @@ def test_Giv():
     i = 0
     
     expected_output = 0.0003015760070507426
-    assert np.isclose(float(Giv(i, value1, value2)), expected_output)
+    assert float(Giv(i, value1, value2)) == expected_output
     
     # test 2: i = 1
     i = 1
     
     expected_output = -0.002685138951920471
-    assert np.isclose(float(Giv(i, value1, value2)), expected_output)
+    assert float(Giv(i, value1, value2)) == expected_output
     
     # test 3: i = 2
     i = 2
     
     expected_output = 0.02415602999913352
-    assert np.isclose(float(Giv(i, value1, value2)), expected_output)
+    assert float(Giv(i, value1, value2)) == expected_output
     
     # test 4: i = 3
     i = 3
     
     expected_output = -0.21995714831541316
-    assert np.isclose(float(Giv(i, value1, value2)), expected_output)
+    assert float(Giv(i, value1, value2)) == expected_output
 
 
