@@ -60,7 +60,6 @@ In the Anaconda Prompt, make sure that you have all the needed packages in pytho
 ```
 pip install numpy
 pip install scipy
-pip install matplotlib
 pip install mpmath
 ```
 - to visualize data
