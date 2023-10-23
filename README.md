@@ -27,7 +27,7 @@ In the end, the computed thermoelectric quantities depend on three main paramete
 ## 2.1 Using Anaconda
 ### (a) Clone the repository
 ```
-git clone https://github.com/ViolaFerretti/Thermoelectric_Quantities_Simulation.git
+git clone https://github.com/ViolaFerretti/Thermoelectric_Materials.git
 
 ```
 ### (b) Install packages
@@ -51,7 +51,7 @@ Run the software with one of the environments, for example in Spyder.
 ## 2.2 Using Windows
 ### (a) Clone the repository
 ```
-git clone https://github.com/ViolaFerretti/Thermoelectric_Quantities_Simulation.git
+git clone https://github.com/ViolaFerretti/Thermoelectric_Materials.git
 
 ```
 ### (b) Install packages
