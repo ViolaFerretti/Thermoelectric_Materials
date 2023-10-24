@@ -15,17 +15,19 @@ plog = np.frompyfunc(mpmath.polylog, 2, 1)
 def log1(x):
     
     """
-    function to calculate the formula log(x + exp(-x)), if x is an array
+    function to calculate the formula log(x + exp(-x)),
+    if x is an array
 
     Parameters
     ----------
     x : TYPE nd.ndarray
-        DESCRIPTION. parameter to be entered in the calculation function
+        DESCRIPTION variable that in later calculations will be given
+        by the difference between the chemical potential and the energy gap
 
     Returns
     -------
     calculated function : TYPE nd.ndarray
-                          DESCRIPTION. calculated array  
+                          DESCRIPTION calculated array  
 
     """
     
@@ -34,17 +36,19 @@ def log1(x):
 def exp1(x):
     
     """
-    function to calculate the formula [exp(x) + 1], if x is an array
+    function to calculate the formula [exp(x) + 1],
+    if x is an array
 
     Parameters
     ----------
     x : TYPE nd.ndarray
-        DESCRIPTION. parameter to be entered in the calculation function
+        DESCRIPTION variable that in later calculations will be given
+        by the difference between the chemical potential and the energy gap
 
     Returns
     -------
     calculated function : TYPE nd.ndarray
-                          DESCRIPTION. calculated array  
+                          DESCRIPTION calculated array  
 
     """
     
@@ -56,19 +60,20 @@ def F0c(delta,
         eta):
     
     """
-    function to calculate the F_0 function for the conduction band, if inputs are arrays
+    function to calculate the F_0 function for the conduction band,
+    if inputs are arrays
 
     Parameters
     ----------
     delta : TYPE nd.ndarray
-            DESCRIPTION. parameter to be entered in the calculation function
+            DESCRIPTION energy gap value to be entered in the function
     eta : TYPE nd.ndarray
-          DESCRIPTION. parameter to be entered in the calculation function
+          DESCRIPTION chemical potential value to be entered in the function
 
     Returns
     -------
     calculated function : TYPE nd.ndarray
-                          DESCRIPTION. calculated array  
+                          DESCRIPTION calculated array  
 
     """
     
@@ -83,14 +88,14 @@ def F1c(delta,
     Parameters
     ----------
     delta : TYPE nd.ndarray
-            DESCRIPTION. parameter to be entered in the calculation function
+            DESCRIPTION energy gap value to be entered in the function
     eta : TYPE nd.ndarray
-          DESCRIPTION. parameter to be entered in the calculation function
+          DESCRIPTION chemical potential value to be entered in the function
 
     Returns
     -------
     calculated function : TYPE nd.ndarray
-                          DESCRIPTION. calculated array  
+                          DESCRIPTION calculated array  
 
     """
     
@@ -105,14 +110,14 @@ def F2c(delta,
     Parameters
     ----------
     delta : TYPE nd.ndarray
-            DESCRIPTION. parameter to be entered in the calculation function
+            DESCRIPTION energy gap value to be entered in the function
     eta : TYPE nd.ndarray
-          DESCRIPTION. parameter to be entered in the calculation function
+          DESCRIPTION chemical potential value to be entered in the function
 
     Returns
     -------
     calculated function : TYPE nd.ndarray
-                          DESCRIPTION. calculated array  
+                          DESCRIPTION calculated array  
 
     """
     
@@ -127,14 +132,14 @@ def F3c(delta,
     Parameters
     ----------
     delta : TYPE nd.ndarray
-            DESCRIPTION. parameter to be entered in the calculation function
+            DESCRIPTION energy gap value to be entered in the function
     eta : TYPE nd.ndarray
-            DESCRIPTION. parameter to be entered in the calculation function
+            DESCRIPTION chemical potential value to be entered in the function
 
     Returns
     -------
     calculated function : TYPE nd.ndarray
-                          DESCRIPTION. calculated array  
+                          DESCRIPTION calculated array  
 
     """
     
@@ -151,14 +156,14 @@ def F0v(delta,
     Parameters
     ----------
     delta : TYPE nd.ndarray
-            DESCRIPTION. parameter to be entered in the calculation function
+            DESCRIPTION energy gap value to be entered in the function
     eta : TYPE nd.ndarray
-            DESCRIPTION. parameter to be entered in the calculation function
+            DESCRIPTION chemical potential value to be entered in the function
 
     Returns
     -------
     calculated function : TYPE nd.ndarray
-                          DESCRIPTION. calculated array  
+                          DESCRIPTION calculated array  
 
     """
     
@@ -173,14 +178,14 @@ def F1v(delta,
     Parameters
     ----------
     delta : TYPE nd.ndarray
-            DESCRIPTION. parameter to be entered in the calculation function
+            DESCRIPTION energy gap value to be entered in the function
     eta : TYPE nd.ndarray
-            DESCRIPTION. parameter to be entered in the calculation function
+            DESCRIPTION chemical potential value to be entered in the function
 
     Returns
     -------
     calculated function : TYPE nd.ndarray
-                          DESCRIPTION. calculated array  
+                          DESCRIPTION calculated array  
 
     """
     
@@ -195,14 +200,14 @@ def F2v(delta,
     Parameters
     ----------
     delta : TYPE nd.ndarray
-            DESCRIPTION. parameter to be entered in the calculation function
+            DESCRIPTION energy gap value to be entered in the function
     eta : TYPE nd.ndarray
-            DESCRIPTION. parameter to be entered in the calculation function
+            DESCRIPTION chemical potential value to be entered in the function
 
     Returns
     -------
     calculated function : TYPE nd.ndarray
-                          DESCRIPTION. calculated array  
+                          DESCRIPTION calculated array  
 
     """
     
@@ -217,14 +222,14 @@ def F3v(delta,
     Parameters
     ----------
     delta : TYPE nd.ndarray
-            DESCRIPTION. parameter to be entered in the calculation function
+            DESCRIPTION energy gap value to be entered in the function
     eta : TYPE nd.ndarray
-            DESCRIPTION. parameter to be entered in the calculation function
+            DESCRIPTION chemical potential value to be entered in the function
 
     Returns
     -------
     calculated function : TYPE nd.ndarray
-                          DESCRIPTION. calculated array  
+                          DESCRIPTION calculated array  
 
     """
     
@@ -243,18 +248,20 @@ def func_Gi(x,
     Parameters
     ----------
     x : TYPE nd.ndarray
-        DESCRIPTION. parameter to be entered in the calculation function
+        DESCRIPTION variable with respect to which the integration will be done,
+        corresponding to the difference between the energy level and chemical potential
     i : TYPE int
-        DESCRIPTION. index parameter to be entered in the calculation function
+        DESCRIPTION index parameter to be entered in the function,
+        indicating the corresponding transport integral
     delta : TYPE nd.ndarray
-            DESCRIPTION. parameter to be entered in the calculation function
+            DESCRIPTION energy gap value to be entered in the function
     eta : TYPE nd.ndarray
-            DESCRIPTION. parameter to be entered in the calculation function
+            DESCRIPTION chemical potential value to be entered in the function
 
     Returns
     -------
     calculated function : TYPE nd.ndarray
-                          DESCRIPTION. calculated array  
+                          DESCRIPTION calculated array  
 
     """
     
@@ -275,16 +282,17 @@ def Gic(i,
     Parameters
     ----------
     i : TYPE int
-        DESCRIPTION. index parameter to be entered in the calculation function
+        DESCRIPTION index parameter to be entered in the function,
+        indicating the corresponding transport integral
     delta : TYPE nd.ndarray
-            DESCRIPTION. parameter to be entered in the calculation function
+            DESCRIPTION energy gap value to be entered in the function
     eta : TYPE nd.ndarray
-            DESCRIPTION. parameter to be entered in the calculation function
+            DESCRIPTION chemical potential value to be entered in the function
 
     Returns
     -------
     calculated function : TYPE nd.ndarray
-                          DESCRIPTION. calculated array  
+                          DESCRIPTION calculated array  
 
     """
     
@@ -303,16 +311,17 @@ def Giv(i,
     Parameters
     ----------
     i : TYPE int
-        DESCRIPTION. index parameter to be entered in the calculation function
+        DESCRIPTION index parameter to be entered in the function,
+        indicating the corresponding transport integral
     delta : TYPE nd.ndarray
-            DESCRIPTION. parameter to be entered in the calculation function
+            DESCRIPTION energy gap value to be entered in the function
     eta : TYPE nd.ndarray
-            DESCRIPTION. parameter to be entered in the calculation function
+            DESCRIPTION chemical potential value to be entered in the function
 
     Returns
     -------
     calculated function : TYPE nd.ndarray
-                          DESCRIPTION. calculated array  
+                          DESCRIPTION calculated array  
 
     """
     

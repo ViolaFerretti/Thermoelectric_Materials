@@ -16,19 +16,20 @@ def sigmac_DBMP(delta,
                 eta):
     
     """
-    function to calculate the electrical conductivity sigma for the conduction band, if inputs are arrays
+    function to calculate the electrical conductivity sigma for the conduction band,
+    if inputs are arrays
 
     Parameters
     ----------
     delta : TYPE nd.ndarray
-            DESCRIPTION. parameter to be entered in the calculation function
+            DESCRIPTION energy gap value to be entered in the function
     eta : TYPE nd.ndarray
-          DESCRIPTION. parameter to be entered in the calculation function
+          DESCRIPTION chemical potential value to be entered in the function
 
     Returns
     -------
     calculated function : TYPE nd.ndarray
-                          DESCRIPTION. calculated array  
+                          DESCRIPTION calculated array  
 
     """
     
@@ -38,19 +39,20 @@ def Sc_DBMP(delta,
             eta):
     
     """
-    function to calculate the Seebeck coefficient S for the conduction band, if inputs are arrays
+    function to calculate the Seebeck coefficient S for the conduction band,
+    if inputs are arrays
 
     Parameters
     ----------
     delta : TYPE nd.ndarray
-            DESCRIPTION. parameter to be entered in the calculation function
+            DESCRIPTION energy gap value to be entered in the function
     eta : TYPE nd.ndarray
-          DESCRIPTION. parameter to be entered in the calculation function
+          DESCRIPTION chemical potential value to be entered in the function
 
     Returns
     -------
     calculated function : TYPE nd.ndarray
-                          DESCRIPTION. calculated array  
+                          DESCRIPTION calculated array  
 
     """
     
@@ -60,19 +62,20 @@ def kec_DBMP(delta,
              eta):
     
     """
-    function to calculate the thermal electronic conductivity k_e for the conduction band, if inputs are arrays
+    function to calculate the thermal electronic conductivity k_e for the conduction band,
+    if inputs are arrays
 
     Parameters
     ----------
     delta : TYPE nd.ndarray
-            DESCRIPTION. parameter to be entered in the calculation function
+            DESCRIPTION energy gap value to be entered in the function
     eta : TYPE nd.ndarray
-          DESCRIPTION. parameter to be entered in the calculation function
+          DESCRIPTION chemical potential value to be entered in the function
 
     Returns
     -------
     calculated function : TYPE nd.ndarray
-                          DESCRIPTION. calculated array  
+                          DESCRIPTION calculated array  
 
     """
     
@@ -84,19 +87,20 @@ def sigmav_DBMP(delta,
                 eta):
     
     """
-    function to calculate the electrical conductivity sigma for the valence band, if inputs are arrays
+    function to calculate the electrical conductivity sigma for the valence band,
+    if inputs are arrays
 
     Parameters
     ----------
     delta : TYPE nd.ndarray
-            DESCRIPTION. parameter to be entered in the calculation function
+            DESCRIPTION energy gap value to be entered in the function
     eta : TYPE nd.ndarray
-          DESCRIPTION. parameter to be entered in the calculation function
+          DESCRIPTION chemical potential value to be entered in the function
 
     Returns
     -------
     calculated function : TYPE nd.ndarray
-                          DESCRIPTION. calculated array  
+                          DESCRIPTION calculated array  
 
     """
     
@@ -106,19 +110,20 @@ def Sv_DBMP(delta,
             eta):
     
     """
-    function to calculate the Seebeck coefficient S for the valence band, if inputs are arrays
+    function to calculate the Seebeck coefficient S for the valence band,
+    if inputs are arrays
 
     Parameters
     ----------
     delta : TYPE nd.ndarray
-            DESCRIPTION. parameter to be entered in the calculation function
+            DESCRIPTION energy gap value to be entered in the function
     eta : TYPE nd.ndarray
-          DESCRIPTION. parameter to be entered in the calculation function
+          DESCRIPTION chemical potential value to be entered in the function
 
     Returns
     -------
     calculated function : TYPE nd.ndarray
-                          DESCRIPTION. calculated array  
+                          DESCRIPTION calculated array  
 
     """
     
@@ -128,19 +133,20 @@ def kev_DBMP(delta,
              eta):
     
     """
-    function to calculate the thermal electronic conductivity k_e for the valence band, if inputs are arrays
+    function to calculate the thermal electronic conductivity k_e for the valence band,
+    if inputs are arrays
 
     Parameters
     ----------
     delta : TYPE nd.ndarray
-            DESCRIPTION. parameter to be entered in the calculation function
+            DESCRIPTION energy gap value to be entered in the function
     eta : TYPE nd.ndarray
-          DESCRIPTION. parameter to be entered in the calculation function
+          DESCRIPTION chemical potential value to be entered in the function
 
     Returns
     -------
     calculated function : TYPE nd.ndarray
-                          DESCRIPTION. calculated array  
+                          DESCRIPTION calculated array  
 
     """
     
@@ -152,19 +158,20 @@ def sigma_DBMP(delta,
                eta):
     
     """
-    function to calculate the electrical conductivity sigma for the material, if inputs are arrays
+    function to calculate the electrical conductivity sigma for the material,
+    if inputs are arrays
 
     Parameters
     ----------
     delta : TYPE nd.ndarray
-            DESCRIPTION. parameter to be entered in the calculation function
+            DESCRIPTION energy gap value to be entered in the function
     eta : TYPE nd.ndarray
-          DESCRIPTION. parameter to be entered in the calculation function
+          DESCRIPTION chemical potential value to be entered in the function
 
     Returns
     -------
     calculated function : TYPE nd.ndarray
-                          DESCRIPTION. calculated array  
+                          DESCRIPTION calculated array  
 
     """
     
@@ -174,19 +181,20 @@ def S_DBMP(delta,
            eta):
     
     """
-    function to calculate the Seebeck coefficient S for the material, if inputs are arrays
+    function to calculate the Seebeck coefficient S for the material,
+    if inputs are arrays
 
     Parameters
     ----------
     delta : TYPE nd.ndarray
-            DESCRIPTION. parameter to be entered in the calculation function
+            DESCRIPTION energy gap value to be entered in the function
     eta : TYPE nd.ndarray
-          DESCRIPTION. parameter to be entered in the calculation function
+          DESCRIPTION chemical potential value to be entered in the function
 
     Returns
     -------
     calculated function : TYPE nd.ndarray
-                          DESCRIPTION. calculated array  
+                          DESCRIPTION calculated array  
 
     """
     
@@ -196,19 +204,20 @@ def ke_DBMP(delta,
             eta):
     
     """
-    function to calculate the thermal electronic conductivity k_e for the material, if inputs are arrays
+    function to calculate the thermal electronic conductivity k_e for the material,
+    if inputs are arrays
 
     Parameters
     ----------
     delta : TYPE nd.ndarray
-            DESCRIPTION. parameter to be entered in the calculation function
+            DESCRIPTION energy gap value to be entered in the function
     eta : TYPE nd.ndarray
-          DESCRIPTION. parameter to be entered in the calculation function
+          DESCRIPTION chemical potential value to be entered in the function
 
     Returns
     -------
     calculated function : TYPE nd.ndarray
-                          DESCRIPTION. calculated array  
+                          DESCRIPTION calculated array  
 
     """
     
@@ -219,20 +228,21 @@ def ZT_DBMP(delta,
             rk):
     
     """
-    function to calculate the figure of merit ZT for the material, if inputs are arrays
+    function to calculate the figure of merit ZT for the material,
+    if inputs are arrays
 
     Parameters
     ----------
     delta : TYPE nd.ndarray
-            DESCRIPTION. parameter to be entered in the calculation function
+            DESCRIPTION energy gap value to be entered in the function
     eta : TYPE nd.ndarray
-          DESCRIPTION. parameter to be entered in the calculation function
+          DESCRIPTION chemical potential value to be entered in the function
     rk : TYPE float
-         DESCRIPTION. parameter to be entered in the calculation function
+         DESCRIPTION thermal lattice conductivity value to be entered in the function
     Returns
     -------
     calculated function : TYPE nd.ndarray
-                          DESCRIPTION. calculated array  
+                          DESCRIPTION calculated array  
 
     """
     
