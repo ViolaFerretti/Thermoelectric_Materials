@@ -5,7 +5,7 @@ This software allows to calculate properties of 2D thermoelectric materials depe
 Thermoelectric materials are able to convert a temperature gradient into electrical energy, or vice-versa. Since the majority of primary energy is wasted as heat, the development of thermoelectric devices is essential to utilize this waste heat and convert it into useful electric power. To continue this research and to direct it towards the realization of novel thermoelectric materials, simulations that, based on the characteristics of the material, are able to compute the
 thermoelectric quantities of such materials are of crucial importance
 
-This software contains allows to calculate the following quantities characterizing 2D thermoelectric materials:
+This software allows to calculate the following quantities characterizing 2D thermoelectric materials:
 - Seebeck coefficient $S$
 - electric conductivity $\sigma$
 - thermal electronic conductivity $\kappa_e$
@@ -21,7 +21,7 @@ The simulation can be done based on three different models describing the band s
 
 All three models are based on Boltzmann transport theory in the linear response regime in the relaxation-time approximation.
 
-In the end, the computed thermoelectric quantities depend on three main parameters: the energy gap, the chemical potential and on the thermal lattice conductivity.
+In the end, the computed thermoelectric quantities depend on three main parameters of the material: the energy gap, the chemical potential and on the thermal lattice conductivity.
 
 # 2. Setup
 ## 2.1 Using Anaconda
@@ -55,7 +55,7 @@ git clone https://github.com/ViolaFerretti/Thermoelectric_Materials.git
 
 ```
 ### (b) Install packages
-In the Anaconda Prompt, make sure that you have all the needed packages in python3: 
+In the Windows Prompt, make sure that you have all the needed packages in python3: 
 - to manage calculations:
 ```
 pip install numpy
@@ -77,21 +77,21 @@ python3 GUI.py
 # 3. Start
 ## 3.1 Select the model
 ### Single-parabolic-band model
-The single-parabolic-band model assumes that only one band participates in the charge transport. This assumption can be justied in materials with relatively large band gaps (with respect to the targeted operational temperature range). SPB modeling has been employed successfully
+The single-parabolic-band model assumes that only one band participates in the charge transport. This assumption can be justied in materials with relatively large band gaps (with respect to the targeted operational temperature range). S-parabolic-band modeling has been employed successfully
 in many material systems like $Mg_2(Si,Sn)$, $ZnSb$, $Bi_2Te_3$ and $PbTe$. A single band is, of course,
 not enough to capture the complete picture of the material when more than one majority carrier
 band and/or minority carrier bands are contributing substantially to charge transport. 
 However, in the case of a highly doped sample single-parabolic-band model is a correct description over the entire
 temperature range.
 
-To apply this model, write "SBMP" (the first three letter distinguish between Single-Band Model and Double-Band Model, and the last one selects the approximation, being either Parabolic or of Dirac type) in the first window of the graphic interface. 
+To apply this model, write "SBMP" (the first three letter distinguish between Single-Band Model and Double-Band Model, and the last one selects the approximation, being either Parabolic or of Dirac type) in the first window of the graphic user interface. 
 
 ### Double-parabolic-band model
 The single-band model is not sufficient to describe moderately or lightly doped materials, for
 which a double-band model is required, being the simplest and, in most cases, sufficient improvement. A very promising class of materials, is that of members of $Mg_2X$ (with $X = Si$, $Ge$, $Sn$)
 and their solid solutions, which can be correctly described by the double-parabolic-band model.
 
-To apply this model, write "DBMP" in the first window of the graphic interface. 
+To apply this model, write "DBMP" in the first window of the graphic user interface. 
 
 ### Double-Dirac-band model
 A lot of research efforts and grants have especially been invested on the 2D materials whose electronic structure can be modeled by the Dirac Hamiltonian, or the so-called 2D Dirac materials.
@@ -103,7 +103,7 @@ germanene, transition metal dichalcogenides (TMDs), and hexagonal boron nitride.
 them possess excellent electronic and thermal properties, and some recent findings may indicate
 the possibilities of 2D Dirac materials as good thermoelectrics.
 
-To apply this model, write "DBMD" in the first window of the graphic interface. 
+To apply this model, write "DBMD" in the first window of the graphic user interface. 
 
 *Example: select the Double-Parabolic-Band model*
 
@@ -120,6 +120,8 @@ By solving the Boltzmann equations within the selected model and the relaxation-
 		\end{cases}
 	\end{equation}
 ```
+where $L_i$ are the transport integrals.
+
 Then, the final figure of merit $ZT$ is computed through the folowing equation:
  ```math
 \begin{equation}
@@ -127,6 +129,9 @@ Then, the final figure of merit $ZT$ is computed through the folowing equation:
 \end{equation}
 ```
 where $\kappa_L$ is the thermal lattice conductivity.
+
+For details on the procedure see References.
+
 ## 3.2 First part: energy gap and chemical potential
 In this first part, the focus is ont the dependency of thermoelectic quantities on energy gap and chemical potential, while the thermal lattice conductivity is kept fixed.
 ### 3.2.1 Set parameters
@@ -177,7 +182,7 @@ Therefore, one must act on $\kappa_L$, which in general is defined through the f
 	\end{equation}
  ```
 where $\nu_s$ and $c_s$ are the frequency and the speed of sound respectively, and $\lambda_{ph}$ is the wavelength of phonons oscillations.  In the end, ideal thermoelectric materials are those that have a low thermal lattice conductivity (phonon glass) and a low resistivity (electron crystal). Indeed, for a phonon glass the phonons have a short mean free path (lattice vibrations are not relevant) and for an electron crystal the electrons have high mean free path (current flows easily).
-The lowest value that can be reached by acting on $\lambda_{ph}$ is $\kappa_L^{min}\simeq0.25\ W/mK$ (phonon glass). To better understand how the thermoelectric quantities depend on this parameter, the thermal lattice conductivity can be written can be written in units of $\kappa_0$ as $\kappa_L=r_{\kappa}\kappa_0$, where $ r_{\kappa} $ is a parameter that can be changed by the user during the simulation, and $\kappa_0$ is defined in each model (seen previously).
+The lowest value that can be reached by acting on $\lambda_{ph}$ is $\kappa_L^{min}\simeq0.25\ W/mK$ (phonon glass). To better understand how the thermoelectric quantities depend on this parameter, the thermal lattice conductivity can be written can be written in units of $\kappa_0$ as $\kappa_L=r_{\kappa}\kappa_0$, where $r_{\kappa}$ is a parameter that can be changed by the user during the simulation, and $\kappa_0$ is defined in each model (seen previously).
 
 ### 3.3.1 Set parameters
 
@@ -193,13 +198,12 @@ In this second part, the parameters to indicate are:
 ### 3.3.2 Visualize data
 ### Single-parabolic-band model
 
-In the single-parabolic-band model, $ZT$ depends now on two parameters: the chemical potential (whose role was analyzed in the first part) and the thermal lattice conductivity. Therefore, now the software computes $ZT$ for a fixed chemical potential range (that can be checked and modified in the GUI.py file) and the selected $r_{\kappa}$ range.
-
+In the single-parabolic-band model, $ZT$ depends now on two parameters: the chemical potential (whose role was analyzed in the first part) and the thermal lattice conductivity. Therefore, now the software computes $ZT$ for a fixed chemical potential range and the selected $r_{\kappa}$ range.
 Thus, the software directly plots a 3D graph on $ZT$ depending on these two variables.
 
 ### Double-band models
 
-In the case of double-band-models, the situation is more complex, because, as seen in the first part, $ZT$ already depends on cheical potential and energy gap; the addition of $\kappa_L$ makes $ZT$ a 3-variable function, which would be difficult to study. Therefore, the software gets rid of the chemical potential-dependency by only keeping the maximized value of $ZT$ with respect to it. In this way, one can analyze the 3D plot of $ZT$ with respect to energy gap and thermal lattice conductivity.
+In the case of double-band-models, the situation is more complex, because, as seen in the first part, $ZT$ already depends on chemical potential and energy gap; the addition of $\kappa_L$ makes $ZT$ a 3-variable function, which would be difficult to study. Therefore, the software gets rid of the chemical potential-dependency by only keeping the maximized value of $ZT$ with respect to it. In this way, one can analyze the 3D plot of $ZT$ with respect to energy gap and thermal lattice conductivity.
 
 ## 3.4 Save data
 
