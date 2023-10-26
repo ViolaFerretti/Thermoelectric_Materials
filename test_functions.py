@@ -72,9 +72,9 @@ def test_F0c():
 
     """
     
-    value1 = np.asarray([0, 1.5, -15, 20.5]) # input energy gap values 
+    value1 = np.asarray([0, 1.5, 5, 20.5]) # input energy gap values 
     value2 = np.asarray([-20.5, 0 ,10, 20.5]) # input chemical potential values
-    expected_output = [1.25015286e-09, 1.82425524e-01, 1.00000000e+00, 5.00000000e-01] # expected results
+    expected_output = [1.25015286e-09, 1.82425524e-01, 9.93307149e-01, 5.00000000e-01] # expected results
     
     assert np.allclose(F0c(value1, value2).astype(float), expected_output)
 
@@ -88,15 +88,15 @@ def test_F1c():
     and an array of input values for the chemical potential (which comprehends null, positive and negative values in a realistic range)
     when the F1c function is applied, it gives an array containing the expected results:
     
-    - if inputs such that (value2 - value1) < 0 (1st, 2nd and 3rd elements of input arrays) -> F0c is positive and tends asintotically to 0
+    - if inputs such that (value2 - value1) < or > 0 (1st, 2nd and 3rd elements of input arrays) -> F0c is positive and tends asintotically to 0
     - if inputs such that (value2 - value1) = 0 (4th elements of input arrays) -> expected result = e
     ----------
 
     """
     
-    value1 = np.asarray([0, 1.5, -15, 20.5]) # input energy gap values 
+    value1 = np.asarray([0, 1.5, 5, 20.5]) # input energy gap values 
     value2 = np.asarray([-20.5, 0 ,10, 20.5]) # input chemical potential values
-    expected_output = [2.68782863e-08, 4.75051564e-01, 3.61086598e-10, 6.93147181e-01] # expected results
+    expected_output = [2.68782863e-08, 4.75051564e-01, 4.01796031e-02, 6.93147181e-01] # expected results
     
     assert np.allclose(F1c(value1, value2).astype(float), expected_output)
 
@@ -116,9 +116,9 @@ def test_F2c():
 
     """
     
-    value1 = np.asarray([0, 1.5, -15, 20.5]) # input energy gap values 
+    value1 = np.asarray([0, 1.5, 5, 20.5]) # input energy gap values 
     value2 = np.asarray([-20.5, 0 ,10, 20.5]) # input chemical potential values
-    expected_output = [5.79133314e-07, 1.43826122e+00, 3.28986812e+00, 1.64493407e+00] # expected results
+    expected_output = [5.79133314e-07, 1.43826122e+00, 3.0419401139431073, 1.64493407e+00] # expected results
     
     assert np.allclose(F2c(value1, value2).astype(float), expected_output)
 
@@ -139,9 +139,9 @@ def test_F3c():
 
     """
     
-    value1 = np.asarray([0, 1.5, -15, 20.5]) # input energy gap values 
+    value1 = np.asarray([0, 1.5, 5, 20.5]) # input energy gap values 
     value2 = np.asarray([-20.5, 0 ,10, 20.5]) # input chemical potential values
-    expected_output = [2.50152443e-05, 1.03699281e+01, 4.90411291e-07, 1.08185121e+01] # expected results
+    expected_output = [2.50152443e-05, 1.03699281e+01, 3.1649002567560833, 1.08185121e+01] # expected results
     
     assert np.allclose(F3c(value1, value2).astype(float), expected_output)
 
@@ -157,17 +157,17 @@ def test_F0v():
     and an array of input values for the chemical potential (which comprehends null, positive and negative values in a realistic range)
     when the F0v function is applied, it gives an array containing the expected results:
         
-    - if inputs such that (value2 + value1) < 0 (1st, 2nd elements of input arrays) -> F0c is positive and tends asintotically to 1
-    - if inputs such that (value2 + value1) > 0 (3rd elements of input arrays) -> F0c is positive and tends asintotically to 0
+    - if inputs such that (value2 + value1) < 0 (1st elements of input arrays) -> F0c is positive and tends asintotically to 1
+    - if inputs such that (value2 + value1) > 0 (2nd and 3rd elements of input arrays) -> F0c is positive and tends asintotically to 0
     - if inputs such that (value2 + value1) = 0 (4th elements of input arrays) -> F0c reaches the maximum value close to 10 
 
     ----------
 
     """
     
-    value1 = np.asarray([0, -1.5, 15, -20.5]) # input energy gap values 
-    value2 = np.asarray([-20.5, 0 ,10, 20.5]) # input chemical potential values
-    expected_output = [9.99999999e-01, 8.17574476e-01, 1.38879439e-11, 5.00000000e-01] # expected results
+    value1 = np.asarray([0, 1.5, 15, 20.5]) # input energy gap values 
+    value2 = np.asarray([-16.5, 0 ,10, -20.5]) # input chemical potential values
+    expected_output = [9.99999999e-01, 1.82425524e-01, 1.38879439e-11, 5.00000000e-01] # expected results
     
     assert np.allclose(F0v(value1, value2).astype(float), expected_output)
 
@@ -188,9 +188,9 @@ def test_F1v():
 
     """
         
-    value1 = np.asarray([0, -1.5, 15, -20.5]) # input energy gap values 
-    value2 = np.asarray([-20.5, 0 ,10, 20.5]) # input chemical potential values
-    expected_output = [-2.68782863e-08, -4.75051564e-01, -3.61086598e-10, -6.93147181e-01] # expected results
+    value1 = np.asarray([0, 1.5, 15, 20.5]) # input energy gap values 
+    value2 = np.asarray([-16.5, 0 ,10, -20.5]) # input chemical potential values
+    expected_output = [-1.19448051e-06, -4.75051564e-01, -3.61086598e-10, -6.93147181e-01] # expected results
     
     assert np.allclose(F1v(value1, value2).astype(float), expected_output)
 
@@ -204,17 +204,17 @@ def test_F2v():
     and an array of input values for the chemical potential (which comprehends null, positive and negative values in a realistic range)
     when the F2v function is applied, it gives an array containing the expected results:
         
-    - if inputs such that (value2 + value1) < 0 (1st and 2nd elements of input arrays) -> F0c is positive and tends asintotically to 3.5
-    - if inputs such that (value2 + value1) > 0 (3rd elements of input arrays) -> F0c is positive and tends asintotically to 0 
+    - if inputs such that (value2 + value1) < 0 (1st elements of input arrays) -> F0c is positive and tends asintotically to 3.5
+    - if inputs such that (value2 + value1) > 0 (2nd and 3rd elements of input arrays) -> F0c is positive and tends asintotically to 0 
     - if inputs such that (value2 + value1) = 0 (4th elements of input arrays) -> F0c reaches the minimum value close to 1.5
 
     ----------
 
     """
     
-    value1 = np.asarray([0, -1.5, 15, -20.5]) # input energy gap values 
-    value2 = np.asarray([-20.5, 0 ,10, 20.5]) # input chemical potential values
-    expected_output = [3.289867554563159, 1.851606911933001, 9.4021408961890241e-9, 1.6449340668482264] # expected results
+    value1 = np.asarray([0, 1.5, 15, 20.5]) # input energy gap values 
+    value2 = np.asarray([-16.5, 0 ,10, -20.5]) # input chemical potential values
+    expected_output = [3.289867554563159, 1.4382612217634507, 9.4021408961890241e-9, 1.6449340668482264] # expected results
     
     assert np.allclose(F2v(value1, value2).astype(float), expected_output)
 
@@ -235,9 +235,9 @@ def test_F3v():
 
     """
     
-    value1 = np.asarray([0, -1.5, 15, -20.5]) # input energy gap values 
-    value2 = np.asarray([-20.5, 0 ,10, 20.5]) # input chemical potential values
-    expected_output = [2.5015244318637997e-5, 10.369928135499528, 4.9041129123324437e-7, 10.81851212843635] # expected results
+    value1 = np.asarray([0, 1.5, 15, 20.5]) # input energy gap values 
+    value2 = np.asarray([-16.5, 0 ,10, -20.5]) # input chemical potential values
+    expected_output = [0.00073905922545236535, 10.369928135499528, 4.9041129123324437e-7, 10.81851212843635] # expected results
     
     assert np.allclose(F3v(value1, value2).astype(float), expected_output)
 
