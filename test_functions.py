@@ -15,151 +15,135 @@ import numpy as np
 def test_log1():
     
     """
-    function to test the log(x + exp(-x)) calculation
-
-    Returns
+    function to test the log[1 + exp(-x)] calculation
+    
+    ----------
+    Given an array of input values (which comprehends infinite, zero, positive and negative values),
+    when the log1 function is applied, it gives an array containing the expected results
+    - input = -inf -> expected output = -inf
+    - input = float < 0 -> expected output > 0
+    - input = 0 -> expected output = e
+    - input > 0 -> the function tends asintotically to zero
     -------
-    None.
-
+   
     """
     
-    # test 1
-    value = 9 # example value for x
+    value = np.asarray([-np.infty, -10, 0 ,10, np.infty]) # input x values
+    expected_output = [np.infty, 1.00000454e+01, 6.93147181e-01, 4.53988992e-05, 0.00000000e+00] # expected results
     
-    expected_output = 0.00012340218972333965 # expected result
-    assert log1(value) == expected_output    
+    assert np.allclose(log1(value).astype(float), expected_output)
     
-    # test 2
-    value = 2.5 # example value for x
-    
-    expected_output = 0.07888973429254956 # expected result
-    assert log1(value) == expected_output   
 
 def test_exp1():
     
     """
-    function to test the [exp(x) + 1] calculation
-
-    Returns
+    function to test the  [exp(x) + 1] calculation
+    
+    ----------
+    Given an array of input values (which comprehends infinite, zero, positive and negative values),
+    when the exp1 function is applied, it gives an array containing the expected results:
+    - input = -inf -> expected output = 1
+    - input = float -> expected output > 0
+    - input = +inf -> expected output = inf
     -------
-    None.
-
+    
     """
     
-    # test 1
-    value = 5 # example value for x
+    value = np.asarray([-np.infty, -10, 0 ,10, np.infty]) # input x values
+    expected_output = [1.00000000e+00, 1.00004540e+00, 2.00000000e+00, 2.20274658e+04, np.infty] # expected results
     
-    expected_output = 149.4131591025766 # expected result
-    assert exp1(value) == expected_output
-    
-    # test 2
-    value = 7.6 # example value for x
-    
-    expected_output = 1999.1958951041172 # expected result
-    assert exp1(value) == expected_output
+    assert np.allclose(exp1(value).astype(float), expected_output)
 
 # test of F functions of the conduction band
-
 def test_F0c():
+    
+    """
+    function to test the the function to calculate the F_0 function for the conduction band
+    
+    ----------    
+    Given an array of input values for the energy gap (which comprehends null and positive values in a realistic range),
+    and an array of input values for the chemical potential (which comprehends null, positive and negative values in a realistic range)
+    when the F0c function is applied, it gives an array containing the expected results:
+    
+    - if inputs such that (value2 - value1) < 0 (1st and 2nd elements of input arrays) -> F0c tends asintotically to 0
+    - if inputs such that (value2 - value1) > 0 (3rd elements of input arrays) -> F0c tends asintotically to 1
+    - if inputs such that (value2 - value1) = 0 (4th elements of input arrays) -> expected result = 0.5
+    ----------
 
     """
-    function to test the function to calculate the F_0 function for the conduction band
-
-    Returns
-    -------
-    None.
-
-    """
     
-    # test 1
-    value1 = 3  # example value for energy gap
-    value2 = 13 # example value for chemical potential
+    value1 = np.asarray([0, 1.5, -15, 20.5]) # input energy gap values 
+    value2 = np.asarray([-20.5, 0 ,10, 20.5]) # input chemical potential values
+    expected_output = [1.25015286e-09, 1.82425524e-01, 1.00000000e+00, 5.00000000e-01] # expected results
     
-    expected_output = 0.9999546021312976 # expected result
-    assert F0c(value1, value2) == expected_output
-    
-    # test 2
-    value1 = 9 # example value for energy gap
-    value2 = -2 # example value for chemical potential
-    
-    expected_output = 1.670142184809518e-05 # expected result
-    assert F0c(value1, value2) == expected_output
+    assert np.allclose(F0c(value1, value2).astype(float), expected_output)
 
 def test_F1c():
+    
+    """
+    function to test the the function to calculate the F_1 function for the conduction band
+    
+    ----------    
+    Given an array of input values for the energy gap (which comprehends null and positive values in a realistic range),
+    and an array of input values for the chemical potential (which comprehends null, positive and negative values in a realistic range)
+    when the F1c function is applied, it gives an array containing the expected results:
+    
+    - if inputs such that (value2 - value1) < 0 (1st, 2nd and 3rd elements of input arrays) -> F0c is positive and tends asintotically to 0
+    - if inputs such that (value2 - value1) = 0 (4th elements of input arrays) -> expected result = e
+    ----------
 
     """
-    function to test the function to calculate the F_1 function for the conduction band
-
-    Returns
-    -------
-    None.
-
-    """
     
-    # test 1
-    value1 = 3 # example value for energy gap
-    value2 = 13 # example value for chemical potential
+    value1 = np.asarray([0, 1.5, -15, 20.5]) # input energy gap values 
+    value2 = np.asarray([-20.5, 0 ,10, 20.5]) # input chemical potential values
+    expected_output = [2.68782863e-08, 4.75051564e-01, 3.61086598e-10, 6.93147181e-01] # expected results
     
-    expected_output = 0.0004993775862412144 # expected result
-    assert F1c(value1, value2) == expected_output
-    
-    # test 2
-    value1 = 9 # example value for energy gap
-    value2 = -2 # example value for chemical potential
-    
-    expected_output = 0.00020041720164520882 # expected result
-    assert F1c(value1, value2) == expected_output
+    assert np.allclose(F1c(value1, value2).astype(float), expected_output)
 
 def test_F2c():
     
     """
-    function to test the function to calculate the F_2 function for the conduction band
-
-    Returns
-    -------
-    None.
+    function to test the the function to calculate the F_2 function for the conduction band
+    
+    ----------    
+    Given an array of input values for the energy gap (which comprehends null and positive values in a realistic range),
+    and an array of input values for the chemical potential (which comprehends null, positive and negative values in a realistic range)
+    when the F2c function is applied, it gives an array containing the expected results:
+    
+    - if inputs such that (value2 - value1) < 0 (1st and 2nd elements of input arrays) -> F0c is positive and tends asintotically to 0
+    - if inputs such that (value2 - value1) = or > 0 (3rd and 4th elements of input arrays) -> F0c is positive 
+    ----------
 
     """
     
-    # test 1
-    value1 = 18 # example value for energy gap
-    value2 = 4 # example value for chemical potential
+    value1 = np.asarray([0, 1.5, -15, 20.5]) # input energy gap values 
+    value2 = np.asarray([-20.5, 0 ,10, 20.5]) # input chemical potential values
+    expected_output = [5.79133314e-07, 1.43826122e+00, 3.28986812e+00, 1.64493407e+00] # expected results
     
-    expected_output = 0.000187925344988571 # expected result
-    assert np.isclose(float(F2c(value1, value2)), expected_output)
-    
-    # test 2
-    value1 = 3 # example value for energy gap
-    value2 = 9.3 # example value for chemical potential
-    
-    expected_output = 3.19033163968246 # expected result
-    assert np.isclose(float(F2c(value1, value2)), expected_output)
+    assert np.allclose(F2c(value1, value2).astype(float), expected_output)
 
 def test_F3c():
-    
+        
     """
-    function to test the function to calculate the F_3 function for the conduction band
+    function to test the the function to calculate the F_3 function for the conduction band
+    
+    ----------    
+    Given an array of input values for the energy gap (which comprehends null and positive values in a realistic range),
+    and an array of input values for the chemical potential (which comprehends null, positive and negative values in a realistic range)
+    when the F3c function is applied, it gives an array containing the expected results:
+        
+    - if inputs such that (value2 - value1) < or > 0 (1st, 2nd and 3rd elements of input arrays) -> F0c is positive and tends asintotically to 0
+    - if inputs such that (value2 - value1) = 0 (3rd and 4th elements of input arrays) -> F0c reaches the maximum value close to 10 
 
-    Returns
-    -------
-    None.
+    ----------
 
     """
     
-    # test 1
-    value1 = 5 # example value for energy gap
-    value2 = 17 # example value for chemical potential
+    value1 = np.asarray([0, 1.5, -15, 20.5]) # input energy gap values 
+    value2 = np.asarray([-20.5, 0 ,10, 20.5]) # input chemical potential values
+    expected_output = [2.50152443e-05, 1.03699281e+01, 4.90411291e-07, 1.08185121e+01] # expected results
     
-    expected_output = 0.0275013463014754 # expected result
-    assert np.isclose(float(F3c(value1, value2)), expected_output)
-    
-    # test 2
-    value1 = 1.2 # example value for energy gap
-    value2 = -2 # example value for chemical potential
-    
-    expected_output = 7.05778150624795 # expected result
-    assert np.isclose(float(F3c(value1, value2)), expected_output)
-
+    assert np.allclose(F3c(value1, value2).astype(float), expected_output)
 
 # test of F functions of valence band
 
@@ -168,217 +152,832 @@ def test_F0v():
     """
     function to test the function to calculate the F_0 function for the valence band
 
-    Returns
-    -------
-    None.
+    ----------    
+    Given an array of input values for the energy gap (which comprehends null and positive values in a realistic range),
+    and an array of input values for the chemical potential (which comprehends null, positive and negative values in a realistic range)
+    when the F0v function is applied, it gives an array containing the expected results:
+        
+    - if inputs such that (value2 + value1) < 0 (1st, 2nd elements of input arrays) -> F0c is positive and tends asintotically to 1
+    - if inputs such that (value2 + value1) > 0 (3rd elements of input arrays) -> F0c is positive and tends asintotically to 0
+    - if inputs such that (value2 + value1) = 0 (4th elements of input arrays) -> F0c reaches the maximum value close to 10 
+
+    ----------
 
     """
     
-    # test 1
-    value1 = 6
-    value2 = -15
+    value1 = np.asarray([0, -1.5, 15, -20.5]) # input energy gap values 
+    value2 = np.asarray([-20.5, 0 ,10, 20.5]) # input chemical potential values
+    expected_output = [9.99999999e-01, 8.17574476e-01, 1.38879439e-11, 5.00000000e-01] # expected results
     
-    expected_output = 0.9998766054240137
-    assert F0v(value1, value2) == expected_output
-    
-    # test 2
-    value1 = 9
-    value2 = -1
-    
-    expected_output = 0.0003353501304664781
-    assert F0v(value1, value2) == expected_output
+    assert np.allclose(F0v(value1, value2).astype(float), expected_output)
 
 def test_F1v():
     
     """
     function to test the function to calculate the F_1 function for the valence band
 
-    Returns
-    -------
-    None.
+    ----------    
+    Given an array of input values for the energy gap (which comprehends null and positive values in a realistic range),
+    and an array of input values for the chemical potential (which comprehends null, positive and negative values in a realistic range)
+    when the F1v function is applied, it gives an array containing the expected results:
+        
+    - if inputs such that (value2 + value1) < or > 0 (1st, 2nd and 3rd elements of input arrays) -> F0c is negative and tends asintotically to 1
+    - if inputs such that (value2 + value1) = 0 (4th elements of input arrays) -> F0c reaches the minimum value close to -0.7
+
+    ----------
 
     """
+        
+    value1 = np.asarray([0, -1.5, 15, -20.5]) # input energy gap values 
+    value2 = np.asarray([-20.5, 0 ,10, 20.5]) # input chemical potential values
+    expected_output = [-2.68782863e-08, -4.75051564e-01, -3.61086598e-10, -6.93147181e-01] # expected results
     
-    # test 1
-    value1 = 6
-    value2 = -15
-    
-    expected_output = -0.001233953373599661
-    assert F1v(value1, value2) == expected_output
-    
-    # test 2
-    value1 = 3.3
-    value2 = 14
-    
-    expected_output = -5.612502402258072e-07
-    assert F1v(value1, value2) == expected_output
+    assert np.allclose(F1v(value1, value2).astype(float), expected_output)
 
 def test_F2v():
     
     """
     function to test the function to calculate the F_2 function for the valence band
 
-    Returns
-    -------
-    None.
+    ----------    
+    Given an array of input values for the energy gap (which comprehends null and positive values in a realistic range),
+    and an array of input values for the chemical potential (which comprehends null, positive and negative values in a realistic range)
+    when the F2v function is applied, it gives an array containing the expected results:
+        
+    - if inputs such that (value2 + value1) < 0 (1st and 2nd elements of input arrays) -> F0c is positive and tends asintotically to 3.5
+    - if inputs such that (value2 + value1) > 0 (3rd elements of input arrays) -> F0c is positive and tends asintotically to 0 
+    - if inputs such that (value2 + value1) = 0 (4th elements of input arrays) -> F0c reaches the minimum value close to 1.5
+
+    ----------
 
     """
     
-    # test 1
-    value1 = 6
-    value2 = -15
+    value1 = np.asarray([0, -1.5, 15, -20.5]) # input energy gap values 
+    value2 = np.asarray([-20.5, 0 ,10, 20.5]) # input chemical potential values
+    expected_output = [3.289867554563159, 1.851606911933001, 9.4021408961890241e-9, 1.6449340668482264] # expected results
     
-    expected_output = 3.27740512163292
-    assert np.isclose(float(F2v(value1, value2)), expected_output)
-    
-    # test 2
-    value1 = 9.7
-    value2 = -4
-    
-    expected_output = 0.153114564841314
-    assert np.isclose(float(F2v(value1, value2)), expected_output)
+    assert np.allclose(F2v(value1, value2).astype(float), expected_output)
 
 def test_F3v():
-    
+        
     """
     function to test the function to calculate the F_3 function for the valence band
 
-    Returns
-    -------
-    None.
+    ----------    
+    Given an array of input values for the energy gap (which comprehends null and positive values in a realistic range),
+    and an array of input values for the chemical potential (which comprehends null, positive and negative values in a realistic range)
+    when the F3v function is applied, it gives an array containing the expected results:
+        
+    - if inputs such that (value2 + value1) < or < 0 (1st, 2nd and 3rd elements of input arrays) -> F0c is positive and tends asintotically to 0
+    - if inputs such that (value2 + value1) = 0 (4th elements of input arrays) -> F0c reaches the minimum value close to 11
+
+    ----------
 
     """
     
-    # test 1
-    value1 = 6
-    value2 = -15
+    value1 = np.asarray([0, -1.5, 15, -20.5]) # input energy gap values 
+    value2 = np.asarray([-20.5, 0 ,10, 20.5]) # input chemical potential values
+    expected_output = [2.5015244318637997e-5, 10.369928135499528, 4.9041129123324437e-7, 10.81851212843635] # expected results
     
-    expected_output = 0.254691498452758
-    assert np.isclose(float(F3v(value1, value2)), expected_output)
-    
-    # test 2
-    value1 = 19
-    value2 = 5
-    
-    expected_output = 1.18554329424333e-6
-    assert np.isclose(float(F3v(value1, value2)), expected_output)
+    assert np.allclose(F3v(value1, value2).astype(float), expected_output)
 
 # test of G functions
 
-def test_func_Gi(): 
-    
+def test_func_Gi_0_pole():
+            
     """
-    function to test the function to calculate the G_i function 
+    function to test the function to calculate the G_i function integrand
+    when i = 0 when poles are encountered
 
-    Returns
-    -------
-    None.
-
-    """
-    
-    value1 = 12 # example value for energy gap
-    value2 = -5 # example value for chemical potential
-    value3 = 52 # example value for x
-
-    # test 1: i = 0
-    i = 0
-    
-    expected_output = 1.701585269498187e-24
-    assert float(func_Gi(value3, i, value1, value2)) == expected_output
-    
-    # test 2: i = 1
-    i = 1
-    
-    expected_output = 8.848243401390573e-23
-    assert float(func_Gi(value3, i, value1, value2)) == expected_output
-    
-    # test 3: i = 2
-    i = 2
-    
-    expected_output = 4.601086568723097e-21
-    assert float(func_Gi(value3, i, value1, value2)) == expected_output
-    
-    # test 4: i = 3
-    i = 3
-    
-    expected_output = 2.392565015736011e-19
-    assert float(func_Gi(value3, i, value1, value2)) == expected_output
-
-
-def test_Gic():
-    
-    """
-    function to test the function to calculate the G_i integral for the conduction band
-
-    Returns
-    -------
-    None.
+    ----------    
+    Given input values such that the pole of the function is encountered,
+    when the G_i function integrand is computed, it returns the ZeroDivisionError
+    ----------
 
     """
+    value1 = 12 # input energy gap value
+    value2 = -5 # input chemical potential value
+    value3 = 5 # input x value
+    expected_output = ZeroDivisionError # expected result
     
-    value1 = 12 # example value for energy gap
-    value2 = -5 # example value for chemical potential
-    
-    # test 1: i = 0
-    i = 0
-    
-    expected_output = 3.581198434041771e-08
-    assert float(Gic(i, value1, value2)) == expected_output
-    
-    # test 2: i = 1
-    i = 1
-    
-    expected_output = 6.400404422663984e-07
-    assert float(Gic(i, value1, value2)) == expected_output
-    
-    # test 3: i = 2
-    i = 2
-    
-    expected_output = 1.1466614882245465e-05
-    assert float(Gic(i, value1, value2)) == expected_output
-    
-    # test 4: i = 3
-    i = 3
-    
-    expected_output = 0.0002059723191182534
-    assert float(Gic(i, value1, value2)) == expected_output
-  
-def test_Giv(): 
-    
-    """
-    function to test the function to calculate the G_i integral for the valence band
+    assert func_Gi(value3,0,value1,value2) == expected_output
 
-    Returns
-    -------
-    None.
+def test_func_Gi_1_pole():
+            
+    """
+    function to test the function to calculate the G_i function integrand
+    when i = 1 when poles are encountered
+
+    ----------    
+    Given input values such that the pole of the function is encountered,
+    when the G_i function integrand is computed, it returns the ZeroDivisionError
+    ----------
 
     """
+    value1 = 0 # input energy gap value
+    value2 = -13.6 # input chemical potential value
+    value3 = 13.6 # input x value
+    expected_output = ZeroDivisionError # expected result
     
-    value1 = 17 # example value for energy gap
-    value2 = -9 # example value for chemical potential
+    assert func_Gi(value3,1,value1,value2) == expected_output
 
-    # test 1: i = 0
-    i = 0
-    
-    expected_output = 0.0003015760070507426
-    assert float(Giv(i, value1, value2)) == expected_output
-    
-    # test 2: i = 1
-    i = 1
-    
-    expected_output = -0.002685138951920471
-    assert float(Giv(i, value1, value2)) == expected_output
-    
-    # test 3: i = 2
-    i = 2
-    
-    expected_output = 0.02415602999913352
-    assert float(Giv(i, value1, value2)) == expected_output
-    
-    # test 4: i = 3
-    i = 3
-    
-    expected_output = -0.21995714831541316
-    assert float(Giv(i, value1, value2)) == expected_output
+def test_func_Gi_2_pole():
+            
+    """
+    function to test the function to calculate the G_i function integrand
+    when i = 2 when poles are encountered
 
+    ----------    
+    Given input values such that the pole of the function is encountered,
+    when the G_i function integrand is computed, it returns the ZeroDivisionError
+    ----------
 
+    """
+    value1 = 0.001 # input energy gap value
+    value2 = 0.2 # input chemical potential value
+    value3 = -0.2 # input x value
+    expected_output = ZeroDivisionError # expected result
+    
+    assert func_Gi(value3,2,value1,value2) == expected_output
+
+def test_func_Gi_3_pole():
+            
+    """
+    function to test the function to calculate the G_i function integrand
+    when i = 3 when poles are encountered
+
+    ----------    
+    Given input values such that the pole of the function is encountered,
+    when the G_i function integrand is computed, it returns the ZeroDivisionError
+    ----------
+
+    """
+    value1 = 2.4 # input energy gap value
+    value2 = 19 # input chemical potential value
+    value3 = -19 # input x value
+    expected_output = ZeroDivisionError # expected result
+    
+    assert func_Gi(value3,3,value1,value2) == expected_output
+
+def test_func_Gi_0_largex_pos():
+            
+    """
+    function to test the function to calculate the G_i function integrand
+    when i = 0 when x is large and positive
+
+    ----------    
+    Given input values with x large and positive,
+    when the G_i function integrand is computed, it returns the expected output:
+    
+    - input: value3 = large and positive -> output: positive and and closer to zero as i decreases
+    ----------
+
+    """
+    value1 = 12 # input energy gap value
+    value2 = -5 # input chemical potential value
+    value3 = 200 # input x value
+    expected_output = 5.240791580541492e-90 # expected result
+    
+    assert func_Gi(value3,0,value1,value2) == expected_output
+
+def test_func_Gi_1_largex_pos():
+            
+    """
+    function to test the function to calculate the G_i function integrand
+    when i = 1 when x is large and positive
+
+    ----------    
+    Given input values with x large and positive,
+    when the G_i function integrand is computed, it returns the expected output:
+    
+    - input: value3 = large and positive -> output: positive and and closer to zero as i decreases
+    ----------
+
+    """
+    value1 = 12 # input energy gap value
+    value2 = -5 # input chemical potential value
+    value3 = 200 # input x value
+    expected_output = 1.0481583161082983e-87 # expected result
+    
+    assert func_Gi(value3,1,value1,value2) == expected_output
+
+def test_func_Gi_2_largex_pos():
+            
+    """
+    function to test the function to calculate the G_i function integrand
+    when i = 2 when x is large and positive
+
+    ----------    
+    Given input values with x large and positive,
+    when the G_i function integrand is computed, it returns the expected output:
+    
+    - input: value3 = large and positive -> output: positive and and closer to zero as i decreases
+    ----------
+
+    """
+    value1 = 12 # input energy gap value
+    value2 = -5 # input chemical potential value
+    value3 = 200 # input x value
+    expected_output = 2.0963166322165967e-85 # expected result
+    
+    assert func_Gi(value3,2,value1,value2) == expected_output
+
+def test_func_Gi_3_largex_pos():
+            
+    """
+    function to test the function to calculate the G_i function integrand
+    when i = 3 when x is large and positive
+
+    ----------    
+    Given input values with x large and positive,
+    when the G_i function integrand is computed, it returns the expected output:
+        
+    - input: value3 = large and positive -> output: positive and and closer to zero as i decreases
+    ----------
+
+    """
+    value1 = 12 # input energy gap value
+    value2 = -5 # input chemical potential value
+    value3 = 200 # input x value
+    expected_output = 4.192633264433194e-83 # expected result
+    
+    assert func_Gi(value3,3,value1,value2) == expected_output
+
+def test_func_Gi_0_largex_neg():
+            
+    """
+    function to test the function to calculate the G_i function integrand
+    when i = 0 when x is large and negative
+
+    ----------    
+    Given input values with x large and negative,
+    when the G_i function integrand is computed, it returns the expected output:
+        
+    - input: value3 = large and negative -> output: positive and closer to zero as i decreases
+    ----------
+
+    """
+    value1 = 12 # input energy gap value
+    value2 = -5 # input chemical potential value
+    value3 = -200 # input x value
+    expected_output = 4.741965493160981e-90 # expected result
+    
+    assert func_Gi(value3,0,value1,value2) == expected_output
+
+def test_func_Gi_1_largex_neg():
+            
+    """
+    function to test the function to calculate the G_i function integrand
+    when i = 1 when x is large and negative
+
+    ----------    
+    Given input values with x large and negative,
+    when the G_i function integrand is computed, it returns the expected output.
+    
+    - input: value3 = large and negative -> output: negative and closer to zero as i decreases
+    ----------
+
+    """
+    value1 = 12 # input energy gap value
+    value2 = -5 # input chemical potential value
+    value3 = -200 # input x value
+    expected_output = -9.48393098632196e-88 # expected result
+    
+    assert func_Gi(value3,1,value1,value2) == expected_output
+
+def test_func_Gi_2_largex_neg():
+            
+    """
+    function to test the function to calculate the G_i function integrand
+    when i = 2 when x is large and negative
+
+    ----------    
+    Given input values with x large and negative,
+    when the G_i function integrand is computed, it returns the expected output:
+        
+    - input: value3 = large and negative -> output: positive and closer to zero as i decreases
+    ----------
+
+    """
+    value1 = 12 # input energy gap value
+    value2 = -5 # input chemical potential value
+    value3 = -200 # input x value
+    expected_output = 1.8967861972643923e-85 # expected result
+    
+    assert func_Gi(value3,2,value1,value2) == expected_output
+
+def test_func_Gi_3_largex_neg():
+            
+    """
+    function to test the function to calculate the G_i function integrand
+    when i = 3 when x is large and negative
+
+    ----------    
+    Given input values with x large and negative,
+    when the G_i function integrand is computed, it returns the expected output:
+        
+    - input: value3 = large and negative -> output: negative and closer to zero as i decreases
+    ----------
+
+    """
+    value1 = 12 # input energy gap value
+    value2 = -5 # input chemical potential value
+    value3 = -200 # input x value
+    expected_output = -3.793572394528785e-83 # expected result
+    
+    assert func_Gi(value3,3,value1,value2) == expected_output
+
+def test_func_Gi_0_smallx_pos():
+            
+    """
+    function to test the function to calculate the G_i function integrand
+    when i = 0 when x is small and positive
+
+    ----------    
+    Given input values with x small and positive,
+    when the G_i function integrand is computed, it returns the expected output:
+        
+    - input: value3 = small and positive -> output: positive and closer to zero as i increases
+    ----------
+
+    """
+    value1 = 12 # input energy gap value
+    value2 = -5 # input chemical potential value
+    value3 = 0.003 # input x value
+    expected_output = 1.441726312558458 # expected result
+    
+    assert func_Gi(value3,0,value1,value2) == expected_output
+
+def test_func_Gi_1_smallx_pos():
+            
+    """
+    function to test the function to calculate the G_i function integrand
+    when i = 1 when x is small and positive
+
+    ----------    
+    Given input values with x small and positive,
+    when the G_i function integrand is computed, it returns the expected output.
+    
+    - input: value3 = small and positive -> output: negative and closer to zero as i increases
+    ----------
+
+    """
+    value1 = 12 # input energy gap value
+    value2 = -5 # input chemical potential value
+    value3 = 0.003 # input x value
+    expected_output = 0.004325178937675374 # expected result
+    
+    assert func_Gi(value3,1,value1,value2) == expected_output
+
+def test_func_Gi_2_smallx_pos():
+            
+    """
+    function to test the function to calculate the G_i function integrand
+    when i = 2 when x is small and positive
+
+    ----------    
+    Given input values with x small and positive,
+    when the G_i function integrand is computed, it returns the expected output:
+        
+    - input: value3 = small and positive -> output: positive and closer to zero as i increases
+    ----------
+
+    """
+    value1 = 12 # input energy gap value
+    value2 = -5 # input chemical potential value
+    value3 = 0.003 # input x value
+    expected_output = 1.2975536813026123e-05 # expected result
+    
+    assert func_Gi(value3,2,value1,value2) == expected_output
+
+def test_func_Gi_3_smallx_pos():
+            
+    """
+    function to test the function to calculate the G_i function integrand
+    when i = 3 when x is small and positive
+
+    ----------    
+    Given input values with x small and positive,
+    when the G_i function integrand is computed, it returns the expected output:
+        
+    - input: value3 = small and positive -> output: negative and closer to zero as i increases
+    ----------
+
+    """
+    value1 = 12 # input energy gap value
+    value2 = -5 # input chemical potential value
+    value3 = 0.003 # input x value
+    expected_output = 3.8926610439078365e-08 # expected result
+    
+    assert func_Gi(value3,3,value1,value2) == expected_output
+
+def test_func_Gi_0_smallx_neg():
+            
+    """
+    function to test the function to calculate the G_i function integrand
+    when i = 0 when x is small and negative
+
+    ----------    
+    Given input values with x small and negative,
+    when the G_i function integrand is computed, it returns the expected output:
+        
+    - input: value3 = small and negative -> output: positive and closer to zero as i increases
+    ----------
+
+    """
+    value1 = 12 # input energy gap value
+    value2 = -5 # input chemical potential value
+    value3 = -0.003 # input x value
+    expected_output = 1.43827031784613 # expected result
+    
+    assert func_Gi(value3,0,value1,value2) == expected_output
+
+def test_func_Gi_1_smallx_neg():
+            
+    """
+    function to test the function to calculate the G_i function integrand
+    when i = 1 when x is small and negative
+
+    ----------    
+    Given input values with x small and negative,
+    when the G_i function integrand is computed, it returns the expected output.
+    
+    - input: value3 = small and negative -> output: negative and closer to zero as i increases
+    ----------
+
+    """
+    value1 = 12 # input energy gap value
+    value2 = -5 # input chemical potential value
+    value3 = -0.003 # input x value
+    expected_output = -0.00431481095353839 # expected result
+    
+    assert func_Gi(value3,1,value1,value2) == expected_output
+
+def test_func_Gi_2_smallx_neg():
+            
+    """
+    function to test the function to calculate the G_i function integrand
+    when i = 2 when x is small and negative
+
+    ----------    
+    Given input values with x small and positive,
+    when the G_i function integrand is computed, it returns the expected output:
+        
+    - input: value3 = small and negative -> output: positive and closer to zero as i increases
+    ----------
+
+    """
+    value1 = 12 # input energy gap value
+    value2 = -5 # input chemical potential value
+    value3 = -0.003 # input x value
+    expected_output = 1.2944432860615173e-05 # expected result
+    
+    assert func_Gi(value3,2,value1,value2) == expected_output
+
+def test_func_Gi_3_smallx_neg():
+            
+    """
+    function to test the function to calculate the G_i function integrand
+    when i = 3 when x is small and negative
+
+    ----------    
+    Given input values with x small and negative,
+    when the G_i function integrand is computed, it returns the expected output
+        
+    - input: value3 = small and negative -> output: positive and closer to zero as i increases
+    ----------
+
+    """
+    value1 = 12 # input energy gap value
+    value2 = -5 # input chemical potential value
+    value3 = -0.003 # input x value
+    expected_output = -3.883329858184551e-08 # expected result
+    
+    assert func_Gi(value3,3,value1,value2) == expected_output
+
+def test_Gic_0_neg():
+    
+    """
+    function to test the function to calculate the G_i function for the conduction band
+    when i = 0 and (value2 - value1) < 0
+
+    ----------    
+    Given input values such that i = 0 and (value2 - value1) < 0
+    when the G_ic function is applied, it returns the expected output:
+        
+    - inputs: i = 0, (value2 - value1) < 0 -> output: positive 
+    ----------
+
+    """
+    
+    value1 = 12 # input energy gap value
+    value2 = -5 # input chemical potential value
+    expected_output = 3.581198434041771e-08 # expected result
+    
+    assert float(Gic(0, value1, value2)) == expected_output
+
+def test_Gic_1_neg():
+    
+    """
+    function to test the function to calculate the G_i function for the conduction band
+    when i = 1 and (value2 - value1) < 0
+
+    ----------    
+    Given input values such that i = 1 and (value2 - value1) < 0
+    when the G_ic function is applied, it returns the expected output:
+        
+    - inputs: i = 1, (value2 - value1) < 0 -> output: positive 
+    ----------
+
+    """
+    
+    value1 = 12 # input energy gap value
+    value2 = -5 # input chemical potential value
+    expected_output = 6.400404422663984e-07 # expected result
+    
+    assert float(Gic(1, value1, value2)) == expected_output
+
+def test_Gic_2_neg():
+    
+    """
+    function to test the function to calculate the G_i function for the conduction band
+    when i = 2 and (value2 - value1) < 0
+
+    ----------    
+    Given input values such that i = 2 and (value2 - value1) < 0
+    when the G_ic function is applied, it returns the expected output:
+        
+    - inputs: i = 2, (value2 - value1) < 0 -> output: positive 
+    ----------
+
+    """
+    
+    value1 = 12 # input energy gap value
+    value2 = -5 # input chemical potential value
+    expected_output = 1.1466614882245465e-05 # expected result
+    
+    assert float(Gic(2, value1, value2)) == expected_output
+
+def test_Gic_3_neg():
+    
+    """
+    function to test the function to calculate the G_i function for the conduction band
+    when i = 3 and (value2 - value1) < 0
+
+    ----------    
+    Given input values such that i = 3 and (value2 - value1) < 0
+    when the G_ic function is applied, it returns the expected output:
+        
+    - inputs: i = 3, (value2 - value1) < 0 -> output: positive 
+    ----------
+
+    """
+    
+    value1 = 12 # input energy gap value
+    value2 = -5 # input chemical potential value
+    expected_output = 0.0002059723191182534 # expected result
+    
+    assert float(Gic(3, value1, value2)) == expected_output
+
+def test_Gic_0_pos():
+    
+    """
+    function to test the function to calculate the G_i function for the conduction band
+    when i = 0 and (value2 - value1) > 0
+
+    ----------    
+    Given input values such that i = 0 and (value2 - value1) > 0
+    when the G_ic function is applied, it returns the expected output:
+        
+    - inputs: i = 0, (value2 - value1) > 0 -> output: positive 
+    ----------
+
+    """
+    
+    value1 = 4.5 # input energy gap value
+    value2 = 19 # input chemical potential value
+    expected_output = 0.05774031961490533 # expected result
+    
+    assert float(Gic(0, value1, value2)) == expected_output
+
+def test_Gic_1_pos():
+    
+    """
+    function to test the function to calculate the G_i function for the conduction band
+    when i = 1 and (value2 - value1) > 0
+
+    ----------    
+    Given input values such that i = 1 and (value2 - value1) > 0
+    when the G_ic function is applied, it returns the expected output:
+        
+    - inputs: i = 1, (value2 - value1) > 0 -> output: negative 
+    ----------
+
+    """
+    
+    value1 = 4.5 # input energy gap value
+    value2 = 19 # input chemical potential value
+    expected_output = -0.021155868450199625 # expected result
+    
+    assert float(Gic(1, value1, value2)) == expected_output
+
+def test_Gic_2_pos():
+    
+    """
+    function to test the function to calculate the G_i function for the conduction band
+    when i = 2 and (value2 - value1) > 0
+
+    ----------    
+    Given input values such that i = 2 and (value2 - value1) > 0
+    when the G_ic function is applied, it returns the expected output:
+        
+    - inputs: i = 2, (value2 - value1) > 0 -> output: positive
+    ----------
+
+    """
+    
+    value1 = 4.5 # input energy gap value
+    value2 = 19 # input chemical potential value
+    expected_output = 0.2096574070917556 # expected result
+    
+    assert float(Gic(2, value1, value2)) == expected_output
+
+def test_Gic_3_pos():
+    
+    """
+    function to test the function to calculate the G_i function for the conduction band
+    when i = 3 and (value2 - value1) > 0
+
+    ----------    
+    Given input values such that i = 3 and (value2 - value1) > 0
+    when the G_ic function is applied, it returns the expected output:
+        
+    - inputs: i = 0, (value2 - value1) > 0 -> output: negative
+    ----------
+
+    """
+    
+    value1 = 4.5 # input energy gap value
+    value2 = 19 # input chemical potential value
+    expected_output = -0.32955465691931424 # expected result
+    
+    assert float(Gic(3, value1, value2)) == expected_output   
+
+def test_Giv_0_pos(): 
+
+    """
+    function to test the function to calculate the G_i function for the valence band
+    when i = 0 and (value2 + value1) > 0
+
+    ----------    
+    Given input values such that i = 0 and (value2 + value1) > 0
+    when the G_iv function is applied, it returns the expected output:
+        
+    - inputs: i = 0, (value2 + value1) > 0 -> output: positive
+    ----------
+
+    """
+    value1 = 17 # input energy gap value
+    value2 = -9 # input chemical potential value
+    expected_output = 0.0003015760070507426 # expected result
+    assert float(Giv(0, value1, value2)) == expected_output
+
+def test_Giv_1_pos(): 
+
+    """
+    function to test the function to calculate the G_i function for the valence band
+    when i = 1 and (value2 + value1) > 0
+
+    ----------    
+    Given input values such that i = 1 and (value2 + value1) > 0
+    when the G_iv function is applied, it returns the expected output:
+        
+    - inputs: i = 1, (value2 + value1) > 0 -> output: negative
+    ----------
+
+    """
+    value1 = 17 # input energy gap value
+    value2 = -9 # input chemical potential value
+    expected_output = -0.002685138951920471 # expected result
+    
+    assert float(Giv(1, value1, value2)) == expected_output
+
+def test_Giv_2_pos(): 
+
+    """
+    function to test the function to calculate the G_i function for the valence band
+    when i = 2 and (value2 + value1) > 0
+
+    ----------    
+    Given input values such that i = 2 and (value2 + value1) > 0 
+    when the G_iv function is applied, it returns the expected output:
+        
+    - inputs: i = 2, (value2 + value1) > 0 -> output: positive
+    ----------
+
+    """
+    value1 = 17 # input energy gap value
+    value2 = -9 # input chemical potential value
+    expected_output = 0.02415602999913352 # expected result
+    
+    assert float(Giv(2, value1, value2)) == expected_output
+
+def test_Giv_3_pos(): 
+
+    """
+    function to test the function to calculate the G_i function for the valence band
+    when i = 3 and (value2 + value1) > 0
+
+    ----------    
+    Given input values such that i = 3 and (value2 + value1) > 0 
+    when the G_iv function is applied, it returns the expected output:
+        
+    - inputs: i = 3, (value2 + value1) > 0 -> output: negative
+    ----------
+
+    """
+    value1 = 17 # input energy gap value
+    value2 = -9 # input chemical potential value
+    expected_output = -0.21995714831541316 # expected result
+    
+    assert float(Giv(3, value1, value2)) == expected_output
+
+def test_Giv_0_neg(): 
+
+    """
+    function to test the function to calculate the G_i function for the valence band
+    when i = 0 and (value2 + value1) < 0
+
+    ----------    
+    Given input values such that i = 0 and (value2 + value1) < 0
+    when the G_iv function is applied, it returns the expected output:
+        
+    - inputs: i = 0, (value2 + value1) < 0 -> output: positive
+    ----------
+
+    """
+    value1 = 6 # input energy gap value
+    value2 = -13.5 # input chemical potential value
+    expected_output = 0.20920887511574163 # expected result
+    
+    assert float(Giv(0, value1, value2)) == expected_output
+
+def test_Giv_1_neg(): 
+
+    """
+    function to test the function to calculate the G_i function for the valence band
+    when i = 1 and (value2 + value1) < 0
+
+    ----------    
+    Given input values such that i = 1 and (value2 + value1) < 0
+    when the G_iv function is applied, it returns the expected output:
+        
+    - inputs: i = 1, (value2 + value1) < 0 -> output: positive
+    ----------
+
+    """
+    value1 = 6 # input energy gap value
+    value2 = -13.5 # input chemical potential value
+    expected_output = 0.1091344724450294 # expected result
+    
+    assert float(Giv(1, value1, value2)) == expected_output
+
+def test_Giv_2_neg(): 
+
+    """
+    function to test the function to calculate the G_i function for the valence band
+    when i = 2 and (value2 + value1) < 0
+
+    ----------    
+    Given input values such that i = 2 and (value2 + value1) < 0
+    when the G_iv function is applied, it returns the expected output:
+    
+    - inputs: i = 2, (value2 + value1) < 0 -> output: positive
+    ----------
+
+    """
+    value1 = 6 # input energy gap value
+    value2 = -13.5 # input chemical potential value
+    expected_output = 0.7984132352426201 # expected result
+    
+    assert float(Giv(2, value1, value2)) == expected_output
+
+def test_Giv_3_neg(): 
+
+    """
+    function to test the function to calculate the G_i function for the valence band
+    when i = 3 and (value2 + value1) < 0
+
+    ----------    
+    Given input values such that i = 3 and (value2 + value1) < 0
+    when the G_iv function is applied, it returns the expected output:
+        
+    - inputs: i = 3, (value2 + value1) < 0 -> output: positive
+    ----------
+
+    """
+    value1 = 6 # input energy gap value
+    value2 = -13.5 # input chemical potential value
+    expected_output = 1.498243983361794 # expected result
+    
+    assert float(Giv(3, value1, value2)) == expected_output
