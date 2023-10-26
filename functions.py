@@ -15,7 +15,7 @@ plog = np.frompyfunc(mpmath.polylog, 2, 1)
 def log1(x):
     
     """
-    function to calculate the formula log(x + exp(-x)),
+    function to calculate the formula log(1 + exp(-x)),
     if x is an array
 
     Parameters
@@ -27,7 +27,7 @@ def log1(x):
     Returns
     -------
     calculated function : TYPE nd.ndarray
-                          DESCRIPTION calculated array  
+                          DESCRIPTION calculated values for the log(1 + exp(-x)) function
 
     """
     
@@ -48,7 +48,7 @@ def exp1(x):
     Returns
     -------
     calculated function : TYPE nd.ndarray
-                          DESCRIPTION calculated array  
+                          DESCRIPTION calculated values for the [exp(x) + 1] function
 
     """
     
@@ -73,7 +73,7 @@ def F0c(delta,
     Returns
     -------
     calculated function : TYPE nd.ndarray
-                          DESCRIPTION calculated array  
+                          DESCRIPTION calculated values for the F_0 function for the conduction band 
 
     """
     
@@ -95,11 +95,14 @@ def F1c(delta,
     Returns
     -------
     calculated function : TYPE nd.ndarray
-                          DESCRIPTION calculated array  
+                          DESCRIPTION calculated values for the F_1 function for the conduction band  
 
     """
     
-    return (eta - delta)/exp1(eta - delta) + log1(eta - delta)
+    A1 = (eta - delta)/exp1(eta - delta) # 1st term of the F_1 function for the conduction band
+    A2 = log1(eta - delta) # 2nd term of the F_1 function for the conduction band
+    
+    return A1 + A2
 
 def F2c(delta,
         eta):
@@ -117,11 +120,16 @@ def F2c(delta,
     Returns
     -------
     calculated function : TYPE nd.ndarray
-                          DESCRIPTION calculated array  
+                          DESCRIPTION calculated values for the F_2 function for the conduction band 
 
     """
     
-    return (np.pi**2)/3 - ((eta - delta)**2)/exp1(eta - delta) - 2*(eta - delta)*log1(eta - delta) + 2*plog(2, - np.exp( - (eta - delta)))
+    A1 = (np.pi**2)/3 # 1st term of the F_2 function for the conduction band
+    A2 = -((eta - delta)**2)/exp1(eta - delta) # 2nd term of the F_2 function for the conduction band
+    A3 = -2*(eta - delta)*log1(eta - delta) # 3rd term of the F_2 function for the conduction band
+    A4 = 2*plog(2, -np.exp( -(eta - delta))) # 4th term of the F_2 function for the conduction band
+    
+    return A1 + A2 + A3 + A4 
 
 def F3c(delta,
         eta):
@@ -139,11 +147,16 @@ def F3c(delta,
     Returns
     -------
     calculated function : TYPE nd.ndarray
-                          DESCRIPTION calculated array  
+                          DESCRIPTION calculated values for the F_3 function for the conduction band  
 
     """
     
-    return 2*(((eta - delta)**3)/exp1(eta - delta) + 3*((eta - delta)**2)*log1(eta - delta) - 6*(eta - delta)*plog(2, - np.exp( - (eta - delta))) - 6*plog(3, - np.exp( - (eta - delta))))
+    A1 = ((eta - delta)**3)/exp1(eta - delta) # 1st term of the F_3 function for the conduction band
+    A2 = 3*((eta - delta)**2)*log1(eta - delta) # 2nd term of the F_3 function for the conduction band
+    A3 = -6*(eta - delta)*plog(2, - np.exp( - (eta - delta))) # 3rd term of the F_3 function for the conduction band
+    A4 = -6*plog(3, - np.exp( - (eta - delta))) # 4th term of the F_3 function for the conduction band
+    
+    return 2*(A1 + A2 + A3 + A4)
 
 
 # F functions for valence band
@@ -163,7 +176,7 @@ def F0v(delta,
     Returns
     -------
     calculated function : TYPE nd.ndarray
-                          DESCRIPTION calculated array  
+                          DESCRIPTION calculated values for the F_0 function for the valence band 
 
     """
     
@@ -185,11 +198,14 @@ def F1v(delta,
     Returns
     -------
     calculated function : TYPE nd.ndarray
-                          DESCRIPTION calculated array  
+                          DESCRIPTION calculated values for the F_1 function for the valence band  
 
     """
     
-    return - (eta + delta)/exp1(eta + delta) - log1(eta + delta)
+    A1 = -(eta + delta)/exp1(eta + delta) # 1st term of the F_1 function for the valence band
+    A2 = -log1(eta + delta) # 2nd term of the F_1 function for the valence band
+    
+    return A1 + A2
 
 def F2v(delta,
         eta):
@@ -207,11 +223,15 @@ def F2v(delta,
     Returns
     -------
     calculated function : TYPE nd.ndarray
-                          DESCRIPTION calculated array  
+                          DESCRIPTION calculated values for the F_2 function for the valence band   
 
     """
     
-    return ((eta + delta)**2)/exp1(eta + delta) + 2*(eta + delta)*log1(eta + delta) - 2*plog(2, - np.exp( - (eta + delta)))
+    A1 = ((eta + delta)**2)/exp1(eta + delta) # 1st term of the F_2 function for the valence band
+    A2 = 2*(eta + delta)*log1(eta + delta) # 2nd term of the F_2 function for the valence band
+    A3 = - 2*plog(2, - np.exp(-(eta + delta))) # 3rd term of the F_3 function for the valence band
+    
+    return  A1 + A2 + A3 
 
 def F3v(delta,
         eta):
@@ -229,11 +249,16 @@ def F3v(delta,
     Returns
     -------
     calculated function : TYPE nd.ndarray
-                          DESCRIPTION calculated array  
+                          DESCRIPTION calculated values for the F_3 function for the valence band   
 
     """
     
-    return 2*(((eta + delta)**3)/exp1(eta + delta) + 3*((eta + delta)**2)*log1(eta + delta) - 6*(eta + delta)*plog(2, - np.exp( - (eta + delta))) - 6*plog(3, - np.exp( - (eta + delta))))
+    A1 = ((eta + delta)**3)/exp1(eta + delta) # 1st term of the F_3 function for the valence band
+    A2 = 3*((eta + delta)**2)*log1(eta + delta) # 2nd term of the F_3 function for the valence band
+    A3 = -6*(eta + delta)*plog(2, -np.exp( -(eta + delta))) # 3rd term of the F_3 function for the valence band
+    A4 = -6*plog(3, -np.exp(-(eta + delta))) # 4th term of the F_3 function for the valence band
+    
+    return 2*(A1 + A2 + A3 + A4)
 
 
 # integrand to compute G functions 
@@ -243,7 +268,7 @@ def func_Gi(x,
             eta):
     
     """
-    function to calculate the G_i function
+    function to calculate the G_i function integrand
 
     Parameters
     ----------
@@ -261,7 +286,7 @@ def func_Gi(x,
     Returns
     -------
     calculated function : TYPE nd.ndarray
-                          DESCRIPTION calculated array  
+                          DESCRIPTION calculated values for the G_i function integrand 
 
     """
     
@@ -269,6 +294,7 @@ def func_Gi(x,
         f=ZeroDivisionError
     else:
         f = ((delta**2)/((x + eta)**2))*((x**i)*(np.exp(x))/(exp1(x)**2))
+    
     return f    
 
 # G function for conduction band
@@ -277,7 +303,7 @@ def Gic(i,
         eta):
     
     """
-    function to calculate the G_i function integral for the conduction band
+    function to calculate the G_i function for the conduction band
 
     Parameters
     ----------
@@ -292,11 +318,12 @@ def Gic(i,
     Returns
     -------
     calculated function : TYPE nd.ndarray
-                          DESCRIPTION calculated array  
+                          DESCRIPTION calculated values for the G_i function for the conduction band   
 
     """
     
     integral, error = quad(func_Gi, delta - eta, 300, (i, delta, eta), points=[-eta])
+    
     return integral
 
 
@@ -306,7 +333,7 @@ def Giv(i,
         eta):
     
     """
-    function to calculate the G_i function integral for the valence band
+    function to calculate the G_i function for the valence band
 
     Parameters
     ----------
@@ -321,11 +348,12 @@ def Giv(i,
     Returns
     -------
     calculated function : TYPE nd.ndarray
-                          DESCRIPTION calculated array  
+                          DESCRIPTION calculated values for the G_i function for the conduction band  
 
     """
     
-    integral, error = quad(func_Gi, -300, -delta - eta, (i, delta, eta), points=[-eta])
+    integral, error = quad(func_Gi, -300, -(delta + eta), (i, delta, eta), points=[-eta])
+    
     return integral
 
 
