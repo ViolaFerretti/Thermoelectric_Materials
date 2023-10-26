@@ -19,8 +19,9 @@ plog = np.frompyfunc(mpmath.polylog, 2, 1)
 def func_Fi(x,
             i,
             eta):
+    
     """
-    function to calculate the F_i function
+    function to calculate the F_i function integrand
 
     Parameters
     ----------
@@ -31,20 +32,21 @@ def func_Fi(x,
         DESCRIPTION index parameter to be entered in the function,
         indicating the corresponding transport integral
     eta : TYPE nd.ndarray
-            DESCRIPTION chemical potential value to be entered in the function
+          DESCRIPTION chemical potential value to be entered in the function
 
     Returns
     -------
     calculated function : TYPE nd.ndarray
-                          DESCRIPTION calculated array  
+                          DESCRIPTION calculated values for the F_i function integrand  
 
     """
+    
     return (x)**i/(exp1(x - eta))
     
 def Fic(i,
         eta):
     """
-    function to calculate the F_i integral for the conduction band
+    function to calculate the F_i function for the conduction band
 
     Parameters
     ----------
@@ -52,14 +54,15 @@ def Fic(i,
         DESCRIPTION index parameter to be entered in the function,
         indicating the corresponding transport integral
     eta : TYPE nd.ndarray
-            DESCRIPTION chemical potential value to be entered in the function
+          DESCRIPTION chemical potential value to be entered in the function
 
     Returns
     -------
     calculated function : TYPE nd.ndarray
-                          DESCRIPTION calculated array  
+                          DESCRIPTION calculated values for the F_i function 
 
     """
+    
     return 0.5*quad(func_Fi, 0, 100, (i, eta))[0]
 
 ############## TE QUANTITIES OF THE MATERIAL ##############
@@ -67,7 +70,8 @@ def Fic(i,
 def sigma_SBMP(eta):
     
     """
-    function to calculate the electrical conductivity sigma of the material, if the input is an array
+    function to calculate the electrical conductivity sigma of the material,
+    if the input is an array
 
     Parameters
     ----------
@@ -77,7 +81,7 @@ def sigma_SBMP(eta):
     Returns
     -------
     calculated function : TYPE nd.ndarray
-                          DESCRIPTION calculated array  
+                          DESCRIPTION calculated values for sigma  
 
     """
     
@@ -86,7 +90,8 @@ def sigma_SBMP(eta):
 def S_SBMP(eta):
     
     """
-    function to calculate the Seebeck coefficient of the material, if the input is an array
+    function to calculate the Seebeck coefficient of the material, 
+    if the input is an array
 
     Parameters
     ----------
@@ -96,16 +101,17 @@ def S_SBMP(eta):
     Returns
     -------
     calculated function : TYPE nd.ndarray
-                          DESCRIPTION calculated array  
+                          DESCRIPTION calculated values for S  
 
     """
     
-    return (2*Fic(1, eta) - eta*Fic(0, eta))/Fic(0, eta)
+    return (2*Fic(1, eta) - eta*Fic(0, eta))/Fic(0, eta) 
 
 def ke_SBMP(eta):
     
     """
-    function to calculate the thermal electronic conductivity k_e of the material, if the input is an array
+    function to calculate the thermal electronic conductivity k_e of the material, 
+    if the input is an array
 
     Parameters
     ----------
@@ -115,11 +121,16 @@ def ke_SBMP(eta):
     Returns
     -------
     calculated function : TYPE nd.ndarray
-                          DESCRIPTION calculated array  
+                          DESCRIPTION calculated values for k_e  
 
     """
     
-    return 3*Fic(2, eta) - 4*eta*Fic(1, eta)+(eta**2)*Fic(0, eta) - ((2*Fic(1, eta) - eta*Fic(0, eta))**2)/Fic(0, eta)
+    F_2 = 3*Fic(2, eta) # 1st term (F2 contribution)
+    F_1 = 4*eta*Fic(1, eta) # 2nd term (F1 contribution)
+    F_0 = (eta**2)*Fic(0, eta) # 3rd term (F0 contribution)
+    F_1_0 = ((2*Fic(1, eta) - eta*Fic(0, eta))**2)/Fic(0, eta) # 4th term (F1 and F0 contribution)
+    
+    return F_2 - F_1 + F_0 - F_1_0
 
 def ZT_SBMP(eta,
             rk):
@@ -137,7 +148,7 @@ def ZT_SBMP(eta,
     Returns
     -------
     calculated function : TYPE nd.ndarray
-                          DESCRIPTION calculated array  
+                          DESCRIPTION calculated values for ZT  
 
     """
     
