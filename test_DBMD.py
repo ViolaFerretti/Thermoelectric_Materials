@@ -19,11 +19,19 @@ from DBM_Dirac import *
 def test_sigmac_DBMD_fixed_delta_1():
     
     """
-    function to test the calculation of the figure of merit sigma for the conduction band
-
-    DOC
+    function to test the calculation of the electrical conductivity sigma for the conduction band
+    when the energy gap is fixed and the chemical potential is negative
+    
+    ----------    
+    Given a fixed input value for the energy gap (positive value in a realistic range)
+    and a negative input value for the chemical potential (in a realistic range),
+    when the sigmac function is applied, it gives the expected results:
+    
+    - inputs: delta fixed, eta < 0 -> sigmac positive and of the order of e-5
+    ----------
 
     """
+    
     
     value1 = 4
     value2 = -5
@@ -34,9 +42,16 @@ def test_sigmac_DBMD_fixed_delta_1():
 def test_sigmac_DBMD_fixed_delta_2():
     
     """
-    function to test the calculation of the figure of merit sigma for the conduction band
-
-    DOC
+    function to test the calculation of the electrical conductivity sigma for the conduction band
+    when the energy gap is fixed and the chemical potential is null
+    
+    ----------    
+    Given a fixed input value for the energy gap (positive value in a realistic range)
+    and a null input value for the chemical potential,
+    when the sigmac function is applied, it gives the expected results:
+    
+    - inputs: delta fixed, eta = 0 -> sigmac positive and of the order of e-3
+    ----------
 
     """
     
@@ -49,9 +64,16 @@ def test_sigmac_DBMD_fixed_delta_2():
 def test_sigmac_DBMD_fixed_delta_3():
     
     """
-    function to test the calculation of the figure of merit sigma for the conduction band
-
-    DOC
+    function to test the calculation of the electrical conductivity sigma for the conduction band
+    when the energy gap is fixed and the chemical potential is positive
+    
+    ----------    
+    Given a fixed input value for the energy gap (positive value in a realistic range)
+    and a positive input value for the chemical potential (in a realistic range),
+    when the sigmac function is applied, it gives the expected results:
+    
+    - inputs: delta fixed, eta > 0 -> sigmac positive and of the order of e-1
+    ----------
 
     """
     
@@ -65,8 +87,14 @@ def test_sigmac_DBMD_fixed_eta_1():
     
     """
     function to test the calculation of the electrical conductivity sigma for the conduction band
-
-    DOC
+    when the chemical potential is fixed and the energy gap is small
+    ----------    
+    Given a small input value for the energy gap
+    and a fixed input value for the chemical potential (in a realistic range),
+    when the sigmac function is applied, it gives the expected results:
+    
+    - inputs: delta nearly 0, eta fixed -> sigmac positive and of the order of e-1
+    ----------
 
     """
     
@@ -80,8 +108,14 @@ def test_sigmac_DBMD_fixed_eta_2():
     
     """
     function to test the calculation of the electrical conductivity sigma for the conduction band
-
-    DOC
+    when the chemical potential is fixed and the energy gap is intermediate
+    ----------    
+    Given an intermediate input value for the energy gap
+    and a fixed input value for the chemical potential (in a realistic range),
+    when the sigmac function is applied, it gives the expected results:
+    
+    - inputs: delta intermediate, eta fixed -> sigmac positive and of the order of e-3
+    ----------
 
     """
     
@@ -94,8 +128,14 @@ def test_sigmac_DBMD_fixed_eta_3():
     
     """
     function to test the calculation of the electrical conductivity sigma for the conduction band
-
-    DOC
+    when the chemical potential is fixed and the energy gap is high
+    ----------    
+    Given an high input value for the energy gap (in a realistic range)
+    and a fixed input value for the chemical potential (in a realistic range),
+    when the sigmac function is applied, it gives the expected results:
+    
+    - inputs: delta high, eta fixed -> sigmac positive and of the order of e-8
+    ----------
 
     """
     
@@ -106,11 +146,19 @@ def test_sigmac_DBMD_fixed_eta_3():
     assert np.isclose(sigmac_DBMD(value1, value2), expected_output)
 
 def test_sigmav_DBMD_fixed_delta_1():
-    
+     
     """
-    function to test the calculation of the electrical conductivity sigma for the conduction band
+    function to test the calculation of the electrical conductivity sigma for the valence band
+    when the energy gap is fixed and the chemical potential is negative
+    
+    ----------    
+    Given a fixed input value for the energy gap (positive value in a realistic range)
+    and a negative input value for the chemical potential (in a realistic range),
+    when the sigmav function is applied, it gives the expected results:
+    
+    - inputs: delta fixed, eta < 0 -> sigmav positive and of the order of e-1
+    ----------
 
-    DOC
     """
     
     value1 = 4
@@ -121,9 +169,17 @@ def test_sigmav_DBMD_fixed_delta_1():
 def test_sigmav_DBMD_fixed_delta_2():
     
     """
-    function to test the calculation of the electrical conductivity sigma for the conduction band
+    function to test the calculation of the electrical conductivity sigma for the valence band
+    when the energy gap is fixed and the chemical potential is null
+    
+    ----------    
+    Given a fixed input value for the energy gap (positive value in a realistic range)
+    and a null input value for the chemical potential (in a realistic range),
+    when the sigmav function is applied, it gives the expected results:
+    
+    - inputs: delta fixed, eta = 0 -> sigmav positive and of the order of e-3
+    ----------
 
-    DOC
     """
     
     value1 = 4
@@ -133,11 +189,19 @@ def test_sigmav_DBMD_fixed_delta_2():
     assert np.isclose(sigmav_DBMD(value1, value2), expected_output)
     
 def test_sigmav_DBMD_fixed_delta_3():
-    
+     
     """
-    function to test the calculation of the electrical conductivity sigma for the conduction band
+    function to test the calculation of the electrical conductivity sigma for the valence band
+    when the energy gap is fixed and the chemical potential is positive
+    
+    ----------    
+    Given a fixed input value for the energy gap (positive value in a realistic range)
+    and a positive input value for the chemical potential (in a realistic range),
+    when the sigmav function is applied, it gives the expected results:
+    
+    - inputs: delta fixed, eta > 0 -> sigmav positive and of the order of e-5
+    ----------
 
-    DOC
     """
     
     value1 = 4
@@ -149,9 +213,15 @@ def test_sigmav_DBMD_fixed_delta_3():
 def test_sigmav_DBMD_fixed_eta_1():
     
     """
-    function to test the calculation of the electrical conductivity sigma for the conduction band
-
-    DOC
+    function to test the calculation of the electrical conductivity sigma for the valence band
+    when the chemical potential is fixed and the energy gap is small
+    ----------    
+    Given a small input value for the energy gap
+    and a fixed input value for the chemical potential (in a realistic range),
+    when the sigmav function is applied, it gives the expected results:
+    
+    - inputs: delta near to 0, eta fixed -> sigmav positive and of the order of e-2
+    ----------
 
     """
     
@@ -164,9 +234,15 @@ def test_sigmav_DBMD_fixed_eta_1():
 def test_sigmav_DBMD_fixed_eta_2():
     
     """
-    function to test the calculation of the electrical conductivity sigma for the conduction band
-
-    DOC
+    function to test the calculation of the electrical conductivity sigma for the valence band
+    when the chemical potential is fixed and the energy gap is intermediate
+    ----------    
+    Given an intermediate input value for the energy gap
+    and a fixed input value for the chemical potential (in a realistic range),
+    when the sigmav function is applied, it gives the expected results:
+    
+    - inputs: delta intermediate, eta fixed -> sigmav positive and of the order of e-5
+    ----------
 
     """
     
@@ -179,9 +255,15 @@ def test_sigmav_DBMD_fixed_eta_2():
 def test_sigmav_DBMD_fixed_eta_3():
     
     """
-    function to test the calculation of the electrical conductivity sigma for the conduction band
-
-    DOC
+    function to test the calculation of the electrical conductivity sigma for the valence band
+    when the chemical potential is fixed and the energy gap is high
+    ----------    
+    Given an high input value for the energy gap (in a realistic range)
+    and a fixed input value for the chemical potential (in a realistic range),
+    when the sigmav function is applied, it gives the expected results:
+    
+    - inputs: delta high, eta fixed -> sigmav positive and of the order of e-10
+    ----------
 
     """
     
@@ -192,11 +274,18 @@ def test_sigmav_DBMD_fixed_eta_3():
     assert np.isclose(sigmav_DBMD(value1, value2), expected_output)
 
 def test_sigma_DBMD_fixed_delta_1():
-    
+      
     """
-    function to test the calculation of the electrical conductivity sigma for the conduction band
-
-    DOC
+    function to test the calculation of the electrical conductivity sigma of the material
+    when the energy gap is fixed and the chemical potential is negative
+    
+    ----------    
+    Given a fixed input value for the energy gap (positive value in a realistic range)
+    and a negative input value for the chemical potential (in a realistic range),
+    when the sigma function is applied, it gives the expected results:
+    
+    - inputs: delta fixed, eta < 0 -> sigma positive and of the order of e-1 (symmetry with respect to y-axis)
+    ----------
 
     """
     
@@ -207,11 +296,18 @@ def test_sigma_DBMD_fixed_delta_1():
     assert np.isclose(sigma_DBMD(value1, value2), expected_output)
     
 def test_sigma_DBMD_fixed_delta_2():
-    
+     
     """
-    function to test the calculation of the electrical conductivity sigma for the conduction band
-
-    DOC
+    function to test the calculation of the electrical conductivity sigma of the material
+    when the energy gap is fixed and the chemical potential is null
+    
+    ----------    
+    Given a fixed input value for the energy gap (positive value in a realistic range)
+    and a null input value for the chemical potential (in a realistic range),
+    when the sigma function is applied, it gives the expected results:
+    
+    - inputs: delta fixed, eta = 0 -> sigma positive and of the order of e-2 (symmetry with respect to y-axis)
+    ----------
 
     """
     
@@ -222,11 +318,18 @@ def test_sigma_DBMD_fixed_delta_2():
     assert np.isclose(sigma_DBMD(value1, value2), expected_output)
     
 def test_sigma_DBMD_fixed_delta_3():
-    
+     
     """
-    function to test the calculation of the electrical conductivity sigma for the conduction band
-
-    DOC
+    function to test the calculation of the electrical conductivity sigma of the material
+    when the energy gap is fixed and the chemical potential is positive
+    
+    ----------    
+    Given a fixed input value for the energy gap (positive value in a realistic range)
+    and a positive input value for the chemical potential (in a realistic range),
+    when the sigma function is applied, it gives the expected results:
+    
+    - inputs: delta fixed, eta > 0 -> sigma positive and of the order of e-1 (symmetry with respect to y-axis)
+    ----------
 
     """
     
@@ -236,13 +339,84 @@ def test_sigma_DBMD_fixed_delta_3():
     
     assert np.isclose(sigma_DBMD(value1, value2), expected_output)
 
-# S calculations 
-def test_Sc_DBMD_fixed_delta_1():
+def test_sigma_DBMD_fixed_eta_1():
     
     """
-    function to test the calculation of the Seebeck coefficient S for the conduction band
+    function to test the calculation of the electrical conductivity sigma of the material
+    when the chemical potential is fixed and the energy gap is small
+    ----------    
+    Given a small input value for the energy gap
+    and a fixed input value for the chemical potential (in a realistic range),
+    when the sigma function is applied, it gives the expected results:
+    
+    - inputs: delta near to 0, eta fixed -> sigma positive and of the order of e-1
+    ----------
 
-    DOC
+    """
+    
+    value1 = 0.5
+    value2 = 2
+    expected_output = 0.7895821377207314
+    
+    assert np.isclose(sigma_DBMD(value1, value2), expected_output)
+
+def test_sigma_DBMD_fixed_eta_2():
+    
+    """
+    function to test the calculation of the electrical conductivity sigma of the material
+    when the chemical potential is fixed and the energy gap is intermediate
+    ----------    
+    Given an intermediate input value for the energy gap
+    and a fixed input value for the chemical potential (in a realistic range),
+    when the sigma function is applied, it gives the expected results:
+    
+    - inputs: delta intermediate, eta fixed -> sigma positive and of the order of e-3
+    ----------
+
+    """
+    
+    value1 = 7
+    value2 = 2
+    expected_output = 0.0014040481047136815
+    
+    assert np.isclose(sigma_DBMD(value1, value2), expected_output)
+    
+def test_sigma_DBMD_fixed_eta_3():
+    
+    """
+    function to test the calculation of the electrical conductivity sigma of the material
+    when the chemical potential is fixed and the energy gap is high
+    ----------    
+    Given an high input value for the energy gap (in a realistic range)
+    and a fixed input value for the chemical potential (in a realistic range),
+    when the sigma function is applied, it gives the expected results:
+    
+    - inputs: delta high, eta fixed -> sigma positive and of the order of e-8
+    ----------
+
+    """
+    
+    value1 = 18
+    value2 = 2
+    expected_output = 1.0958968106803761e-08
+    
+    assert np.isclose(sigma_DBMD(value1, value2), expected_output)
+
+# S calculations 
+def test_Sc_DBMD_fixed_delta_1():
+      
+    """
+    function to test the calculation of the Seebeck coefficient S for the conduction band
+    when the energy gap is fixed and the chemical potential is negative
+    
+    ----------    
+    Given a fixed input value for the energy gap (positive value in a realistic range)
+    and a negative input value for the chemical potential (in a realistic range),
+    when the Sc function is applied, it gives the expected results:
+    
+    - inputs: delta fixed, eta < 0 -> Sc negative and near -11
+    ----------
+
     """
     
     value1 = 4
@@ -252,11 +426,19 @@ def test_Sc_DBMD_fixed_delta_1():
     assert np.isclose(Sc_DBMD(value1, value2), expected_output)
 
 def test_Sc_DBMD_fixed_delta_2():
-    
+      
     """
     function to test the calculation of the Seebeck coefficient S for the conduction band
+    when the energy gap is fixed and the chemical potential is null
+    
+    ----------    
+    Given a fixed input value for the energy gap (positive value in a realistic range)
+    and a null input value for the chemical potential (in a realistic range),
+    when the Sc function is applied, it gives the expected results:
+    
+    - inputs: delta fixed, eta = 0 -> Sc negative and near -6
+    ----------
 
-    DOC
     """
     
     value1 = 4
@@ -266,11 +448,19 @@ def test_Sc_DBMD_fixed_delta_2():
     assert np.isclose(Sc_DBMD(value1, value2), expected_output)
     
 def test_Sc_DBMD_fixed_delta_3():
-    
+       
     """
     function to test the calculation of the Seebeck coefficient S for the conduction band
+    when the energy gap is fixed and the chemical potential is positive
+    
+    ----------    
+    Given a fixed input value for the energy gap (positive value in a realistic range)
+    and a positive input value for the chemical potential (in a realistic range),
+    when the Sc function is applied, it gives the expected results:
+    
+    - inputs: delta fixed, eta = 0 -> Sc negative and near -1
+    ----------
 
-    DOC
     """
     
     value1 = 4
@@ -282,9 +472,15 @@ def test_Sc_DBMD_fixed_delta_3():
 def test_Sc_DBMD_fixed_eta_1():
     
     """
-    function to test the calculation of the Seebeck coefficient S for the conduction band
-
-    DOC
+    function to test the calculation of the Seebeck coefficient S for the valence band
+    when the chemical potential is fixed and the energy gap is small
+    ----------    
+    Given a small input value for the energy gap (in a realistic range)
+    and a fixed input value for the chemical potential (in a realistic range),
+    when the Sc function is applied, it gives the expected results:
+    
+    - inputs: delta small, eta fixed -> Sc negative and near -1
+    ----------
 
     """
     
@@ -297,9 +493,15 @@ def test_Sc_DBMD_fixed_eta_1():
 def test_Sc_DBMD_fixed_eta_2():
     
     """
-    function to test the calculation of the Seebeck coefficient S for the conduction band
-
-    DOC
+    function to test the calculation of the Seebeck coefficient S for the valence band
+    when the chemical potential is fixed and the energy gap is intermediate
+    ----------    
+    Given an intermediate input value for the energy gap (in a realistic range)
+    and a fixed input value for the chemical potential (in a realistic range),
+    when the Sc function is applied, it gives the expected results:
+    
+    - inputs: delta intermediate, eta fixed -> Sc negative and near -7
+    ----------
 
     """
     
@@ -310,11 +512,17 @@ def test_Sc_DBMD_fixed_eta_2():
     assert np.isclose(Sc_DBMD(value1, value2), expected_output)
     
 def test_Sc_DBMD_fixed_eta_3():
-    
+     
     """
-    function to test the calculation of the Seebeck coefficient S for the conduction band
-
-    DOC
+    function to test the calculation of the Seebeck coefficient S for the valence band
+    when the chemical potential is fixed and the energy gap is high
+    ----------    
+    Given an high input value for the energy gap (in a realistic range)
+    and a fixed input value for the chemical potential (in a realistic range),
+    when the Sc function is applied, it gives the expected results:
+    
+    - inputs: delta high, eta fixed -> Sc negative and near -18
+    ----------
 
     """
     
@@ -325,11 +533,18 @@ def test_Sc_DBMD_fixed_eta_3():
     assert np.isclose(Sc_DBMD(value1, value2), expected_output)
 
 def test_Sv_DBMD_fixed_delta_1():
-    
+         
     """
-    function to test the calculation of the Seebeck coefficient S for the conduction band
-
-    DOC
+    function to test the calculation of the Seebeck coefficient S for the valence band
+    when the energy gap is fixed and the chemical potential is negative
+    
+    ----------    
+    Given a fixed input value for the energy gap (positive value in a realistic range)
+    and a negative input value for the chemical potential (in a realistic range),
+    when the Sv function is applied, it gives the expected results:
+    
+    - inputs: delta fixed, eta < 0 -> Sv positive and near 1
+    ----------
 
     """
     
@@ -340,11 +555,18 @@ def test_Sv_DBMD_fixed_delta_1():
     assert np.isclose(Sv_DBMD(value1, value2), expected_output)
     
 def test_Sv_DBMD_fixed_delta_2():
-    
+        
     """
-    function to test the calculation of the Seebeck coefficient S for the conduction band
-
-    DOC
+    function to test the calculation of the Seebeck coefficient S for the valence band
+    when the energy gap is fixed and the chemical potential is null
+    
+    ----------    
+    Given a fixed input value for the energy gap (positive value in a realistic range)
+    and a null input value for the chemical potential (in a realistic range),
+    when the Sv function is applied, it gives the expected results:
+    
+    - inputs: delta fixed, eta = 0 -> Sv positive and near 6
+    ----------
 
     """
     
@@ -355,12 +577,19 @@ def test_Sv_DBMD_fixed_delta_2():
     assert np.isclose(Sv_DBMD(value1, value2), expected_output)
     
 def test_Sv_DBMD_fixed_delta_3():
-    
+         
     """
-    function to test the calculation of the Seebeck coefficient S for the conduction band
-
-    DOC
-
+    function to test the calculation of the Seebeck coefficient S for the valence band
+    when the energy gap is fixed and the chemical potential is positive
+    
+    ----------    
+    Given a fixed input value for the energy gap (positive value in a realistic range)
+    and a positive input value for the chemical potential (in a realistic range),
+    when the Sv function is applied, it gives the expected results:
+    
+    - inputs: delta fixed, eta > 0 -> Sv positive and near 10
+    ----------
+    
     """
     
     value1 = 4
@@ -370,11 +599,18 @@ def test_Sv_DBMD_fixed_delta_3():
     assert np.isclose(Sv_DBMD(value1, value2), expected_output)
 
 def test_Sv_DBMD_fixed_eta_1():
-    
+     
     """
-    function to test the calculation of the Seebeck coefficient S for the conduction band
+    function to test the calculation of the Seebeck coefficient S for the valence band
+    when the chemical potential is fixed and the energy gap is small
+    ----------    
+    Given a small input value for the energy gap (in a realistic range)
+    and a fixed input value for the chemical potential (in a realistic range),
+    when the Sv function is applied, it gives the expected results:
+    
+    - inputs: delta small, eta fixed -> Sv positive and near 4
+    ----------
 
-    DOC
     """
     
     value1 = 0.5
@@ -384,11 +620,18 @@ def test_Sv_DBMD_fixed_eta_1():
     assert np.isclose(Sv_DBMD(value1, value2), expected_output)
     
 def test_Sv_DBMD_fixed_eta_2():
-    
+     
     """
-    function to test the calculation of the Seebeck coefficient S for the conduction band
+    function to test the calculation of the Seebeck coefficient S for the valence band
+    when the chemical potential is fixed and the energy gap is intermediate
+    ----------    
+    Given an intermediate input value for the energy gap (in a realistic range)
+    and a fixed input value for the chemical potential (in a realistic range),
+    when the Sv function is applied, it gives the expected results:
+    
+    - inputs: delta intermediate, eta fixed -> Sv positive and near 11
+    ----------
 
-    DOC
     """
     
     value1 = 7
@@ -398,11 +641,18 @@ def test_Sv_DBMD_fixed_eta_2():
     assert np.isclose(Sv_DBMD(value1, value2), expected_output)
     
 def test_Sv_DBMD_fixed_eta_3():
-    
+     
     """
-    function to test the calculation of the Seebeck coefficient S for the conduction band
+    function to test the calculation of the Seebeck coefficient S for the valence band
+    when the chemical potential is fixed and the energy gap is high
+    ----------    
+    Given a high input value for the energy gap (in a realistic range)
+    and a fixed input value for the chemical potential (in a realistic range),
+    when the Sv function is applied, it gives the expected results:
+    
+    - inputs: delta high, eta fixed -> Sv positive and near 24
+    ----------
 
-    DOC
     """
     
     value1 = 18
@@ -412,12 +662,19 @@ def test_Sv_DBMD_fixed_eta_3():
     assert np.isclose(Sv_DBMD(value1, value2), expected_output)
 
 def test_S_DBMD_fixed_delta_1():
-    
+          
     """
-    function to test the calculation of the Seebeck coefficient S for the conduction band
-
-    DOC
-
+    function to test the calculation of the Seebeck coefficient S of the material
+    when the energy gap is fixed and the chemical potential is negative
+    
+    ----------    
+    Given a fixed input value for the energy gap (positive value in a realistic range)
+    and a negative input value for the chemical potential (in a realistic range),
+    when the S function is applied, it gives the expected results:
+    
+    - inputs: delta fixed, eta < 0 -> S positive and near 1
+    ----------
+    
     """
     
     value1 = 4
@@ -427,12 +684,19 @@ def test_S_DBMD_fixed_delta_1():
     assert np.isclose(S_DBMD(value1, value2), expected_output)
     
 def test_S_DBMD_fixed_delta_2():
-    
+         
     """
-    function to test the calculation of the Seebeck coefficient S for the conduction band
-
-    DOC
-
+    function to test the calculation of the Seebeck coefficient S of the material
+    when the energy gap is fixed and the chemical potential is null
+    
+    ----------    
+    Given a fixed input value for the energy gap (positive value in a realistic range)
+    and a null input value for the chemical potential (in a realistic range),
+    when the S function is applied, it gives the expected results:
+    
+    - inputs: delta fixed, eta = 0 -> S positive and of the order of e-14
+    ----------
+    
     """
     
     value1 = 4
@@ -442,12 +706,19 @@ def test_S_DBMD_fixed_delta_2():
     assert np.isclose(S_DBMD(value1, value2), expected_output)
     
 def test_S_DBMD_fixed_delta_3():
-    
+         
     """
-    function to test the calculation of the Seebeck coefficient S for the conduction band
-
-    DOC
-
+    function to test the calculation of the Seebeck coefficient S of the material
+    when the energy gap is fixed and the chemical potential is positive
+    
+    ----------    
+    Given a fixed input value for the energy gap (positive value in a realistic range)
+    and a positive input value for the chemical potential (in a realistic range),
+    when the S function is applied, it gives the expected results:
+    
+    - inputs: delta fixed, eta > 0 -> S neagtive and near -1
+    ----------
+    
     """
     
     value1 = 4
@@ -457,11 +728,17 @@ def test_S_DBMD_fixed_delta_3():
     assert np.isclose(S_DBMD(value1, value2), expected_output)
 
 def test_S_DBMD_fixed_eta_1():
-    
+     
     """
-    function to test the calculation of the Seebeck coefficient S for the conduction band
-
-    DOC
+    function to test the calculation of the Seebeck coefficient S of the material
+    when the chemical potential is fixed and the energy gap is small
+    ----------    
+    Given a small input value for the energy gap (in a realistic range)
+    and a fixed input value for the chemical potential (in a realistic range),
+    when the S function is applied, it gives the expected results:
+    
+    - inputs: delta small, eta fixed -> S negative and of the order of e-1
+    ----------
 
     """
     
@@ -474,9 +751,15 @@ def test_S_DBMD_fixed_eta_1():
 def test_S_DBMD_fixed_eta_2():
     
     """
-    function to test the calculation of the Seebeck coefficient S for the conduction band
-
-    DOC
+    function to test the calculation of the Seebeck coefficient S of the material
+    when the chemical potential is fixed and the energy gap is intermediate
+    ----------    
+    Given an intermediate input value for the energy gap (in a realistic range)
+    and a fixed input value for the chemical potential (in a realistic range),
+    when the S function is applied, it gives the expected results:
+    
+    - inputs: delta intermediate, eta fixed -> S negative and near -6
+    ----------
 
     """
     
@@ -490,9 +773,15 @@ def test_S_DBMD_fixed_eta_2():
 def test_S_DBMD_fixed_eta_3():
     
     """
-    function to test the calculation of the Seebeck coefficient S for the conduction band
-
-    DOC
+    function to test the calculation of the Seebeck coefficient S of the material
+    when the chemical potential is fixed and the energy gap is high
+    ----------    
+    Given a high input value for the energy gap (in a realistic range)
+    and a fixed input value for the chemical potential (in a realistic range),
+    when the S function is applied, it gives the expected results:
+    
+    - inputs: delta high, eta fixed -> S negative and near -17
+    ----------
 
     """
     
@@ -504,12 +793,19 @@ def test_S_DBMD_fixed_eta_3():
 
 # # ke calculations 
 def test_kec_DBMD_fixed_delta_1():
-    
+         
     """
     function to test the calculation of the thermal electronic conductivity ke for the conduction band
-
-    DOC
-
+    when the energy gap is fixed and the chemical potential is negative
+    
+    ----------    
+    Given a fixed input value for the energy gap (positive value in a realistic range)
+    and a negative input value for the chemical potential (in a realistic range),
+    when the kec function is applied, it gives the expected results:
+    
+    - inputs: delta fixed, eta < 0 -> kec positive and of the order of e-5
+    ----------
+    
     """
     
     value1 = 4
@@ -519,12 +815,19 @@ def test_kec_DBMD_fixed_delta_1():
     assert np.isclose(float(kec_DBMD(value1, value2)), expected_output)
     
 def test_kec_DBMD_fixed_delta_2():
-    
+          
     """
     function to test the calculation of the thermal electronic conductivity ke for the conduction band
-
-    DOC
-
+    when the energy gap is fixed and the chemical potential is null
+    
+    ----------    
+    Given a fixed input value for the energy gap (positive value in a realistic range)
+    and a null input value for the chemical potential (in a realistic range),
+    when the kec function is applied, it gives the expected results:
+    
+    - inputs: delta fixed, eta = 0 -> kec positive and of the order of e-3
+    ----------
+    
     """
     
     value1 = 4
@@ -537,9 +840,16 @@ def test_kec_DBMD_fixed_delta_3():
     
     """
     function to test the calculation of the thermal electronic conductivity ke for the conduction band
-
-    DOC
-
+    when the energy gap is fixed and the chemical potential is positive
+    
+    ----------    
+    Given a fixed input value for the energy gap (positive value in a realistic range)
+    and a positive input value for the chemical potential (in a realistic range),
+    when the kec function is applied, it gives the expected results:
+    
+    - inputs: delta fixed, eta > 0 -> kec positive and of the order of e-1
+    ----------
+    
     """
     
     value1 = 4
@@ -548,27 +858,39 @@ def test_kec_DBMD_fixed_delta_3():
     
     assert np.isclose(float(kec_DBMD(value1, value2)), expected_output)
 
-def test_kec_DBMD_fixed_eta_2():
+def test_kec_DBMD_fixed_eta_1():
     
     """
     function to test the calculation of the thermal electronic conductivity ke for the conduction band
-
-    DOC
+    when the chemical potential is fixed and the energy gap is small
+    ----------    
+    Given a small input value for the energy gap (in a realistic range)
+    and a fixed input value for the chemical potential (in a realistic range),
+    when the kec function is applied, it gives the expected results:
+    
+    - inputs: delta small, eta fixed -> kec positive and near 1
+    ----------
 
     """
     
     value1 = 0.5
     value2 = 2
-    expected_output = 1.3600452591124
+    expected_output = 1.3600452591123982
     
     assert np.isclose(float(kec_DBMD(value1, value2)), expected_output)
-    
+ 
 def test_kec_DBMD_fixed_eta_2():
     
     """
     function to test the calculation of the thermal electronic conductivity ke for the conduction band
-
-    DOC
+    when the chemical potential is fixed and the energy gap is intermediate
+    ----------    
+    Given an intermediate input value for the energy gap (in a realistic range)
+    and a fixed input value for the chemical potential (in a realistic range),
+    when the kec function is applied, it gives the expected results:
+    
+    - inputs: delta intermediate, eta fixed -> kec positive and of the order of e-3
+    ----------
 
     """
     
@@ -579,11 +901,17 @@ def test_kec_DBMD_fixed_eta_2():
     assert np.isclose(float(kec_DBMD(value1, value2)), expected_output)
     
 def test_kec_DBMD_fixed_eta_3():
-    
+     
     """
     function to test the calculation of the thermal electronic conductivity ke for the conduction band
-
-    DOC
+    when the chemical potential is fixed and the energy gap is high
+    ----------    
+    Given a high input value for the energy gap (in a realistic range)
+    and a fixed input value for the chemical potential (in a realistic range),
+    when the kec function is applied, it gives the expected results:
+    
+    - inputs: delta high, eta fixed -> kec positive and of the order of e-8
+    ----------
 
     """
     
@@ -596,10 +924,17 @@ def test_kec_DBMD_fixed_eta_3():
 def test_kev_DBMD_fixed_delta_1():
     
     """
-    function to test the calculation of the thermal electronic conductivity ke for the conduction band
-
-    DOC
-
+    function to test the calculation of the thermal electronic conductivity ke for the valence band
+    when the energy gap is fixed and the chemical potential is negative
+    
+    ----------    
+    Given a fixed input value for the energy gap (positive value in a realistic range)
+    and a negative input value for the chemical potential (in a realistic range),
+    when the kev function is applied, it gives the expected results:
+    
+    - inputs: delta fixed, eta < 0 -> kev and of the order of e-1
+    ----------
+    
     """
     
     value1 = 4
@@ -611,10 +946,17 @@ def test_kev_DBMD_fixed_delta_1():
 def test_kev_DBMD_fixed_delta_2():
     
     """
-    function to test the calculation of the thermal electronic conductivity ke for the conduction band
-
-    DOC
-
+    function to test the calculation of the thermal electronic conductivity ke for the valence band
+    when the energy gap is fixed and the chemical potential is null
+    
+    ----------    
+    Given a fixed input value for the energy gap (positive value in a realistic range)
+    and a null input value for the chemical potential (in a realistic range),
+    when the kev function is applied, it gives the expected results:
+    
+    - inputs: delta fixed, eta = 0 -> kev positive and of the order of e-3
+    ----------
+    
     """
     
     value1 = 4
@@ -624,12 +966,19 @@ def test_kev_DBMD_fixed_delta_2():
     assert np.isclose(float(kev_DBMD(value1, value2)), expected_output)
     
 def test_kev_DBMD_fixed_delta_3():
-    
+   
     """
-    function to test the calculation of the thermal electronic conductivity ke for the conduction band
-
-    DOC
-
+    function to test the calculation of the thermal electronic conductivity ke for the valence band
+    when the energy gap is fixed and the chemical potential is positive
+    
+    ----------    
+    Given a fixed input value for the energy gap (positive value in a realistic range)
+    and a positive input value for the chemical potential (in a realistic range),
+    when the kev function is applied, it gives the expected results:
+    
+    - inputs: delta fixed, eta > 0 -> kev positive and of the order of e-5
+    ----------
+    
     """
     
     value1 = 4
@@ -641,9 +990,15 @@ def test_kev_DBMD_fixed_delta_3():
 def test_kev_DBMD_fixed_eta_1():
     
     """
-    function to test the calculation of the thermal electronic conductivity ke for the conduction band
-
-    DOC
+    function to test the calculation of the thermal electronic conductivity ke for the valence band
+    when the chemical potential is fixed and the energy gap is small
+    ----------    
+    Given a small input value for the energy gap (in a realistic range)
+    and a fixed input value for the chemical potential (in a realistic range),
+    when the kev function is applied, it gives the expected results:
+    
+    - inputs: delta small, eta fixed -> kev positive and of the order of e-2
+    ----------
 
     """
     
@@ -656,9 +1011,15 @@ def test_kev_DBMD_fixed_eta_1():
 def test_kev_DBMD_fixed_eta_2():
     
     """
-    function to test the calculation of the thermal electronic conductivity ke for the conduction band
-
-    DOC
+    function to test the calculation of the thermal electronic conductivity ke for the valence band
+    when the chemical potential is fixed and the energy gap is intermediate
+    ----------    
+    Given an intermediate input value for the energy gap (in a realistic range)
+    and a fixed input value for the chemical potential (in a realistic range),
+    when the kev function is applied, it gives the expected results:
+    
+    - inputs: delta intermediate, eta fixed -> kev positive and of the order of e-5
+    ----------
 
     """
     
@@ -671,9 +1032,15 @@ def test_kev_DBMD_fixed_eta_2():
 def test_kev_DBMD_fixed_eta_3():
     
     """
-    function to test the calculation of the thermal electronic conductivity ke for the conduction band
-
-    DOC
+    function to test the calculation of the thermal electronic conductivity ke for the valence band
+    when the chemical potential is fixed and the energy gap is high
+    ----------    
+    Given a high input value for the energy gap (in a realistic range)
+    and a fixed input value for the chemical potential (in a realistic range),
+    when the kev function is applied, it gives the expected results:
+    
+    - inputs: delta high, eta fixed -> kev negative and of the order of e-8
+    ----------
 
     """
     
@@ -684,12 +1051,19 @@ def test_kev_DBMD_fixed_eta_3():
     assert np.isclose(float(kev_DBMD(value1, value2)), expected_output)
 
 def test_ke_DBMD_fixed_delta_1():
-    
+   
     """
-    function to test the calculation of the thermal electronic conductivity ke for the conduction band
-
-    DOC
-
+    function to test the calculation of the thermal electronic conductivity ke of the material
+    when the energy gap is fixed and the chemical potential is negative
+    
+    ----------    
+    Given a fixed input value for the energy gap (positive value in a realistic range)
+    and negative input value for the chemical potential (in a realistic range),
+    when the ke function is applied, it gives the expected results:
+    
+    - inputs: delta fixed, eta < 0 -> ke positive and near 0.6 (symmetry with respect to y-axis)
+    ----------
+    
     """
     
     value1 = 4
@@ -699,14 +1073,20 @@ def test_ke_DBMD_fixed_delta_1():
     assert np.isclose(float(ke_DBMD(value1, value2)), expected_output)
     
 def test_ke_DBMD_fixed_delta_2():
+   
+    """
+    function to test the calculation of the thermal electronic conductivity ke of the material
+    when the energy gap is fixed and the chemical potential is null
+    
+    ----------    
+    Given a fixed input value for the energy gap (positive value in a realistic range)
+    and null input value for the chemical potential (in a realistic range),
+    when the ke function is applied, it gives the expected results:
+    
+    - inputs: delta fixed, eta = 0 -> ke positive and near 0.4 (symmetry with respect to y-axis)
+    ----------
     
     """
-    function to test the calculation of the thermal electronic conductivity ke for the conduction band
-
-    DOC
-
-    """
-    
     value1 = 4
     value2 = 0
     expected_output = 0.363328642564888
@@ -714,12 +1094,19 @@ def test_ke_DBMD_fixed_delta_2():
     assert np.isclose(float(ke_DBMD(value1, value2)), expected_output)
     
 def test_ke_DBMD_fixed_delta_3():
-    
+   
     """
-    function to test the calculation of the thermal electronic conductivity ke for the conduction band
-
-    DOC
-
+    function to test the calculation of the thermal electronic conductivity ke of the material
+    when the energy gap is fixed and the chemical potential is positive
+    
+    ----------    
+    Given a fixed input value for the energy gap (positive value in a realistic range)
+    and positive input value for the chemical potential (in a realistic range),
+    when the ke function is applied, it gives the expected results:
+    
+    - inputs: delta fixed, eta > 0 -> ke positive and near 0.6 (symmetry with respect to y-axis)
+    ----------
+    
     """
     
     value1 = 4
@@ -729,11 +1116,17 @@ def test_ke_DBMD_fixed_delta_3():
     assert np.isclose(float(ke_DBMD(value1, value2)), expected_output)
 
 def test_ke_DBMD_fixed_eta_1():
-    
+     
     """
-    function to test the calculation of the thermal electronic conductivity ke for the conduction band
-
-    DOC
+    function to test the calculation of the thermal electronic conductivity ke of the material
+    when the chemical potential is fixed and the energy gap is small
+    ----------    
+    Given a small input value for the energy gap (in a realistic range)
+    and a fixed input value for the chemical potential (in a realistic range),
+    when the ke function is applied, it gives the expected results:
+    
+    - inputs: delta small, eta fixed -> ke positive and near 2
+    ----------
 
     """
     
@@ -744,11 +1137,17 @@ def test_ke_DBMD_fixed_eta_1():
     assert np.isclose(float(ke_DBMD(value1, value2)), expected_output)
     
 def test_ke_DBMD_fixed_eta_2():
-    
+      
     """
-    function to test the calculation of the thermal electronic conductivity ke for the conduction band
-
-    DOC
+    function to test the calculation of the thermal electronic conductivity ke of the material
+    when the chemical potential is fixed and the energy gap is intermediate
+    ----------    
+    Given an intermediate input value for the energy gap (in a realistic range)
+    and a fixed input value for the chemical potential (in a realistic range),
+    when the ke function is applied, it gives the expected results:
+    
+    - inputs: delta intermediate, eta fixed -> ke positive and of the order of e-3
+    ----------
 
     """
     
@@ -759,11 +1158,17 @@ def test_ke_DBMD_fixed_eta_2():
     assert np.isclose(float(ke_DBMD(value1, value2)), expected_output)
     
 def test_ke_DBMD_fixed_eta_3():
-    
+      
     """
-    function to test the calculation of the thermal electronic conductivity ke for the conduction band
-
-    DOC
+    function to test the calculation of the thermal electronic conductivity ke of the material
+    when the chemical potential is fixed and the energy gap is high
+    ----------    
+    Given a high input value for the energy gap (in a realistic range)
+    and a fixed input value for the chemical potential (in a realistic range),
+    when the ke function is applied, it gives the expected results:
+    
+    - inputs: delta high, eta fixed -> ke positive and of the order of e-7
+    ----------
 
     """
     
@@ -775,12 +1180,19 @@ def test_ke_DBMD_fixed_eta_3():
 
 # ZT calculation
 def test_ZT_DBMD_fixed_delta_1():
-    
+   
     """
-    function to test the calculation of the figure of merit ZT for the conduction band
-
-    DOC
-
+    function to test the calculation of the figure of merit ZT of the material
+    when the energy gap is fixed and the chemical potential is negative
+    
+    ----------    
+    Given a fixed input value for the energy gap (positive value in a realistic range)
+    and negative input value for the chemical potential (in a realistic range),
+    when the ZT function is applied, it gives the expected results:
+    
+    - inputs: delta fixed, eta < 0 -> ZT positive and near 0.4 (symmetry with respect to y-axis)
+    ----------
+    
     """
     
     value1 = 4
@@ -790,12 +1202,19 @@ def test_ZT_DBMD_fixed_delta_1():
     assert np.isclose(float(ZT_DBMD(value1, value2, 1)), expected_output)
     
 def test_ZT_DBMD_fixed_delta_2():
-    
+   
     """
-    function to test the calculation of the figure of merit ZT for the conduction band
-
-    DOC
-
+    function to test the calculation of the figure of merit ZT of the material
+    when the energy gap is fixed and the chemical potential is null
+    
+    ----------    
+    Given a fixed input value for the energy gap (positive value in a realistic range)
+    and null input value for the chemical potential (in a realistic range),
+    when the ZT function is applied, it gives the expected results:
+    
+    - inputs: delta fixed, eta = 0 -> ZT positive and of the order of e-30 (symmetry with respect to y-axis)
+    ----------
+    
     """
     
     value1 = 4
@@ -805,12 +1224,19 @@ def test_ZT_DBMD_fixed_delta_2():
     assert np.isclose(float(ZT_DBMD(value1, value2, 1)), expected_output)
     
 def test_ZT_DBMD_fixed_delta_3():
-    
+   
     """
-    function to test the calculation of the figure of merit ZT for the conduction band
-
-    DOC
-
+    function to test the calculation of the figure of merit ZT of the material
+    when the energy gap is fixed and the chemical potential is positive
+    
+    ----------    
+    Given a fixed input value for the energy gap (positive value in a realistic range)
+    and positive input value for the chemical potential (in a realistic range),
+    when the ZT function is applied, it gives the expected results:
+    
+    - inputs: delta fixed, eta > 0 -> ZT positive and near 0.4 (symmetry with respect to y-axis)
+    ----------
+    
     """
     
     value1 = 4
@@ -820,9 +1246,17 @@ def test_ZT_DBMD_fixed_delta_3():
     assert np.isclose(float(ZT_DBMD(value1, value2, 1)), expected_output)
 
 def test_ZT_DBMD_fixed_eta_1():
-    
+     
     """
-    DOC
+    function to test the calculation of the figure of merit ZT of the material
+    when the chemical potential is fixed and the energy gap is small
+    ----------    
+    Given a small input value for the energy gap (in a realistic range)
+    and a fixed input value for the chemical potential (in a realistic range),
+    when the ZT function is applied, it gives the expected results:
+    
+    - inputs: delta small, eta fixed -> ZT positive and of the order of e-2
+    ----------
 
     """
     
@@ -833,9 +1267,17 @@ def test_ZT_DBMD_fixed_eta_1():
     assert np.isclose(float(ZT_DBMD(value1, value2, 1)), expected_output)
     
 def test_ZT_DBMD_fixed_eta_2():
-    
+      
     """
-    DOC
+    function to test the calculation of the figure of merit ZT of the material
+    when the chemical potential is fixed and the energy gap is intermediate
+    ----------    
+    Given an intermediate input value for the energy gap (in a realistic range)
+    and a fixed input value for the chemical potential (in a realistic range),
+    when the ZT function is applied, it gives the expected results:
+    
+    - inputs: delta intermediate, eta fixed -> ZT positive and of the order of e-2
+    ----------
 
     """
     
@@ -846,9 +1288,17 @@ def test_ZT_DBMD_fixed_eta_2():
     assert np.isclose(float(ZT_DBMD(value1, value2, 1)), expected_output)
     
 def test_ZT_DBMD_fixed_eta_3():
-    
+       
     """
-    DOC
+    function to test the calculation of the figure of merit ZT of the material
+    when the chemical potential is fixed and the energy gap is high
+    ----------    
+    Given an high input value for the energy gap (in a realistic range)
+    and a fixed input value for the chemical potential (in a realistic range),
+    when the ZT function is applied, it gives the expected results:
+    
+    - inputs: delta high, eta fixed -> ZT positive and of the order of e-6
+    ----------
 
     """
     
