@@ -35,7 +35,7 @@ def test_sigmac_DBMP_fixed_delta():
     value2 = np.asarray([-13, -2, 7]) # input values for chemical potential
     expected_output = np.asarray([1.66305675e-06, 9.71747031e-02, 1.20049514e+01]) # expected results
     
-    assert np.allclose(sigmac_DBMP(value1, value2), expected_output)
+    assert np.allclose(sigmac_DBMP(value1, value2), expected_output, atol=1e-10)
 
 def test_sigmac_DBMP_fixed_eta(): 
     
@@ -56,7 +56,7 @@ def test_sigmac_DBMP_fixed_eta():
     value2 = np.asarray([3, 3, 3]) # input values for chemical potential
     expected_output = np.asarray([2.62652338e+00, 2.00033041e-02, 2.25070338e-07]) # expected results
     
-    assert np.allclose(sigmac_DBMP(value1, value2), expected_output)
+    assert np.allclose(sigmac_DBMP(value1, value2), expected_output, atol=1e-10)
 
 def test_sigmav_DBMP_fixed_delta(): 
     
@@ -77,7 +77,7 @@ def test_sigmav_DBMP_fixed_delta():
     value2 = np.asarray([-13, -2, 7]) # input values for chemical potential
     expected_output = np.asarray([2.40000123e+01, 2.62652338e+00, 6.70812746e-04]) # expected results
     
-    assert np.allclose(sigmav_DBMP(value1, value2), expected_output)
+    assert np.allclose(sigmav_DBMP(value1, value2), expected_output, atol=1e-10)
 
 def test_sigmav_DBMP_fixed_eta(): 
     
@@ -98,7 +98,7 @@ def test_sigmav_DBMP_fixed_eta():
     value2 = np.asarray([3, 3, 3]) # input values for chemical potential
     expected_output = np.asarray([1.34306970e-02, 4.98313987e-05, 5.57893731e-10]) # expected results
     
-    assert np.allclose(sigmav_DBMP(value1, value2), expected_output)
+    assert np.allclose(sigmav_DBMP(value1, value2), expected_output, atol=1e-10)
 
 def test_sigma_DBMP_fixed_delta(): 
     
@@ -120,7 +120,7 @@ def test_sigma_DBMP_fixed_delta():
     value2 = np.asarray([-13, -2, 7]) # input values for chemical potential
     expected_output = np.asarray([24.00001395, 2.72369808, 12.00562218]) # expected results
     
-    assert np.allclose(sigma_DBMP(value1, value2), expected_output)
+    assert np.allclose(sigma_DBMP(value1, value2), expected_output, atol=1e-10)
 
 def test_sigma_DBMP_fixed_eta(): 
     
@@ -141,7 +141,7 @@ def test_sigma_DBMP_fixed_eta():
     value2 = np.asarray([3, 3, 3]) # input values for chemical potential
     expected_output = np.asarray([2.63995407e+00, 2.00531355e-02, 2.25628232e-07]) # expected results
     
-    assert np.allclose(sigma_DBMP(value1, value2), expected_output)
+    assert np.allclose(sigma_DBMP(value1, value2), expected_output, atol=1e-10)
 
 # S calculation
 def test_Sc_DBMP_fixed_delta(): 
@@ -163,7 +163,7 @@ def test_Sc_DBMP_fixed_delta():
     value2 = np.asarray([-13, -2, 7]) # input values for chemical potential
     expected_output = np.asarray([-16.000000390970271, -5.0244248243982694, -0.5447851451260235]) # expected results
     
-    assert np.allclose(Sc_DBMP(value1, value2).astype(float), expected_output)
+    assert np.allclose(Sc_DBMP(value1, value2).astype(float), expected_output, atol=1e-10)
 
 def test_Sc_DBMP_fixed_eta(): 
     
@@ -184,7 +184,7 @@ def test_Sc_DBMP_fixed_eta():
     value2 = np.asarray([3, 3, 3]) # input values for chemical potential
     expected_output = np.asarray([-1.7508395129660097, -6.6050063834138895, -18.000000320536959]) # expected results
     
-    assert np.allclose(Sc_DBMP(value1, value2).astype(float), expected_output)
+    assert np.allclose(Sc_DBMP(value1, value2).astype(float), expected_output, atol=1e-10)
 
 def test_Sv_DBMP_fixed_delta(): 
     
@@ -205,7 +205,7 @@ def test_Sv_DBMP_fixed_delta():
     value2 = np.asarray([-13, -2, 7]) # input values for chemical potential
     expected_output = np.asarray([0.27414836921235658, 1.7508395129660099, 10.000167709436949]) # expected results
     
-    assert np.allclose(Sv_DBMP(value1, value2).astype(float), expected_output)
+    assert np.allclose(Sv_DBMP(value1, value2).astype(float), expected_output, atol=1e-10)
 
 def test_Sv_DBMP_fixed_eta(): 
     
@@ -226,7 +226,7 @@ def test_Sv_DBMP_fixed_eta():
     value2 = np.asarray([3, 3, 3]) # input values for chemical potential
     expected_output = np.asarray([7.003360179571537, 12.600012457890539, 23.999999596340341]) # expected results
     
-    assert np.allclose(Sv_DBMP(value1, value2).astype(float), expected_output)
+    assert np.allclose(Sv_DBMP(value1, value2).astype(float), expected_output, atol=1e-10)
 
 def test_S_DBMP_fixed_delta(): 
     
@@ -249,7 +249,7 @@ def test_S_DBMP_fixed_delta():
     value2 = np.asarray([-13, -2, 0.2, 7]) # input values for chemical potential
     expected_output = np.asarray([0.27414724151163972, 1.5091151067248834, -0.36665404456475648, -0.54419594710939645]) # expected results
     
-    assert np.allclose(S_DBMP(value1, value2).astype(float), expected_output)
+    assert np.allclose(S_DBMP(value1, value2).astype(float), expected_output, atol=1e-10)
 
 def test_S_DBMP_fixed_eta(): 
     
@@ -270,7 +270,7 @@ def test_S_DBMP_fixed_eta():
     value2 = np.asarray([3, 3, 3]) # input values for chemical potential
     expected_output = np.asarray([-1.7063027520413352, -6.5572825274719584, -17.896150122093459]) # expected results
     
-    assert np.allclose(S_DBMP(value1, value2).astype(float), expected_output)
+    assert np.allclose(S_DBMP(value1, value2).astype(float), expected_output, atol=1e-10)
 
 # ke calculation
 def test_kec_DBMP_fixed_delta(): 
@@ -292,7 +292,7 @@ def test_kec_DBMP_fixed_delta():
     value2 = np.asarray([-13, -2, 7]) # input values for chemical potential
     expected_output = np.asarray([3.3261141529321715e-6, 0.19552973291472187, 36.242349432268476]) # expected results
     
-    assert np.allclose(kec_DBMP(value1, value2).astype(float), expected_output)
+    assert np.allclose(kec_DBMP(value1, value2).astype(float), expected_output, atol=1e-10)
 
 
 def test_kec_DBMP_fixed_eta(): 
@@ -314,7 +314,7 @@ def test_kec_DBMP_fixed_eta():
     value2 = np.asarray([3, 3, 3]) # input values for chemical potential
     expected_output = np.asarray([6.0947749765540493, 0.040056624675003705, 4.501399163888022e-7]) # expected results
     
-    assert np.allclose(kec_DBMP(value1, value2).astype(float), expected_output)
+    assert np.allclose(kec_DBMP(value1, value2).astype(float), expected_output, atol=1e-10)
 
 def test_kev_DBMP_fixed_delta(): 
     
@@ -335,7 +335,7 @@ def test_kev_DBMP_fixed_delta():
     value2 = np.asarray([-13, -2, 7]) # input values for chemical potential
     expected_output = np.asarray([77.15549150664225, 6.0947749765540475, 0.0013416817402995967]) # expected results
     
-    assert np.allclose(kev_DBMP(value1, value2).astype(float), expected_output)
+    assert np.allclose(kev_DBMP(value1, value2).astype(float), expected_output, atol=1e-10)
 
 def test_kev_DBMP_fixed_eta(): 
     
@@ -356,7 +356,7 @@ def test_kev_DBMP_fixed_eta():
     value2 = np.asarray([3, 3, 3]) # input values for chemical potential
     expected_output = np.asarray([0.02688394189501131, 9.9663107726927908e-5, 1.1157876875834053e-9]) # expected results
     
-    assert np.allclose(kev_DBMP(value1, value2).astype(float), expected_output)
+    assert np.allclose(kev_DBMP(value1, value2).astype(float), expected_output, atol=1e-10)
 
 def test_ke_DBMP_fixed_delta(): 
     
@@ -379,7 +379,7 @@ def test_ke_DBMP_fixed_delta():
     value2 = np.asarray([-13, -2, -0.2, 0, 0.2, 5, 17]) # input values for chemical potential
     expected_output = np.asarray([77.155935289843256, 10.591884828306991, 14.978132624202384, 15.132971795675514, 14.978132624202384, 23.059044241733691, 103.92296378132363]) # expected results
     
-    assert np.allclose(ke_DBMP(value1, value2).astype(float), expected_output)
+    assert np.allclose(ke_DBMP(value1, value2).astype(float), expected_output, atol=1e-10)
 
 def test_ke_DBMP_fixed_eta(): 
     
@@ -400,7 +400,7 @@ def test_ke_DBMP_fixed_eta():
     value2 = np.asarray([3, 3, 3]) # input values for chemical potential
     expected_output = np.asarray([7.1456975668755973, 0.058490067175707171, 1.4329468721701097e-6]) # expected results
     
-    assert np.allclose(ke_DBMP(value1, value2).astype(float), expected_output)
+    assert np.allclose(ke_DBMP(value1, value2).astype(float), expected_output, atol=1e-10)
 
 # ZT calculation
 def test_ZT_DBMP_fixed_delta(): 
@@ -426,7 +426,7 @@ def test_ZT_DBMP_fixed_delta():
     value2 = np.asarray([-13, -2, -0.2, 0, 0.2, 5, 17]) # input values for chemical potential
     expected_output = np.asarray([0.023079016104636245, 0.53511809880070416, 0.010675016667360518, 2.195034301991368e-32, 0.010675016667360518, 0.20658824275862803, 0.01289424227108558]) # expected results
     
-    assert np.allclose(ZT_DBMP(value1, value2, 1).astype(float), expected_output)
+    assert np.allclose(ZT_DBMP(value1, value2, 1).astype(float), expected_output, atol=1e-10)
 
 def test_ZT_DBMP_fixed_eta(): 
     
@@ -447,6 +447,6 @@ def test_ZT_DBMP_fixed_eta():
     value2 = np.asarray([3, 3, 3]) # input values for chemical potential
     expected_output = np.asarray([0.94358335728462628, 0.81459791438907991, 7.2262344238493525e-5]) # expected results
     
-    assert np.allclose(ZT_DBMP(value1, value2, 1).astype(float), expected_output)
+    assert np.allclose(ZT_DBMP(value1, value2, 1).astype(float), expected_output, atol=1e-10)
     
 
