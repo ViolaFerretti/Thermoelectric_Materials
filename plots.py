@@ -11,6 +11,54 @@ from matplotlib.ticker import AutoMinorLocator
 import numpy as np
 
 # 2D plots for double band models
+def create_matrix_DBM(Y, sub, delta, eta, rk):
+    
+    """
+    
+    Function that returns a matrix containing the values
+    of the thermoelectric quantity indicated as input with respect to
+    the energy gap and the chemical potential indicated as inputs
+    (the calculations are done based on double-band-models)
+    
+    Parameters
+    ----------
+    Y : TYPE numpy.ndarray
+        DESCRIPTION. calculated thermoelectric quantity
+    sub : TYPE int
+          DESCRIPTION. position of the subplot in the complete figure (fig) that will be realized later
+    delta : TYPE nd.ndarray
+            DESCRIPTION. energy gap range
+    eta : TYPE nd.ndarray
+          DESCRIPTION. chemical potential range
+    rk : TYPE float
+         DESCRIPTION. r_k parameter
+         
+
+    Returns
+    -------
+    y : TYPE nd.array
+        DESCRIPTION. matrix containing the values of the thermoelectric quantity in function of energy gap and chemical potential
+
+    """
+    
+    # initialize matrix to zero
+    y = [] 
+    for i in range(delta.size):
+        y.append(np.zeros(eta.size, float)) #i=delta,j=eta
+    y = np.asarray(y)
+    
+    # calculate values to plot
+    if sub == 4:
+        for i in range(eta.size):
+            for j in range(delta.size):
+                y[j][i] = Y(delta[j],eta[i], rk) # calculate ZT
+    else:
+       for i in range(eta.size):
+           for j in range(delta.size):
+               y[j][i] = Y(delta[j], eta[i]) # calculate the thermoelectric quantity 
+    
+    return y
+
 def subplots_2D_graph(fig,
                       Y,
                       ylabel,
@@ -50,28 +98,11 @@ def subplots_2D_graph(fig,
 
     ax1 = fig.add_subplot(2, 2, sub) # subplot
     ax1.grid() # add grid to subplot
+    y = create_matrix_DBM(Y, sub, delta, eta, rk) # matrix of values to plot
     
-    # initialize list to zero
-    y = [] 
-    for i in range(delta.size):
-        y.append(np.zeros(eta.size, float)) #i=delta,j=eta
-    y = np.asarray(y)
-    
-    # ZT plot
-    if sub == 4: # if sub is set to 4
-        for i in range(eta.size):
-            for j in range(delta.size):
-                y[j][i] = Y(delta[j], eta[i], rk) # calculate ZT
-        for j in range(delta.size):   
-            ax1.plot(eta, y[j][:]) # and then plot ZT wrt energy gap for different chemical potentials
-    
-    # plots of other thermoelectric quantities
-    else:
-        for i in range(eta.size):
-            for j in range(delta.size):
-                y[j][i] = Y(delta[j],eta[i]) # calculate the thermoelectric quantity
-        for j in range(delta.size):   
-            ax1.plot(eta, y[j][:], label="\u0394=%f" % delta[j]) # and plot it for different chemical potentials
+    #create subplot
+    for j in range(delta.size):   
+        ax1.plot(eta, y[j][:], label="\u0394=%f" % delta[j]) # and plot it for different chemical potentials
     
     # legend only on the first subplot 
     if sub == 1:
@@ -137,6 +168,44 @@ def complete_2d_plot(Y1,
 
 
 # 2D plots for single band model
+
+def create_matrix_SBM(Y, sub, eta, rk):
+    
+    """
+    
+    Function that returns a matrix containing the values
+    of the thermoelectric quantity indicated as input with respect to
+    the chemical potential indicated as input
+    (the calculations are done based on the single-band-model)
+    
+    Parameters
+    ----------
+    Y : TYPE numpy.ndarray
+        DESCRIPTION. calculated thermoelectric quantity
+    sub : TYPE int
+          DESCRIPTION. position of the subplot in the complete figure (fig) that will be realized later
+    eta : TYPE nd.ndarray
+          DESCRIPTION. chemical potential range
+    rk : TYPE float
+         DESCRIPTION. r_k parameter
+         
+
+    Returns
+    -------
+    y : TYPE nd.array
+        DESCRIPTION. matrix containing the values of the thermoelectric quantity in function of energy gap and chemical potential
+
+    """
+    
+    y = np.zeros(eta.size, float) # initialize array to zero
+    if sub == 4:
+         for i in range(eta.size):
+             y[i] = Y(eta[i], rk) #calculate ZT
+    else:
+        for i in range(eta.size):
+              y[i] = Y(eta[i]) # calculate the thermoelectric quantity
+    return y
+
 def subplots_2D_graph_SBM(fig,
                           Y,
                           ylabel,
@@ -173,21 +242,8 @@ def subplots_2D_graph_SBM(fig,
 
     ax1 = fig.add_subplot(2, 2, sub) # subplot
     ax1.grid()# add grid to subplot
-    
-    # initialize list to zero
-    y0 = np.zeros(eta.size, float)
-    
-    # ZT plot
-    if sub == 4:
-        for i in range(eta.size):
-              y0[i] = Y(eta[i], rk)
-    
-    # plots of other thermoelectric quantities
-    else:
-        for i in range(eta.size):
-              y0[i] = Y(eta[i])
-
-    l1, = ax1.plot(eta, y0, color='orange', linestyle='-', linewidth=1.5) # plot data
+    y = create_matrix_SBM(Y, sub, eta, rk) # matrix of values to plot
+    l1, = ax1.plot(eta, y, color='orange', linestyle='-', linewidth=1.5) # plot data
     
     # label axes
     ax1.xaxis.set_minor_locator(AutoMinorLocator(5))
