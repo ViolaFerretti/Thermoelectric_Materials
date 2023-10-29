@@ -17,11 +17,14 @@ from SBM_Parabolic import *
 def test_func_Fi_0_largex_pos():
             
     """
-    function to test the function to calculate the F_i function integrand
+    function to test the calculation of the F_i function integrand
     when i = 0 when x is large and positive
 
     ----------    
-    DOC
+    Given an input value of chemical potential and a large and positive input value for x, 
+    when the function is applied, it gives the expected result:
+    
+    - x large and positive -> the function is positive and tends asintotically to 0
     ----------
 
     """
@@ -34,11 +37,14 @@ def test_func_Fi_0_largex_pos():
 def test_func_Fi_1_largex_pos():
             
     """
-    function to test the function to calculate the F_i function integrand
+    function to test the calculation of the F_i function integrand
     when i = 1 when x is large and positive
 
     ----------    
-    DOC
+    Given an input value of chemical potential and a large and positive input value for x, 
+    when the function is applied, it gives the expected result:
+    
+    - x large and positive -> the function is positive and tends asintotically to 0
     ----------
 
     """
@@ -51,11 +57,14 @@ def test_func_Fi_1_largex_pos():
 def test_func_Fi_2_largex_pos():
             
     """
-    function to test the function to calculate the F_i function integrand
+    function to test the calculation of the F_i function integrand
     when i = 2 when x is large and positive
 
     ----------    
-    DOC
+    Given an input value of chemical potential and a large and positive input value for x, 
+    when the function is applied, it gives the expected result:
+    
+    - x large and positive -> the function is positive and tends asintotically to 0
     ----------
 
     """
@@ -68,11 +77,14 @@ def test_func_Fi_2_largex_pos():
 def test_func_Fi_0_largex_neg():
             
     """
-    function to test the function to calculate the F_i function integrand
+    function to test the calculation of the F_i function integrand
     when i = 0 when x is large and negative
 
     ----------    
-    DOC
+    Given an input value of chemical potential and a large and negative input value for x, 
+    when the function is applied, it gives the expected result:
+    
+    - x large and negative -> the function is positive and tends to 1
     ----------
 
     """
@@ -85,11 +97,14 @@ def test_func_Fi_0_largex_neg():
 def test_func_Fi_1_largex_neg():
             
     """
-    function to test the function to calculate the F_i function integrand
+    function to test the calculation of the F_i function integrand
     when i = 1 when x is large and negative
 
     ----------    
-    DOC
+    Given an input value of chemical potential and a large and negative input value for x, 
+    when the function is applied, it gives the expected result:
+    
+    - x large and negative -> the function is negative and tends to -x
     ----------
 
     """
@@ -102,11 +117,14 @@ def test_func_Fi_1_largex_neg():
 def test_func_Fi_2_largex_neg():
             
     """
-    function to test the function to calculate the F_i function integrand
+    function to test the calculation of the F_i function integrand
     when i = 2 when x is large and negative
 
     ----------    
-    DOC
+    Given an input value of chemical potential and a large and negative input value for x, 
+    when the function is applied, it gives the expected result:
+    
+    - x large and negative -> the function is positive and tends to (-x)^2 
     ----------
 
     """
@@ -119,11 +137,14 @@ def test_func_Fi_2_largex_neg():
 def test_func_Fi_0_smallx_pos():
             
     """
-    function to test the function to calculate the F_i function integrand
+    function to test the calculation of the F_i function integrand
     when i = 0 when x is small and positive
 
     ----------    
-    DOC
+    Given an input value of chemical potential and a small and positive input value for x, 
+    when the function is applied, it gives the expected result:
+    
+    - x small and positive -> the function is positive and tends to 0
     ----------
 
     """
@@ -136,11 +157,14 @@ def test_func_Fi_0_smallx_pos():
 def test_func_Fi_1_smallx_pos():
             
     """
-    function to test the function to calculate the F_i function integrand
+    function to test the calculation of the F_i function integrand
     when i = 1 when x is small and positive
 
     ----------    
-    DOC
+    Given an input value of chemical potential and a small and positive input value for x, 
+    when the function is applied, it gives the expected result:
+    
+    - x small and positive -> the function is positive and tends to 0
     ----------
 
     """
@@ -153,11 +177,14 @@ def test_func_Fi_1_smallx_pos():
 def test_func_Fi_2_smallx_pos():
             
     """
-    function to test the function to calculate the F_i function integrand
+    function to test the calculation of the F_i function integrand
     when i = 2 when x is small and positive
 
     ----------    
-    DOC
+    Given an input value of chemical potential and a small and positive input value for x, 
+    when the function is applied, it gives the expected result:
+    
+    - x small and positive -> the function is positive and tends to 0
     ----------
 
     """
@@ -170,11 +197,14 @@ def test_func_Fi_2_smallx_pos():
 def test_func_Fi_0_smallx_neg():
             
     """
-    function to test the function to calculate the F_i function integrand
+    function to test the calculation of the F_i function integrand
     when i = 0 when x is small and negative
 
     ----------    
-    DOC
+    Given an input value of chemical potential and a small and negative input value for x, 
+    when the function is applied, it gives the expected result:
+    
+    - x small and negative -> the function is positive and tends to 0
     ----------
 
     """
@@ -187,11 +217,14 @@ def test_func_Fi_0_smallx_neg():
 def test_func_Fi_1_smallx_neg():
             
     """
-    function to test the function to calculate the F_i function integrand
+    function to test the calculation of the F_i function integrand
     when i = 1 when x is small and negative
 
     ----------    
-    DOC
+    Given an input value of chemical potential and a small and negative input value for x, 
+    when the function is applied, it gives the expected result:
+    
+    - x small and negative -> the function is negative and tends to 0
     ----------
 
     """
@@ -204,11 +237,14 @@ def test_func_Fi_1_smallx_neg():
 def test_func_Fi_2_smallx_neg():
             
     """
-    function to test the function to calculate the F_i function integrand
+    function to test the calculation of the F_i function integrand
     when i = 2 when x is small and negative
 
     ----------    
-    DOC
+    Given an input value of chemical potential and a small and negative input value for x, 
+    when the function is applied, it gives the expected result:
+    
+    - x small and negative -> the function is positive and tends to 0
     ----------
 
     """
@@ -222,7 +258,15 @@ def test_func_Fi_2_smallx_neg():
 def test_Fic_0_neg():
     
     """
-    DOC
+    function to test the calculation of the F_i function
+    when i = 0 when the chemical potential is negative
+
+    ----------    
+    Given a negative input value of chemical potential,
+    when the function is applied, it gives the expected result:
+    
+    - eta < 0 -> the function is positive and near to 0
+    ----------
 
     """
     
@@ -234,7 +278,15 @@ def test_Fic_0_neg():
 def test_Fic_1_neg():
     
     """
-    DOC
+    function to test the calculation of the F_i function
+    when i = 1 when the chemical potential is negative
+
+    ----------    
+    Given a negative input value of chemical potential,
+    when the function is applied, it gives the expected result:
+    
+    - eta < 0 -> the function is positive and near to 0
+    ----------
 
     """
     
@@ -246,7 +298,14 @@ def test_Fic_1_neg():
 def test_Fic_2_neg():
     
     """
-    DOC
+    function to test the calculation of the F_i function
+    when i = 2 when the chemical potential is negative
+
+    ----------    
+    Given a negative input value of chemical potential,
+    when the function is applied, it gives the expected result:
+    
+    - eta < 0 -> the function is positive and near to 0
     ----------
 
     """
@@ -259,8 +318,15 @@ def test_Fic_2_neg():
 def test_Fic_0_pos():
     
     """
-    DOC
-   
+    function to test the calculation of the F_i function
+    when i = 0 when the chemical potential is positive
+
+    ----------    
+    Given a positive input value of chemical potential,
+    when the function is applied, it gives the expected result:
+    
+    - eta > 0 -> the function is positive and of the order of (eta)^1
+    ----------
 
     """
     
@@ -272,8 +338,15 @@ def test_Fic_0_pos():
 def test_Fic_1_pos():
     
     """
-    DOC
+    function to test the calculation of the F_i function
+    when i = 1 when the chemical potential is positive
+
+    ----------    
+    Given a positive input value of chemical potential,
+    when the function is applied, it gives the expected result:
     
+    - eta > 0 -> the function is positive and of the order of (eta)^2
+    ----------
 
     """
     
@@ -285,8 +358,16 @@ def test_Fic_1_pos():
 def test_Fic_2_pos():
     
     """
-    DOC
+    function to test the calculation of the F_i function
+    when i = 0 when the chemical potential is positive
+
+    ----------    
+    Given a positive input value of chemical potential,
+    when the function is applied, it gives the expected result:
     
+    - eta > 0 -> the function is positive and of the order of (eta)^3
+    ----------
+
     """
     
     value1 = 19 # input chemical potential value
@@ -297,9 +378,17 @@ def test_Fic_2_pos():
 # test of thermoelectric quantities calculation
 
 def test_sigma_neg():
-            
+    
     """
-    DOC
+    function to test the calculation the electrical conductivity sigma
+    when the chemical potential is negative
+
+    ----------    
+    Given a negative input value of chemical potential (in a realistic range),
+    when the function is applied, it gives the expected result:
+    
+    - eta < 0 -> sigma is positive and near to zero
+    ----------
 
     """
     
@@ -309,9 +398,17 @@ def test_sigma_neg():
     assert float(sigma_SBMP(value1)) == expected_output
 
 def test_sigma_0():
-            
+      
     """
-    DOC
+    function to test the calculation the electrical conductivity sigma
+    when the chemical potential is null
+
+    ----------    
+    Given a null input value of chemical potential,
+    when the function is applied, it gives the expected result:
+    
+    - eta = 0 -> sigma is positive and of the order of e-1
+    ----------
 
     """
     
@@ -321,9 +418,17 @@ def test_sigma_0():
     assert float(sigma_SBMP(value1)) == expected_output
 
 def test_sigma_pos():
-        
+    
     """
-    DOC
+    function to test the calculation the electrical conductivity sigma
+    when the chemical potential is positive
+
+    ----------    
+    Given a positive input value of chemical potential (in a realistic range),
+    when the function is applied, it gives the expected result:
+    
+    - eta > 0 -> sigma is positive and of the order of e+1
+    ----------
 
     """
     
@@ -333,9 +438,17 @@ def test_sigma_pos():
     assert float(sigma_SBMP(value1)) == expected_output
 
 def test_S_neg():
-            
+       
     """
-    DOC
+    function to test the calculation the Seebeck coefficient S
+    when the chemical potential is negative
+
+    ----------    
+    Given a negative input value of chemical potential (in a realistic range),
+    when the function is applied, it gives the expected result:
+    
+    - eta < 0 -> S is positive and of the order of e+1
+    ----------
 
     """
     
@@ -345,10 +458,18 @@ def test_S_neg():
     assert float(S_SBMP(value1)) == expected_output
 
 def test_S_0():
-            
+      
     """
-    DOC
+    function to test the calculation the Seebeck coefficient S
+    when the chemical potential is null
+
+    ----------    
+    Given a null input value of chemical potential,
+    when the function is applied, it gives the expected result:
     
+    - eta = 0 -> S is positive and of the order of e+0
+    ----------
+
     """
     
     value1 = 0 # input chemical potential value
@@ -357,9 +478,17 @@ def test_S_0():
     assert float(S_SBMP(value1)) == expected_output
     
 def test_S_pos():
-            
+     
     """
-    DOC
+    function to test the calculation the Seebeck coefficient S
+    when the chemical potential is positive
+
+    ----------    
+    Given a positive input value of chemical potential (in a realistic range),
+    when the function is applied, it gives the expected result:
+    
+    - eta > 0 -> S is positive and of the order of e-1
+    ----------
 
     """
     
@@ -369,9 +498,17 @@ def test_S_pos():
     assert float(S_SBMP(value1)) == expected_output
 
 def test_ke_neg():
-            
+      
     """
-    DOC
+    function to test the calculation the thermal electronic conductivity ke
+    when the chemical potential is negative
+
+    ----------    
+    Given a negative input value of chemical potential (in a realistic range),
+    when the function is applied, it gives the expected result:
+    
+    - eta < 0 -> ke is positive and near to zero
+    ----------
 
     """
     
@@ -381,9 +518,17 @@ def test_ke_neg():
     assert float(ke_SBMP(value1)) == expected_output
 
 def test_ke_0():
-            
+       
     """
-    DOC
+    function to test the calculation the thermal electronic conductivity ke
+    when the chemical potential is null
+
+    ----------    
+    Given a null input value of chemical potential,
+    when the function is applied, it gives the expected result:
+    
+    - eta = 0 -> ke is positive and near to 1
+    ----------
 
     """
     
@@ -393,9 +538,17 @@ def test_ke_0():
     assert float(ke_SBMP(value1)) == expected_output
     
 def test_ke_pos():
-            
+      
     """
-    DOC
+    function to test the calculation the thermal electronic conductivity ke
+    when the chemical potential is positive
+
+    ----------    
+    Given a positive input value of chemical potential (in a realistic range),
+    when the function is applied, it gives the expected result:
+    
+    - eta > 0 -> ke is positive and of the order of e+1
+    ----------
 
     """
     
@@ -405,21 +558,36 @@ def test_ke_pos():
     assert float(ke_SBMP(value1)) == expected_output
 
 def test_ZT_neg():
-            
+     
     """
-    DOC
+    function to test the calculation the figure of merit ZT
+    when the chemical potential is negative
+
+    ----------    
+    Given a negative input value of chemical potential (in a realistic range),
+    when the function is applied, it gives the expected result:
+    
+    - eta < 0 -> ZT is positive and near to zero
+    ----------
 
     """
-    
     value1 = -15 # input chemical potential value
     expected_output = 4.420286582527262e-05 # expected result
     
     assert float(ZT_SBMP(value1,1)) == expected_output
 
 def test_ZT_0():
-            
+        
     """
-    DOC
+    function to test the calculation the figure of merit ZT
+    when the chemical potential is null
+
+    ----------    
+    Given a null input value of chemical potential,
+    when the function is applied, it gives the expected result:
+    
+    - eta = 0 -> ZT is positive and of the order of e+0
+    ----------
 
     """
     
@@ -429,9 +597,17 @@ def test_ZT_0():
     assert float(ZT_SBMP(value1,1)) == expected_output
     
 def test_ZT_pos():
-            
+       
     """
-    DOC
+    function to test the calculation the figure of merit ZT
+    when the chemical potential is positive
+
+    ----------    
+    Given a positive input value of chemical potential (in a realistic range),
+    when the function is applied, it gives the expected result:
+    
+    - eta > 0 -> ZT is positive and approaching zero
+    ----------
 
     """
     
