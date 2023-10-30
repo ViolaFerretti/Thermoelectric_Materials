@@ -273,7 +273,7 @@ def test_Fic_0_neg():
     value1 = -5 # input chemical potential value
     expected_output = 0.003357674244559035 # expected result
     
-    assert np.isclose(float(Fic(0, value1)), expected_output, atol=1e-10)
+    assert np.isclose(float(Fic(func_Fi, 0, value1)), expected_output, atol=1e-10)
 
 def test_Fic_1_neg():
     
@@ -293,7 +293,7 @@ def test_Fic_1_neg():
     value1 = -5 # input chemical potential value
     expected_output = 0.0033633154387611988 # expected result
     
-    assert np.isclose(float(Fic(1, value1)), expected_output, atol=1e-10)
+    assert np.isclose(float(Fic(func_Fi, 1, value1)), expected_output, atol=1e-10)
 
 def test_Fic_2_neg():
     
@@ -313,7 +313,7 @@ def test_Fic_2_neg():
     value1 = -5 # input chemical potential value
     expected_output = 0.006732283305485879 # expected result
     
-    assert np.isclose(float(Fic(2, value1)), expected_output, atol=1e-10)
+    assert np.isclose(float(Fic(func_Fi, 2, value1)), expected_output, atol=1e-10)
 
 def test_Fic_0_pos():
     
@@ -333,7 +333,7 @@ def test_Fic_0_pos():
     value1 = 19 # input chemical potential value
     expected_output = 9.500000002801396 # expected result
     
-    assert np.isclose(float(Fic(0, value1)), expected_output, atol=1e-10)
+    assert np.isclose(float(Fic(func_Fi, 0, value1)), expected_output, atol=1e-10)
 
 def test_Fic_1_pos():
     
@@ -353,7 +353,7 @@ def test_Fic_1_pos():
     value1 = 19 # input chemical potential value
     expected_output = 91.07246703062272 # expected result
     
-    assert np.isclose(float(Fic(1, value1)), expected_output, atol=1e-10)
+    assert np.isclose(float(Fic(func_Fi, 1, value1)), expected_output, atol=1e-10)
 
 def test_Fic_2_pos():
     
@@ -373,7 +373,7 @@ def test_Fic_2_pos():
     value1 = 19 # input chemical potential value
     expected_output = 1174.4204139423857 # expected result
     
-    assert np.isclose(float(Fic(2, value1)), expected_output, atol=1e-10)
+    assert np.isclose(float(Fic(func_Fi, 2, value1)), expected_output, atol=1e-10)
 
 # test of thermoelectric quantities calculation
 

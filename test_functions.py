@@ -88,7 +88,7 @@ def test_F1c():
     and an array of input values for the chemical potential (which comprehends null, positive and negative values in a realistic range)
     when the F1c function is applied, it gives an array containing the expected results:
     
-    - if inputs such that (value2 - value1) < or > 0 (1st, 2nd and 3rd elements of input arrays) -> F0c is positive and tends asintotically to 0
+    - if inputs such that (value2 - value1) < or > 0 (1st, 2nd and 3rd elements of input arrays) -> F1c is positive and tends asintotically to 0
     - if inputs such that (value2 - value1) = 0 (4th elements of input arrays) -> expected result = e
     ----------
 
@@ -110,8 +110,8 @@ def test_F2c():
     and an array of input values for the chemical potential (which comprehends null, positive and negative values in a realistic range)
     when the F2c function is applied, it gives an array containing the expected results:
     
-    - if inputs such that (value2 - value1) < 0 (1st and 2nd elements of input arrays) -> F0c is positive and tends asintotically to 0
-    - if inputs such that (value2 - value1) = or > 0 (3rd and 4th elements of input arrays) -> F0c is positive 
+    - if inputs such that (value2 - value1) < 0 (1st and 2nd elements of input arrays) -> F2c is positive and tends asintotically to 0
+    - if inputs such that (value2 - value1) = or > 0 (3rd and 4th elements of input arrays) -> F2c is positive 
     ----------
 
     """
@@ -132,8 +132,8 @@ def test_F3c():
     and an array of input values for the chemical potential (which comprehends null, positive and negative values in a realistic range)
     when the F3c function is applied, it gives an array containing the expected results:
         
-    - if inputs such that (value2 - value1) < or > 0 (1st, 2nd and 3rd elements of input arrays) -> F0c is positive and tends asintotically to 0
-    - if inputs such that (value2 - value1) = 0 (3rd and 4th elements of input arrays) -> F0c reaches the maximum value close to 10 
+    - if inputs such that (value2 - value1) < or > 0 (1st, 2nd and 3rd elements of input arrays) -> F3c is positive and tends asintotically to 0
+    - if inputs such that (value2 - value1) = 0 (3rd and 4th elements of input arrays) -> F3c reaches the maximum value close to 10 
 
     ----------
 
@@ -157,9 +157,9 @@ def test_F0v():
     and an array of input values for the chemical potential (which comprehends null, positive and negative values in a realistic range)
     when the F0v function is applied, it gives an array containing the expected results:
         
-    - if inputs such that (value2 + value1) < 0 (1st elements of input arrays) -> F0c is positive and tends asintotically to 1
-    - if inputs such that (value2 + value1) > 0 (2nd and 3rd elements of input arrays) -> F0c is positive and tends asintotically to 0
-    - if inputs such that (value2 + value1) = 0 (4th elements of input arrays) -> F0c reaches the maximum value close to 10 
+    - if inputs such that (value2 + value1) < 0 (1st elements of input arrays) -> F0v is positive and tends asintotically to 1
+    - if inputs such that (value2 + value1) > 0 (2nd and 3rd elements of input arrays) -> F0v is positive and tends asintotically to 0
+    - if inputs such that (value2 + value1) = 0 (4th elements of input arrays) -> F0v reaches the maximum value close to 10 
 
     ----------
 
@@ -181,8 +181,8 @@ def test_F1v():
     and an array of input values for the chemical potential (which comprehends null, positive and negative values in a realistic range)
     when the F1v function is applied, it gives an array containing the expected results:
         
-    - if inputs such that (value2 + value1) < or > 0 (1st, 2nd and 3rd elements of input arrays) -> F0c is negative and tends asintotically to 1
-    - if inputs such that (value2 + value1) = 0 (4th elements of input arrays) -> F0c reaches the minimum value close to -0.7
+    - if inputs such that (value2 + value1) < or > 0 (1st, 2nd and 3rd elements of input arrays) -> F1v is negative and tends asintotically to 1
+    - if inputs such that (value2 + value1) = 0 (4th elements of input arrays) -> F1v reaches the minimum value close to -0.7
 
     ----------
 
@@ -204,9 +204,9 @@ def test_F2v():
     and an array of input values for the chemical potential (which comprehends null, positive and negative values in a realistic range)
     when the F2v function is applied, it gives an array containing the expected results:
         
-    - if inputs such that (value2 + value1) < 0 (1st elements of input arrays) -> F0c is positive and tends asintotically to 3.5
-    - if inputs such that (value2 + value1) > 0 (2nd and 3rd elements of input arrays) -> F0c is positive and tends asintotically to 0 
-    - if inputs such that (value2 + value1) = 0 (4th elements of input arrays) -> F0c reaches the minimum value close to 1.5
+    - if inputs such that (value2 + value1) < 0 (1st elements of input arrays) -> F2v is positive and tends asintotically to 3.5
+    - if inputs such that (value2 + value1) > 0 (2nd and 3rd elements of input arrays) -> F2v is positive and tends asintotically to 0 
+    - if inputs such that (value2 + value1) = 0 (4th elements of input arrays) -> F2v reaches the minimum value close to 1.5
 
     ----------
 
@@ -228,8 +228,8 @@ def test_F3v():
     and an array of input values for the chemical potential (which comprehends null, positive and negative values in a realistic range)
     when the F3v function is applied, it gives an array containing the expected results:
         
-    - if inputs such that (value2 + value1) < or < 0 (1st, 2nd and 3rd elements of input arrays) -> F0c is positive and tends asintotically to 0
-    - if inputs such that (value2 + value1) = 0 (4th elements of input arrays) -> F0c reaches the minimum value close to 11
+    - if inputs such that (value2 + value1) < or < 0 (1st, 2nd and 3rd elements of input arrays) -> F3v is positive and tends asintotically to 0
+    - if inputs such that (value2 + value1) = 0 (4th elements of input arrays) -> F3v reaches the minimum value close to 11
 
     ----------
 
@@ -674,7 +674,7 @@ def test_Gic_0_neg():
     value2 = -5 # input chemical potential value
     expected_output = 3.581198434041771e-08 # expected result
     
-    assert float(Gic(0, value1, value2)) == expected_output
+    assert float(Gic(func_Gi, 0, value1, value2)) == expected_output
 
 def test_Gic_1_neg():
     
@@ -695,7 +695,7 @@ def test_Gic_1_neg():
     value2 = -5 # input chemical potential value
     expected_output = 6.400404422663984e-07 # expected result
     
-    assert float(Gic(1, value1, value2)) == expected_output
+    assert float(Gic(func_Gi, 1, value1, value2)) == expected_output
 
 def test_Gic_2_neg():
     
@@ -716,7 +716,7 @@ def test_Gic_2_neg():
     value2 = -5 # input chemical potential value
     expected_output = 1.1466614882245465e-05 # expected result
     
-    assert float(Gic(2, value1, value2)) == expected_output
+    assert float(Gic(func_Gi, 2, value1, value2)) == expected_output
 
 def test_Gic_3_neg():
     
@@ -737,7 +737,7 @@ def test_Gic_3_neg():
     value2 = -5 # input chemical potential value
     expected_output = 0.0002059723191182534 # expected result
     
-    assert float(Gic(3, value1, value2)) == expected_output
+    assert float(Gic(func_Gi, 3, value1, value2)) == expected_output
 
 def test_Gic_0_pos():
     
@@ -758,7 +758,7 @@ def test_Gic_0_pos():
     value2 = 19 # input chemical potential value
     expected_output = 0.05774031961490533 # expected result
     
-    assert float(Gic(0, value1, value2)) == expected_output
+    assert float(Gic(func_Gi, 0, value1, value2)) == expected_output
 
 def test_Gic_1_pos():
     
@@ -779,7 +779,7 @@ def test_Gic_1_pos():
     value2 = 19 # input chemical potential value
     expected_output = -0.021155868450199625 # expected result
     
-    assert float(Gic(1, value1, value2)) == expected_output
+    assert float(Gic(func_Gi, 1, value1, value2)) == expected_output
 
 def test_Gic_2_pos():
     
@@ -800,7 +800,7 @@ def test_Gic_2_pos():
     value2 = 19 # input chemical potential value
     expected_output = 0.2096574070917556 # expected result
     
-    assert float(Gic(2, value1, value2)) == expected_output
+    assert float(Gic(func_Gi, 2, value1, value2)) == expected_output
 
 def test_Gic_3_pos():
     
@@ -821,7 +821,7 @@ def test_Gic_3_pos():
     value2 = 19 # input chemical potential value
     expected_output = -0.32955465691931424 # expected result
     
-    assert float(Gic(3, value1, value2)) == expected_output   
+    assert float(Gic(func_Gi, 3, value1, value2)) == expected_output   
 
 def test_Giv_0_pos(): 
 
@@ -840,7 +840,7 @@ def test_Giv_0_pos():
     value1 = 17 # input energy gap value
     value2 = -9 # input chemical potential value
     expected_output = 0.0003015760070507426 # expected result
-    assert float(Giv(0, value1, value2)) == expected_output
+    assert float(Giv(func_Gi, 0, value1, value2)) == expected_output
 
 def test_Giv_1_pos(): 
 
@@ -860,7 +860,7 @@ def test_Giv_1_pos():
     value2 = -9 # input chemical potential value
     expected_output = -0.002685138951920471 # expected result
     
-    assert float(Giv(1, value1, value2)) == expected_output
+    assert float(Giv(func_Gi, 1, value1, value2)) == expected_output
 
 def test_Giv_2_pos(): 
 
@@ -880,7 +880,7 @@ def test_Giv_2_pos():
     value2 = -9 # input chemical potential value
     expected_output = 0.02415602999913352 # expected result
     
-    assert float(Giv(2, value1, value2)) == expected_output
+    assert float(Giv(func_Gi, 2, value1, value2)) == expected_output
 
 def test_Giv_3_pos(): 
 
@@ -900,7 +900,7 @@ def test_Giv_3_pos():
     value2 = -9 # input chemical potential value
     expected_output = -0.21995714831541316 # expected result
     
-    assert float(Giv(3, value1, value2)) == expected_output
+    assert float(Giv(func_Gi, 3, value1, value2)) == expected_output
 
 def test_Giv_0_neg(): 
 
@@ -920,7 +920,7 @@ def test_Giv_0_neg():
     value2 = -13.5 # input chemical potential value
     expected_output = 0.20920887511574163 # expected result
     
-    assert float(Giv(0, value1, value2)) == expected_output
+    assert float(Giv(func_Gi, 0, value1, value2)) == expected_output
 
 def test_Giv_1_neg(): 
 
@@ -940,7 +940,7 @@ def test_Giv_1_neg():
     value2 = -13.5 # input chemical potential value
     expected_output = 0.1091344724450294 # expected result
     
-    assert float(Giv(1, value1, value2)) == expected_output
+    assert float(Giv(func_Gi, 1, value1, value2)) == expected_output
 
 def test_Giv_2_neg(): 
 
@@ -960,7 +960,7 @@ def test_Giv_2_neg():
     value2 = -13.5 # input chemical potential value
     expected_output = 0.7984132352426201 # expected result
     
-    assert float(Giv(2, value1, value2)) == expected_output
+    assert float(Giv(func_Gi, 2, value1, value2)) == expected_output
 
 def test_Giv_3_neg(): 
 
@@ -980,4 +980,4 @@ def test_Giv_3_neg():
     value2 = -13.5 # input chemical potential value
     expected_output = 1.498243983361794 # expected result
     
-    assert float(Giv(3, value1, value2)) == expected_output
+    assert float(Giv(func_Gi, 3, value1, value2)) == expected_output
