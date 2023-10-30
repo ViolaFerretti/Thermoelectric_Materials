@@ -43,13 +43,16 @@ def func_Fi(x,
     
     return (x)**i/(exp1(x - eta))
     
-def Fic(i,
+def Fic(func_Fi,
+        i,
         eta):
     """
     function to calculate the F_i function for the conduction band
 
     Parameters
     ----------
+    func_Fi : TYPE function
+              DESCRIPTION integrand function
     i : TYPE int
         DESCRIPTION index parameter to be entered in the function,
         indicating the corresponding transport integral
@@ -85,7 +88,7 @@ def sigma_SBMP(eta):
 
     """
     
-    return Fic(0, eta)
+    return Fic(func_Fi, 0, eta)
 
 def S_SBMP(eta):
     
@@ -105,7 +108,7 @@ def S_SBMP(eta):
 
     """
     
-    return (2*Fic(1, eta) - eta*Fic(0, eta))/Fic(0, eta) 
+    return (2*Fic(func_Fi, 1, eta) - eta*Fic(func_Fi, 0, eta))/Fic(func_Fi, 0, eta) 
 
 def ke_SBMP(eta):
     
@@ -125,10 +128,10 @@ def ke_SBMP(eta):
 
     """
     
-    F_2 = 3*Fic(2, eta) # 1st term (F2 contribution)
-    F_1 = 4*eta*Fic(1, eta) # 2nd term (F1 contribution)
-    F_0 = (eta**2)*Fic(0, eta) # 3rd term (F0 contribution)
-    F_1_0 = ((2*Fic(1, eta) - eta*Fic(0, eta))**2)/Fic(0, eta) # 4th term (F1 and F0 contribution)
+    F_2 = 3*Fic(func_Fi, 2, eta) # 1st term (F2 contribution)
+    F_1 = 4*eta*Fic(func_Fi, 1, eta) # 2nd term (F1 contribution)
+    F_0 = (eta**2)*Fic(func_Fi, 0, eta) # 3rd term (F0 contribution)
+    F_1_0 = ((2*Fic(func_Fi, 1, eta) - eta*Fic(func_Fi, 0, eta))**2)/Fic(func_Fi, 0, eta) # 4th term (F1 and F0 contribution)
     
     return F_2 - F_1 + F_0 - F_1_0
 
