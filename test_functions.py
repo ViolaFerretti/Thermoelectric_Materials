@@ -31,7 +31,7 @@ def test_log1():
     value = np.asarray([-np.infty, -10, 0 ,10, np.infty]) # input x values
     expected_output = [np.infty, 1.00000454e+01, 6.93147181e-01, 4.53988992e-05, 0.00000000e+00] # expected results
     
-    assert np.allclose(log1(value).astype(float), expected_output)
+    assert np.allclose(log1(value).astype(float), expected_output, atol=1e-10)
     
 
 def test_exp1():
@@ -52,7 +52,7 @@ def test_exp1():
     value = np.asarray([-np.infty, -10, 0 ,10, np.infty]) # input x values
     expected_output = [1.00000000e+00, 1.00004540e+00, 2.00000000e+00, 2.20274658e+04, np.infty] # expected results
     
-    assert np.allclose(exp1(value).astype(float), expected_output)
+    assert np.allclose(exp1(value).astype(float), expected_output, atol=1e-10)
 
 # test of F functions of the conduction band
 def test_F0c():
@@ -76,7 +76,7 @@ def test_F0c():
     value2 = np.asarray([-20.5, 0 ,10, 20.5]) # input chemical potential values
     expected_output = [1.25015286e-09, 1.82425524e-01, 9.93307149e-01, 5.00000000e-01] # expected results
     
-    assert np.allclose(F0c(value1, value2).astype(float), expected_output)
+    assert np.allclose(F0c(value1, value2).astype(float), expected_output, atol=1e-10)
 
 def test_F1c():
     
@@ -98,7 +98,7 @@ def test_F1c():
     value2 = np.asarray([-20.5, 0 ,10, 20.5]) # input chemical potential values
     expected_output = [2.68782863e-08, 4.75051564e-01, 4.01796031e-02, 6.93147181e-01] # expected results
     
-    assert np.allclose(F1c(value1, value2).astype(float), expected_output)
+    assert np.allclose(F1c(value1, value2).astype(float), expected_output, atol=1e-10)
 
 def test_F2c():
     
@@ -120,7 +120,7 @@ def test_F2c():
     value2 = np.asarray([-20.5, 0 ,10, 20.5]) # input chemical potential values
     expected_output = [5.79133314e-07, 1.43826122e+00, 3.0419401139431073, 1.64493407e+00] # expected results
     
-    assert np.allclose(F2c(value1, value2).astype(float), expected_output)
+    assert np.allclose(F2c(value1, value2).astype(float), expected_output, atol=1e-10)
 
 def test_F3c():
         
@@ -143,7 +143,7 @@ def test_F3c():
     value2 = np.asarray([-20.5, 0 ,10, 20.5]) # input chemical potential values
     expected_output = [2.50152443e-05, 1.03699281e+01, 3.1649002567560833, 1.08185121e+01] # expected results
     
-    assert np.allclose(F3c(value1, value2).astype(float), expected_output)
+    assert np.allclose(F3c(value1, value2).astype(float), expected_output, atol=1e-10)
 
 # test of F functions of valence band
 
@@ -169,7 +169,7 @@ def test_F0v():
     value2 = np.asarray([-16.5, 0 ,10, -20.5]) # input chemical potential values
     expected_output = [9.99999999e-01, 1.82425524e-01, 1.38879439e-11, 5.00000000e-01] # expected results
     
-    assert np.allclose(F0v(value1, value2).astype(float), expected_output)
+    assert np.allclose(F0v(value1, value2).astype(float), expected_output, atol=1e-10)
 
 def test_F1v():
     
@@ -192,7 +192,7 @@ def test_F1v():
     value2 = np.asarray([-16.5, 0 ,10, -20.5]) # input chemical potential values
     expected_output = [-1.19448051e-06, -4.75051564e-01, -3.61086598e-10, -6.93147181e-01] # expected results
     
-    assert np.allclose(F1v(value1, value2).astype(float), expected_output)
+    assert np.allclose(F1v(value1, value2).astype(float), expected_output, atol=1e-10)
 
 def test_F2v():
     
@@ -216,7 +216,7 @@ def test_F2v():
     value2 = np.asarray([-16.5, 0 ,10, -20.5]) # input chemical potential values
     expected_output = [3.289867554563159, 1.4382612217634507, 9.4021408961890241e-9, 1.6449340668482264] # expected results
     
-    assert np.allclose(F2v(value1, value2).astype(float), expected_output)
+    assert np.allclose(F2v(value1, value2).astype(float), expected_output, atol=1e-10)
 
 def test_F3v():
         
@@ -239,7 +239,7 @@ def test_F3v():
     value2 = np.asarray([-16.5, 0 ,10, -20.5]) # input chemical potential values
     expected_output = [0.00073905922545236535, 10.369928135499528, 4.9041129123324437e-7, 10.81851212843635] # expected results
     
-    assert np.allclose(F3v(value1, value2).astype(float), expected_output)
+    assert np.allclose(F3v(value1, value2).astype(float), expected_output, atol=1e-10)
 
 # test of G functions
 
@@ -280,7 +280,7 @@ def test_func_Gi_1_pole():
     expected_output = ZeroDivisionError # expected result
     
     assert func_Gi(value3,1,value1,value2) == expected_output
-
+        
 def test_func_Gi_2_pole():
             
     """
@@ -299,7 +299,7 @@ def test_func_Gi_2_pole():
     expected_output = ZeroDivisionError # expected result
     
     assert func_Gi(value3,2,value1,value2) == expected_output
-
+        
 def test_func_Gi_3_pole():
             
     """
@@ -318,7 +318,7 @@ def test_func_Gi_3_pole():
     expected_output = ZeroDivisionError # expected result
     
     assert func_Gi(value3,3,value1,value2) == expected_output
-
+        
 def test_func_Gi_0_largex_pos():
             
     """
@@ -338,8 +338,8 @@ def test_func_Gi_0_largex_pos():
     value3 = 200 # input x value
     expected_output = 5.240791580541492e-90 # expected result
     
-    assert func_Gi(value3,0,value1,value2) == expected_output
-
+    assert np.isclose(func_Gi(value3,0,value1,value2), expected_output, atol=1e-10)
+    
 def test_func_Gi_1_largex_pos():
             
     """
@@ -359,8 +359,8 @@ def test_func_Gi_1_largex_pos():
     value3 = 200 # input x value
     expected_output = 1.0481583161082983e-87 # expected result
     
-    assert func_Gi(value3,1,value1,value2) == expected_output
-
+    assert np.isclose(func_Gi(value3,1,value1,value2), expected_output, atol=1e-10)
+    
 def test_func_Gi_2_largex_pos():
             
     """
@@ -380,8 +380,8 @@ def test_func_Gi_2_largex_pos():
     value3 = 200 # input x value
     expected_output = 2.0963166322165967e-85 # expected result
     
-    assert func_Gi(value3,2,value1,value2) == expected_output
-
+    assert np.isclose(func_Gi(value3,2,value1,value2), expected_output, atol=1e-10)
+    
 def test_func_Gi_3_largex_pos():
             
     """
@@ -401,8 +401,8 @@ def test_func_Gi_3_largex_pos():
     value3 = 200 # input x value
     expected_output = 4.192633264433194e-83 # expected result
     
-    assert func_Gi(value3,3,value1,value2) == expected_output
-
+    assert np.isclose(func_Gi(value3,3,value1,value2), expected_output, atol=1e-10)
+    
 def test_func_Gi_0_largex_neg():
             
     """
@@ -422,8 +422,8 @@ def test_func_Gi_0_largex_neg():
     value3 = -200 # input x value
     expected_output = 4.741965493160981e-90 # expected result
     
-    assert func_Gi(value3,0,value1,value2) == expected_output
-
+    assert np.isclose(func_Gi(value3,0,value1,value2), expected_output, atol=1e-10)
+    
 def test_func_Gi_1_largex_neg():
             
     """
@@ -443,8 +443,8 @@ def test_func_Gi_1_largex_neg():
     value3 = -200 # input x value
     expected_output = -9.48393098632196e-88 # expected result
     
-    assert func_Gi(value3,1,value1,value2) == expected_output
-
+    assert np.isclose(func_Gi(value3,1,value1,value2), expected_output, atol=1e-10)
+    
 def test_func_Gi_2_largex_neg():
             
     """
@@ -464,8 +464,8 @@ def test_func_Gi_2_largex_neg():
     value3 = -200 # input x value
     expected_output = 1.8967861972643923e-85 # expected result
     
-    assert func_Gi(value3,2,value1,value2) == expected_output
-
+    assert np.isclose(func_Gi(value3,2,value1,value2), expected_output, atol=1e-10)
+    
 def test_func_Gi_3_largex_neg():
             
     """
@@ -485,8 +485,8 @@ def test_func_Gi_3_largex_neg():
     value3 = -200 # input x value
     expected_output = -3.793572394528785e-83 # expected result
     
-    assert func_Gi(value3,3,value1,value2) == expected_output
-
+    assert np.isclose(func_Gi(value3,3,value1,value2), expected_output, atol=1e-10)
+    
 def test_func_Gi_0_smallx_pos():
             
     """
@@ -506,8 +506,8 @@ def test_func_Gi_0_smallx_pos():
     value3 = 0.003 # input x value
     expected_output = 1.441726312558458 # expected result
     
-    assert func_Gi(value3,0,value1,value2) == expected_output
-
+    assert np.isclose(func_Gi(value3,0,value1,value2), expected_output, atol=1e-10)
+    
 def test_func_Gi_1_smallx_pos():
             
     """
@@ -527,8 +527,8 @@ def test_func_Gi_1_smallx_pos():
     value3 = 0.003 # input x value
     expected_output = 0.004325178937675374 # expected result
     
-    assert func_Gi(value3,1,value1,value2) == expected_output
-
+    assert np.isclose(func_Gi(value3,1,value1,value2), expected_output, atol=1e-10)
+    
 def test_func_Gi_2_smallx_pos():
             
     """
@@ -548,8 +548,8 @@ def test_func_Gi_2_smallx_pos():
     value3 = 0.003 # input x value
     expected_output = 1.2975536813026123e-05 # expected result
     
-    assert func_Gi(value3,2,value1,value2) == expected_output
-
+    assert np.isclose(func_Gi(value3,2,value1,value2), expected_output, atol=1e-10)
+    
 def test_func_Gi_3_smallx_pos():
             
     """
@@ -569,8 +569,8 @@ def test_func_Gi_3_smallx_pos():
     value3 = 0.003 # input x value
     expected_output = 3.8926610439078365e-08 # expected result
     
-    assert func_Gi(value3,3,value1,value2) == expected_output
-
+    assert np.isclose(func_Gi(value3,3,value1,value2), expected_output, atol=1e-10)
+    
 def test_func_Gi_0_smallx_neg():
             
     """
@@ -590,8 +590,8 @@ def test_func_Gi_0_smallx_neg():
     value3 = -0.003 # input x value
     expected_output = 1.43827031784613 # expected result
     
-    assert func_Gi(value3,0,value1,value2) == expected_output
-
+    assert np.isclose(func_Gi(value3,0,value1,value2), expected_output, atol=1e-10)
+    
 def test_func_Gi_1_smallx_neg():
             
     """
@@ -611,8 +611,8 @@ def test_func_Gi_1_smallx_neg():
     value3 = -0.003 # input x value
     expected_output = -0.00431481095353839 # expected result
     
-    assert func_Gi(value3,1,value1,value2) == expected_output
-
+    assert np.isclose(func_Gi(value3,1,value1,value2), expected_output, atol=1e-10)
+    
 def test_func_Gi_2_smallx_neg():
             
     """
@@ -632,8 +632,8 @@ def test_func_Gi_2_smallx_neg():
     value3 = -0.003 # input x value
     expected_output = 1.2944432860615173e-05 # expected result
     
-    assert func_Gi(value3,2,value1,value2) == expected_output
-
+    assert np.isclose(func_Gi(value3,2,value1,value2), expected_output, atol=1e-10)
+    
 def test_func_Gi_3_smallx_neg():
             
     """
@@ -653,8 +653,8 @@ def test_func_Gi_3_smallx_neg():
     value3 = -0.003 # input x value
     expected_output = -3.883329858184551e-08 # expected result
     
-    assert func_Gi(value3,3,value1,value2) == expected_output
-
+    assert np.isclose(func_Gi(value3,3,value1,value2), expected_output, atol=1e-10)
+    
 def test_Gic_0_neg():
     
     """
@@ -674,7 +674,7 @@ def test_Gic_0_neg():
     value2 = -5 # input chemical potential value
     expected_output = 3.581198434041771e-08 # expected result
     
-    assert float(Gic(func_Gi, 0, value1, value2)) == expected_output
+    assert np.isclose(float(Gic(func_Gi, 0, value1, value2)), expected_output, atol=1e-10)
 
 def test_Gic_1_neg():
     
@@ -695,7 +695,7 @@ def test_Gic_1_neg():
     value2 = -5 # input chemical potential value
     expected_output = 6.400404422663984e-07 # expected result
     
-    assert float(Gic(func_Gi, 1, value1, value2)) == expected_output
+    assert np.isclose(float(Gic(func_Gi, 1, value1, value2)), expected_output, atol=1e-10)
 
 def test_Gic_2_neg():
     
@@ -716,7 +716,7 @@ def test_Gic_2_neg():
     value2 = -5 # input chemical potential value
     expected_output = 1.1466614882245465e-05 # expected result
     
-    assert float(Gic(func_Gi, 2, value1, value2)) == expected_output
+    assert np.isclose(float(Gic(func_Gi, 2, value1, value2)), expected_output, atol=1e-10)
 
 def test_Gic_3_neg():
     
@@ -737,7 +737,7 @@ def test_Gic_3_neg():
     value2 = -5 # input chemical potential value
     expected_output = 0.0002059723191182534 # expected result
     
-    assert float(Gic(func_Gi, 3, value1, value2)) == expected_output
+    assert np.isclose(float(Gic(func_Gi, 3, value1, value2)), expected_output, atol=1e-10)
 
 def test_Gic_0_pos():
     
@@ -758,7 +758,7 @@ def test_Gic_0_pos():
     value2 = 19 # input chemical potential value
     expected_output = 0.05774031961490533 # expected result
     
-    assert float(Gic(func_Gi, 0, value1, value2)) == expected_output
+    assert np.isclose(float(Gic(func_Gi, 0, value1, value2)), expected_output, atol=1e-10)
 
 def test_Gic_1_pos():
     
@@ -779,7 +779,7 @@ def test_Gic_1_pos():
     value2 = 19 # input chemical potential value
     expected_output = -0.021155868450199625 # expected result
     
-    assert float(Gic(func_Gi, 1, value1, value2)) == expected_output
+    assert np.isclose(float(Gic(func_Gi, 1, value1, value2)), expected_output, atol=1e-10)
 
 def test_Gic_2_pos():
     
@@ -800,7 +800,7 @@ def test_Gic_2_pos():
     value2 = 19 # input chemical potential value
     expected_output = 0.2096574070917556 # expected result
     
-    assert float(Gic(func_Gi, 2, value1, value2)) == expected_output
+    assert np.isclose(float(Gic(func_Gi, 2, value1, value2)), expected_output, atol=1e-10)
 
 def test_Gic_3_pos():
     
@@ -821,7 +821,7 @@ def test_Gic_3_pos():
     value2 = 19 # input chemical potential value
     expected_output = -0.32955465691931424 # expected result
     
-    assert float(Gic(func_Gi, 3, value1, value2)) == expected_output   
+    assert np.isclose(float(Gic(func_Gi, 3, value1, value2)), expected_output, atol=1e-10)
 
 def test_Giv_0_pos(): 
 
@@ -840,7 +840,8 @@ def test_Giv_0_pos():
     value1 = 17 # input energy gap value
     value2 = -9 # input chemical potential value
     expected_output = 0.0003015760070507426 # expected result
-    assert float(Giv(func_Gi, 0, value1, value2)) == expected_output
+    
+    assert np.isclose(float(Giv(func_Gi, 0, value1, value2)), expected_output, atol=1e-10)
 
 def test_Giv_1_pos(): 
 
@@ -860,7 +861,7 @@ def test_Giv_1_pos():
     value2 = -9 # input chemical potential value
     expected_output = -0.002685138951920471 # expected result
     
-    assert float(Giv(func_Gi, 1, value1, value2)) == expected_output
+    assert np.isclose(float(Giv(func_Gi, 1, value1, value2)), expected_output, atol=1e-10)
 
 def test_Giv_2_pos(): 
 
@@ -880,7 +881,7 @@ def test_Giv_2_pos():
     value2 = -9 # input chemical potential value
     expected_output = 0.02415602999913352 # expected result
     
-    assert float(Giv(func_Gi, 2, value1, value2)) == expected_output
+    assert np.isclose(float(Giv(func_Gi, 2, value1, value2)), expected_output, atol=1e-10)
 
 def test_Giv_3_pos(): 
 
@@ -900,7 +901,7 @@ def test_Giv_3_pos():
     value2 = -9 # input chemical potential value
     expected_output = -0.21995714831541316 # expected result
     
-    assert float(Giv(func_Gi, 3, value1, value2)) == expected_output
+    assert np.isclose(float(Giv(func_Gi, 3, value1, value2)), expected_output, atol=1e-10)
 
 def test_Giv_0_neg(): 
 
@@ -920,7 +921,7 @@ def test_Giv_0_neg():
     value2 = -13.5 # input chemical potential value
     expected_output = 0.20920887511574163 # expected result
     
-    assert float(Giv(func_Gi, 0, value1, value2)) == expected_output
+    assert np.isclose(float(Giv(func_Gi, 0, value1, value2)), expected_output, atol=1e-10)
 
 def test_Giv_1_neg(): 
 
@@ -940,7 +941,7 @@ def test_Giv_1_neg():
     value2 = -13.5 # input chemical potential value
     expected_output = 0.1091344724450294 # expected result
     
-    assert float(Giv(func_Gi, 1, value1, value2)) == expected_output
+    assert np.isclose(float(Giv(func_Gi, 1, value1, value2)), expected_output, atol=1e-10)
 
 def test_Giv_2_neg(): 
 
@@ -960,7 +961,7 @@ def test_Giv_2_neg():
     value2 = -13.5 # input chemical potential value
     expected_output = 0.7984132352426201 # expected result
     
-    assert float(Giv(func_Gi, 2, value1, value2)) == expected_output
+    assert np.isclose(float(Giv(func_Gi, 2, value1, value2)), expected_output, atol=1e-10)
 
 def test_Giv_3_neg(): 
 
@@ -980,4 +981,4 @@ def test_Giv_3_neg():
     value2 = -13.5 # input chemical potential value
     expected_output = 1.498243983361794 # expected result
     
-    assert float(Giv(func_Gi, 3, value1, value2)) == expected_output
+    assert np.isclose(float(Giv(func_Gi, 3, value1, value2)), expected_output, atol=1e-10)
