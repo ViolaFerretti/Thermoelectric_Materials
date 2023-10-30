@@ -11,7 +11,11 @@ from matplotlib.ticker import AutoMinorLocator
 import numpy as np
 
 # 2D plots for double band models
-def create_matrix_DBM(Y, sub, delta, eta, rk):
+def create_matrix_DBM(Y,
+                      sub, 
+                      delta, 
+                      eta, 
+                      rk):
     
     """
     
@@ -60,6 +64,7 @@ def create_matrix_DBM(Y, sub, delta, eta, rk):
     return y
 
 def subplots_2D_graph(fig,
+                      create_matrix_DBM,
                       Y,
                       ylabel,
                       sub,
@@ -75,6 +80,8 @@ def subplots_2D_graph(fig,
     ----------
     fig: TYPE matplotlib.figure.Figure()
          DESCRIPTION. figure containing this subplot
+    create_matrix_DBM : TYPE function
+                        DESCRIPTION function to calculate matrix of values to plot
     Y : TYPE numpy.ndarray
         DESCRIPTION. calculated thermoelectric quantity
     ylabel : TYPE string
@@ -169,7 +176,10 @@ def complete_2d_plot(Y1,
 
 # 2D plots for single band model
 
-def create_matrix_SBM(Y, sub, eta, rk):
+def create_matrix_SBM(Y, 
+                      sub, 
+                      eta, 
+                      rk):
     
     """
     
@@ -207,6 +217,7 @@ def create_matrix_SBM(Y, sub, eta, rk):
     return y
 
 def subplots_2D_graph_SBM(fig,
+                          create_matrix_SBM,
                           Y,
                           ylabel,
                           sub,
@@ -221,6 +232,8 @@ def subplots_2D_graph_SBM(fig,
     ----------
     fig: TYPE matplotlib.figure.Figure()
          DESCRIPTION. figure containing this subplot
+    create_matrix_SBM : TYPE function
+                        DESCRIPTION function to calculate matrix of values to plot
     Y : TYPE numpy.ndarray
         DESCRIPTION. calculated thermoelectric quantity
     ylabel : TYPE string
