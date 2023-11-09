@@ -25,13 +25,15 @@ In the end, the computed thermoelectric quantities depend on three main paramete
 
 # 2. Setup
 ## 2.1 Using Anaconda
+In the Anaconda Prompt, do the following steps.
 ### (a) Clone the repository
+Write:
 ```
 git clone https://github.com/ViolaFerretti/Thermoelectric_Materials.git
 
 ```
 ### (b) Install packages
-In the Anaconda Prompt, install the necessary packages in python3: 
+Install the necessary packages in python3: 
 - to manage calculations:
 ```
 conda install numpy
@@ -47,15 +49,20 @@ conda install matplotlib
 conda install -c conda-forge pysimplegui
 ```
 ### (c) Run the software
-Run the software with one of the environments, for example in Spyder.
+Write:
+```
+python GUI.py
+```
 ## 2.2 Using Windows
+In the Windows Prompt, do the following steps.
 ### (a) Clone the repository
+Write:
 ```
 git clone https://github.com/ViolaFerretti/Thermoelectric_Materials.git
 
 ```
 ### (b) Install packages
-In the Windows Prompt, make sure that you have all the needed packages in python3: 
+Install all the needed packages in python3: 
 - to manage calculations:
 ```
 pip install numpy
@@ -71,8 +78,9 @@ pip install matplotlib
 pip install PySimpleGUI
 ```
 ### (c) Run the software
+Write:
 ```
-python3 GUI.py
+python GUI.py
 ```
 # 3. Start
 ## 3.1 Select the model
