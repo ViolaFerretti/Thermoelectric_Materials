@@ -166,10 +166,10 @@ def complete_2d_plot(Y1,
     fig = Figure(figsize=(10, 4)) # figure
     fig.suptitle(title) # title of the figure
     # insert subplot in the figure
-    subplots_2D_graph(fig, Y1, 'S($S_0$)', 1, delta, eta, 0)
-    subplots_2D_graph(fig, Y2, '$\sigma(\sigma_0)$', 2, delta, eta, 0)
-    subplots_2D_graph(fig, Y3, '$\kappa_e(\kappa_0)$', 3, delta, eta, 0)
-    subplots_2D_graph(fig, Y4, 'ZT(S,$\sigma$,$\kappa_e$)', 4, delta, eta, rk)
+    subplots_2D_graph(fig, create_matrix_DBM, Y1, 'S($S_0$)', 1, delta, eta, 0)
+    subplots_2D_graph(fig, create_matrix_DBM, Y2, '$\sigma(\sigma_0)$', 2, delta, eta, 0)
+    subplots_2D_graph(fig, create_matrix_DBM, Y3, '$\kappa_e(\kappa_0)$', 3, delta, eta, 0)
+    subplots_2D_graph(fig, create_matrix_DBM, Y4, 'ZT(S,$\sigma$,$\kappa_e$)', 4, delta, eta, rk)
     
     return fig
 
@@ -306,31 +306,33 @@ def complete_2d_plot_SBM(Y1,
     fig = Figure(figsize=(10, 4))# figure
     fig.suptitle(title) # title of the figure
     # insert subplot in the figure
-    subplots_2D_graph_SBM(fig, Y1, 'S($S_0$)', 1, eta, 0)
-    subplots_2D_graph_SBM(fig, Y2, '$\sigma(\sigma_0)$', 2, eta, 0)
-    subplots_2D_graph_SBM(fig, Y3, '$\kappa_e(\kappa_0)$', 3, eta, 0)
-    subplots_2D_graph_SBM(fig, Y4, 'ZT(S,$\sigma$,$\kappa_e$)', 4, eta, rk)
+    subplots_2D_graph_SBM(fig, create_matrix_SBM, Y1, 'S($S_0$)', 1, eta, 0)
+    subplots_2D_graph_SBM(fig, create_matrix_SBM, Y2, '$\sigma(\sigma_0)$', 2, eta, 0)
+    subplots_2D_graph_SBM(fig, create_matrix_SBM, Y3, '$\kappa_e(\kappa_0)$', 3, eta, 0)
+    subplots_2D_graph_SBM(fig, create_matrix_SBM, Y4, 'ZT(S,$\sigma$,$\kappa_e$)', 4, eta, rk)
     
     return fig
 
 # 3D plot
-def plot_anim_3d(X,
-                 Y,
+def plot_anim_3d(X1,
+                 X2,
+                 X3,
                  Z,
                  xlabel,
                  ylabel,
                  zlabel,
-                 title,
-                 ind): 
+                 title): 
 
     """function to do plots that rotate in 3D
 
     Parameters
     ----------
-    X : TYPE numpy.ndarray
+    X1 : TYPE numpy.ndarray
         DESCRIPTION. X data in the space (X,Y)
-    Y : TYPE numpy.ndarray
+    X2 : TYPE numpy.ndarray
         DESCRIPTION. Y data in the space (X,Y)
+    X3 : TYPE numpy.ndarray
+        DESCRIPTION. Y data in the space (X,Y)    
     Z : TYPE numpy.ndarray
         DESCRIPTION. Z data in function of the X,Y data 
     xlabel : TYPE string
@@ -341,9 +343,7 @@ def plot_anim_3d(X,
         DESCRIPTION. Label of the z axis
     title : TYPE string
         DESCRIPTION. title of the graph 
-    ind : TYPE int
-          DESCRIPTION. index parameter to indicate if the graph is related to the first (0) or second (1) part of the simulation
-
+    
     Returns
     -------
     fig : TYPE matplotlib.figure.Figure()
@@ -351,15 +351,17 @@ def plot_anim_3d(X,
 
     """
     
-    # set dimensions
-    if ind == 0: # for first part
-        fig = Figure(figsize=(5, 2.7))
-    if ind == 1: # for second part
-        fig = Figure(figsize=(6, 5))
-        
+    fig = Figure(figsize=(5, 2.7))   
     ax = fig.add_subplot(projection='3d') # subplot
-    ax.plot_surface(X, Y, Z, cmap=cm.nipy_spectral_r, rstride=2, cstride=2) # create 3D plot
     
+    vectorized_function = np.vectorize(Z) # vectorize function
+    if X3 == None:
+        output = vectorized_function(X1, X2) # vectorize output
+    elif type(X3) == float:
+        output = vectorized_function(X1, X2, X3) # vectorize output
+    Z1 = output.astype(float)
+    
+    ax.plot_surface(X1, X2, Z1, cmap=cm.nipy_spectral_r, rstride=2, cstride=2)
     # label axes
     ax.set_xlabel(xlabel)
     ax.set_ylabel(ylabel)
@@ -368,3 +370,77 @@ def plot_anim_3d(X,
         
     return fig
 
+def generate_arrays(npoint):
+    
+    delta = np.linspace(0.002, 10, npoint)
+    eta = np.linspace(-10, 10, npoint)
+    
+    return [delta, eta]
+
+def find_ZTmax(X1, 
+               X2,
+               ZT,
+               rk):
+    
+    X1, X2, rk = np.meshgrid(X1, X2, rk) # create meshgrid  from arrays of energy gap, chemical potential and thermal lattice conductivity
+    # calculate figure of merit ZT
+    ZT_vectorized_function = np.vectorize(ZT) # vectorize function
+    ZT_output = ZT_vectorized_function(X1, X2, rk) # vectorize output
+    ZT1 = ZT_output.astype(float) 
+    ZTmax = np.amax(ZT1, axis=1) # keep maximum values of ZT wrt to chemical potential (2D matrix delta x rk)
+    
+    return ZTmax
+
+def plot_anim_3d_rk(find_ZTmax,
+                    X1,
+                    X2,
+                    ZT,
+                    rk,
+                    xlabel,
+                    ylabel,
+                    zlabel,
+                    title): 
+
+    """function to do plots that rotate in 3D
+
+    Parameters
+    ----------
+    find_ZTmax : TYPE function
+                 DESCRIPTION. find maximum value of ZT wrt chemical potential
+    X2 : TYPE numpy.ndarray
+        DESCRIPTION. energy gap values
+    X2 : TYPE numpy.ndarray
+        DESCRIPTION. chemical potential values 
+    ZT : TYPE function
+         DESCRIPTION. figure of merit ZT to plot
+    rk : TYPE nd.array
+         DESCRIPTION thermal lattice conductivity values
+    xlabel : TYPE string
+             DESCRIPTION: Label of the x axis 
+    ylabel : TYPE string 
+             DESCRIPTION. Label of the y axis
+    zlabel : TYPE string
+             DESCRIPTION. Label of the z axis
+    title : TYPE string
+            DESCRIPTION. title of the graph 
+    
+    Returns
+    -------
+    fig : TYPE matplotlib.figure.Figure()
+        DESCRIPTION. 3D figure 
+
+    """
+    
+    fig = Figure(figsize=(6, 5))
+    ax = fig.add_subplot(projection='3d') # subplot
+    
+    Z = find_ZTmax(X1, X2, ZT, rk) 
+    rk, X1 = np.meshgrid(rk, X1) # create meshgrid from arrays of energy gap and chemical potential
+    ax.plot_surface(X1, rk, Z, cmap=cm.nipy_spectral_r, rstride=2, cstride=2)
+    # label axes
+    ax.set_xlabel(xlabel)
+    ax.set_ylabel(ylabel)
+    ax.set_zlabel(zlabel)
+    ax.set_title(title)
+        
+    return fig
