@@ -19,48 +19,29 @@ import PySimpleGUI as sg
 import sys
 
 # define functions to generate GUI
-def draw_figure(canvas,
-                figure):
+
+def make_window0():
     """
-    Function that draws the wanted figure in the empty canvas of the window.
-
-    Parameters
-    ----------
-    canvas: TYPE PySimpleGUI.Canvas(canvas, background_color, size)
-            DESCRIPTION. drawable panel on the surface of the PySimpleGUI application window
-    figure: TYPE matplotlib.figure.Figure()
-            DESCRIPTION. Figure we want to draw on the panel 
-
+    Make the initial window of the GUI
+    in which the user can enter the configuration file
     Returns
     -------
-    figure_canvas_agg: TYPE FigureCanvasTkAgg(figure, canvas)
-                       DESCRIPTION. Figure drawn on the canvas
+    TYPE
+        DESCRIPTION.
 
     """
-    figure_canvas_agg = FigureCanvasTkAgg(figure,canvas)
-    figure_canvas_agg.draw()
-    figure_canvas_agg.get_tk_widget().pack(side="top", fill="both", expand=1)
-    
-    return figure_canvas_agg
+    layout = [
+    [sg.Text('Configuration File Path:'), sg.Input(key='-FILE-'), sg.FileBrowse()],
+    [sg.Button('Load Configuration'),sg.Button('Next >')]]
 
+    return sg.Window(
+        "Configuration reader",
+        layout,
+        location=(0, 0),
+        finalize=True,
+        element_justification="center")
 
-def delete_fig_agg(fig_agg):
-    """
-    Function to delete the figure drawn on the canvas.
-
-    Parameters
-    ----------
-    fig_agg: TYPE FigureCanvasTkAgg(figure, canvas)
-             DESCRIPTION. Figure drawn on the canvas
-
-    Returns
-    -------
-    None.
-
-    """
-    fig_agg.get_tk_widget().forget()
-    plt.close('all')
-
+  
 
 def make_window1(): # model selection
     """
@@ -84,7 +65,6 @@ def make_window1(): # model selection
                      finalize=True,
                      element_justification="center")
     return window
-
 
 def make_window2(): # DBMD, dependency on the energy gap and the chemical potential
     """
@@ -359,6 +339,43 @@ def make_window8():
     
     return window
 
+# define functions to manage operations in GUI windows
+
+def load_configuration(file_path):
+    """
+    Function that loads the configuration file from a specific path given by the user
+
+    Parameters
+    ----------
+    file_path : TYPE str
+                DESCRIPTION. Path of the configuration file
+
+    Returns
+    -------
+    Names : TYPE list of str
+            DESCRIPTION. List of the names of the values
+    Values : TYPE list of floats
+             DESCRIPTION. List of the values
+    """
+
+    Names = []
+    Values = []
+
+    try:
+        with open(file_path, 'r') as file:
+            for line in file:
+                # Ignoring the lines in the configuration file starting with %
+                if not line.startswith("%"):
+                    values = line.strip().split(",")
+                    if len(values) >= 2:
+                        Names.append(values[0].strip())
+                        Values.append(float(values[1].strip()))
+
+        return Names, Values
+
+    except FileNotFoundError:
+        print('File not found:', file_path)
+        return [], []      
 
 def user_operations(current_window):
     """
@@ -453,6 +470,48 @@ def get_inputs_second_part():
     
     return rk
 
+def draw_figure(canvas,
+                figure):
+    """
+    Function that draws the wanted figure in the empty canvas of the window.
+
+    Parameters
+    ----------
+    canvas: TYPE PySimpleGUI.Canvas(canvas, background_color, size)
+            DESCRIPTION. drawable panel on the surface of the PySimpleGUI application window
+    figure: TYPE matplotlib.figure.Figure()
+            DESCRIPTION. Figure we want to draw on the panel 
+
+    Returns
+    -------
+    figure_canvas_agg: TYPE FigureCanvasTkAgg(figure, canvas)
+                       DESCRIPTION. Figure drawn on the canvas
+
+    """
+    figure_canvas_agg = FigureCanvasTkAgg(figure,canvas)
+    figure_canvas_agg.draw()
+    figure_canvas_agg.get_tk_widget().pack(side="top", fill="both", expand=1)
+    
+    return figure_canvas_agg
+
+
+def delete_fig_agg(fig_agg):
+    """
+    Function to delete the figure drawn on the canvas.
+
+    Parameters
+    ----------
+    fig_agg: TYPE FigureCanvasTkAgg(figure, canvas)
+             DESCRIPTION. Figure drawn on the canvas
+
+    Returns
+    -------
+    None.
+
+    """
+    fig_agg.get_tk_widget().forget()
+    plt.close('all')
+
 def plot_clear_draw(plot, params, figure_canvas, figure):
     """
     Creates plot, clears canvas to plot it.
@@ -540,7 +599,7 @@ def open_previous_window(previous_window):
     previous_window.un_hide() # reopen previous window
             
 # make the first window and set the others windows to none 
-window1, window2, window2_3d, window3, window3_3d, window4, window5, window6, window7, window8 = make_window1(), None, None, None, None, None, None, None, None, None
+window0, window1, window2, window2_3d, window3, window3_3d, window4, window5, window6, window7, window8 = make_window0(), None, None, None, None, None, None, None, None, None, None
 # set the figure drawings to None in order to be able to update them each time 
 figure_canvas_agg0, figure_canvas_agg1, figure_canvas_agg2, figure_canvas_agg3, figure_canvas_agg4 = None, None, None, None, None
 # set the color bar to None in order to be able to update it later
@@ -551,6 +610,28 @@ while True:
     
     # read all the events, windows and values entered on the windows
     window, event, values = sg.read_all_windows()
+    
+    if window==window0:
+        if event== sg.WIN_CLOSED : # if user closes window close the programm
+            break
+        
+        elif event == 'Load Configuration':
+            
+            file_path = values['-FILE-']
+            names, load_values=load_configuration(file_path)
+            #assigning the str values from the configuration file
+            #1st part
+            delta_1 = np.arange(load_values[0], load_values[1], load_values[2])
+            eta_1 = np.arange(load_values[3], load_values[4], load_values[5])
+            rk_1 = load_values[6]
+            #2nd part
+            rk_2 = np.arange(load_values[7], load_values[8], load_values[9])
+            
+            
+        elif event == 'Next >':
+            
+            window0.hide()
+            window1 = make_window1()
     
     if window == window1:
               
@@ -573,8 +654,9 @@ while True:
             window5 = make_window5() # and go to second part
         else:
             # take input data and compute thermoelectric quantities as outputs
-            delta, eta, rk = get_inputs_first_part(window2)[0], get_inputs_first_part(window2)[1], get_inputs_first_part(window2)[2]
-            delta, eta = np.meshgrid(delta, eta)
+            if all(item is None for item in [delta_1, eta_1, rk_1]): # if load_data file not used in the configuration, get input data
+                delta_1, eta_1, rk_1 = get_inputs_first_part(window2)[0], get_inputs_first_part(window2)[1], get_inputs_first_part(window2)[2]
+            delta, eta = np.meshgrid(delta_1, eta_1)
             S = create_matrix(S_DBMD, [delta, eta], None)
             sigma = create_matrix(sigma_DBMD, [delta, eta], None)
             ke = create_matrix(ke_DBMD, [delta, eta], None)
@@ -607,10 +689,12 @@ while True:
         
         user_operations(window5)
         # take input data and compute figure of merit as output
-        delta, eta, rk = np.meshgrid(generate_arrays(21)[0], generate_arrays(21)[1], get_inputs_second_part())
+        if rk_2 is None: # if load_data file not used in the configuration, get input data
+            rk_2 = get_inputs_second_part()
+        delta, eta, rk = np.meshgrid(generate_arrays(21)[0], generate_arrays(21)[1], rk_2)
         ZT = create_matrix(ZT_DBMD, [delta, eta, rk], None)
         ZT = find_ZTmax(delta, eta, rk, ZT)
-        rk, delta = np.meshgrid(get_inputs_second_part(), generate_arrays(21)[0])    
+        rk, delta = np.meshgrid(rk_2, generate_arrays(21)[0])    
         inputs = [delta, rk]
         outputs = [ZT]
         if event == 'Show Plot': # if the user wants to visualize data, show plot
@@ -626,8 +710,9 @@ while True:
             window6 = make_window6() # and go to the second part
         else: 
             # take input data and compute thermoelectric quantities as outputs
-            delta, eta, rk = get_inputs_first_part(window3)[0], get_inputs_first_part(window3)[1], get_inputs_first_part(window3)[2]
-            delta, eta = np.meshgrid(delta, eta)
+            if all(item is None for item in [delta_1, eta_1, rk_1]): # if load_data file not used in the configuration, get input data
+                delta_1, eta_1, rk_1 = get_inputs_first_part(window3)[0], get_inputs_first_part(window3)[1], get_inputs_first_part(window3)[2]
+            delta, eta = np.meshgrid(delta_1, eta_1)
             S = create_matrix(S_DBMP, [delta, eta], None)
             sigma = create_matrix(sigma_DBMP, [delta, eta], None)
             ke = create_matrix(ke_DBMP, [delta, eta], None)
@@ -657,10 +742,12 @@ while True:
         
         user_operations(window6)
         # take input data and compute figure of merit as output
-        delta, eta, rk = np.meshgrid(generate_arrays(51)[0], generate_arrays(51)[1], get_inputs_second_part())
+        if rk_2 is None: # if load_data file not used in the configuration, get input data
+            rk_2 = get_inputs_second_part()
+        delta, eta, rk = np.meshgrid(generate_arrays(21)[0], generate_arrays(21)[1], rk_2)
         ZT = create_matrix(ZT_DBMD, [delta, eta, rk], None)
         ZT = find_ZTmax(delta, eta, rk, ZT)
-        rk, delta = np.meshgrid(get_inputs_second_part(), generate_arrays(51)[0])    
+        rk, delta = np.meshgrid(rk_2, generate_arrays(51)[0])    
         inputs = [delta, rk]
         outputs = [ZT]
         if event == 'Show Plot': # if the user wants to visualize data, show plot
@@ -677,7 +764,9 @@ while True:
             window7 = make_window7() # and go to second part
         else:
             # take input data and compute thermoelectric quantities as outputs
-            eta, rk = get_inputs_first_part(window4)[1], get_inputs_first_part(window4)[2]
+            if all(item is None for item in [eta_1, rk_1]): # if load_data file not used in the configuration, get input data
+                eta_1, rk_1 = get_inputs_first_part(window4)[1], get_inputs_first_part(window4)[2]
+            eta, rk = np.meshgrid(delta_1, eta_1)
             S = create_matrix(S_SBMP, [eta], None)
             sigma = create_matrix(sigma_SBMP, [eta], None)
             ke = create_matrix(ke_SBMP, [eta], None)
@@ -691,7 +780,9 @@ while True:
         
         user_operations(window7)
         # take input data and compute figure of merit as output
-        eta, rk = np.meshgrid(generate_arrays(51)[1], get_inputs_second_part())
+        if rk_2 is None: # if load_data file not used in the configuration, get input data
+            rk_2 = get_inputs_second_part()
+        eta, rk = np.meshgrid(generate_arrays(51)[1], rk_2)
         ZT = create_matrix(ZT_SBMP, [eta, rk], None)
         inputs = [eta, rk]
         outputs = [ZT]
