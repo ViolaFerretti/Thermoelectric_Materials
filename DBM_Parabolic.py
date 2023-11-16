@@ -21,14 +21,14 @@ def sigmac_DBMP(delta,
 
     Parameters
     ----------
-    delta : TYPE nd.ndarray
+    delta : TYPE float
             DESCRIPTION energy gap value to be entered in the function
-    eta : TYPE nd.ndarray
+    eta : TYPE float
           DESCRIPTION chemical potential value to be entered in the function
 
     Returns
     -------
-    calculated function : TYPE nd.ndarray
+    calculated function : TYPE float
                           DESCRIPTION calculated values for sigma of the conduction band 
 
     """
@@ -47,14 +47,14 @@ def Sc_DBMP(delta,
 
     Parameters
     ----------
-    delta : TYPE nd.ndarray
+    delta : TYPE float
             DESCRIPTION energy gap value to be entered in the function
-    eta : TYPE nd.ndarray
+    eta : TYPE float
           DESCRIPTION chemical potential value to be entered in the function
 
     Returns
     -------
-    calculated function : TYPE nd.ndarray
+    calculated function : TYPE float
                           DESCRIPTION calculated values for S of the conduction band
 
     """
@@ -73,14 +73,14 @@ def kec_DBMP(delta,
 
     Parameters
     ----------
-    delta : TYPE nd.ndarray
+    delta : TYPE float
             DESCRIPTION energy gap value to be entered in the function
-    eta : TYPE nd.ndarray
+    eta : TYPE float
           DESCRIPTION chemical potential value to be entered in the function
 
     Returns
     -------
-    calculated function : TYPE nd.ndarray
+    calculated function : TYPE float
                           DESCRIPTION calculated values for k_e of the conduction band  
 
     """
@@ -101,14 +101,14 @@ def sigmav_DBMP(delta,
 
     Parameters
     ----------
-    delta : TYPE nd.ndarray
+    delta : TYPE float
             DESCRIPTION energy gap value to be entered in the function
-    eta : TYPE nd.ndarray
+    eta : TYPE float
           DESCRIPTION chemical potential value to be entered in the function
 
     Returns
     -------
-    calculated function : TYPE nd.ndarray
+    calculated function : TYPE float
                           DESCRIPTION calculated values for sigma of the valence band  
 
     """
@@ -127,14 +127,14 @@ def Sv_DBMP(delta,
 
     Parameters
     ----------
-    delta : TYPE nd.ndarray
+    delta : TYPE float
             DESCRIPTION energy gap value to be entered in the function
-    eta : TYPE nd.ndarray
+    eta : TYPE float
           DESCRIPTION chemical potential value to be entered in the function
 
     Returns
     -------
-    calculated function : TYPE nd.ndarray
+    calculated function : TYPE float
                           DESCRIPTION calculated values for S of the valence band  
 
     """
@@ -153,14 +153,14 @@ def kev_DBMP(delta,
 
     Parameters
     ----------
-    delta : TYPE nd.ndarray
+    delta : TYPE float
             DESCRIPTION energy gap value to be entered in the function
-    eta : TYPE nd.ndarray
+    eta : TYPE float
           DESCRIPTION chemical potential value to be entered in the function
 
     Returns
     -------
-    calculated function : TYPE nd.ndarray
+    calculated function : TYPE float
                           DESCRIPTION calculated values for k_e of the valence band   
 
     """
@@ -182,14 +182,14 @@ def sigma_DBMP(delta,
 
     Parameters
     ----------
-    delta : TYPE nd.ndarray
+    delta : TYPE float
             DESCRIPTION energy gap value to be entered in the function
-    eta : TYPE nd.ndarray
+    eta : TYPE float
           DESCRIPTION chemical potential value to be entered in the function
 
     Returns
     -------
-    calculated function : TYPE nd.ndarray
+    calculated function : TYPE float
                           DESCRIPTION calculated values for sigma of the material   
 
     """
@@ -205,14 +205,14 @@ def S_DBMP(delta,
 
     Parameters
     ----------
-    delta : TYPE nd.ndarray
+    delta : TYPE float
             DESCRIPTION energy gap value to be entered in the function
-    eta : TYPE nd.ndarray
+    eta : TYPE float
           DESCRIPTION chemical potential value to be entered in the function
 
     Returns
     -------
-    calculated function : TYPE nd.ndarray
+    calculated function : TYPE float
                           DESCRIPTION calculated values for S of the material  
 
     """
@@ -231,14 +231,14 @@ def ke_DBMP(delta,
 
     Parameters
     ----------
-    delta : TYPE nd.ndarray
+    delta : TYPE float
             DESCRIPTION energy gap value to be entered in the function
-    eta : TYPE nd.ndarray
+    eta : TYPE float
           DESCRIPTION chemical potential value to be entered in the function
 
     Returns
     -------
-    calculated function : TYPE nd.ndarray
+    calculated function : TYPE float
                           DESCRIPTION calculated values for k_e of the material  
 
     """
@@ -259,15 +259,15 @@ def ZT_DBMP(delta,
 
     Parameters
     ----------
-    delta : TYPE nd.ndarray
+    delta : TYPE float
             DESCRIPTION energy gap value to be entered in the function
-    eta : TYPE nd.ndarray
+    eta : TYPE float
           DESCRIPTION chemical potential value to be entered in the function
     rk : TYPE float
          DESCRIPTION thermal lattice conductivity value to be entered in the function
     Returns
     -------
-    calculated function : TYPE nd.ndarray
+    calculated function : TYPE float
                           DESCRIPTION calculated values for ZT of the material  
 
     """

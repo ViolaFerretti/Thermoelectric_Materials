@@ -20,14 +20,14 @@ def log1(x):
 
     Parameters
     ----------
-    x : TYPE nd.ndarray
+    x : TYPE float
         DESCRIPTION variable that in later calculations will be given
         by the difference between the chemical potential and the energy gap
 
     Returns
     -------
-    calculated function : TYPE nd.ndarray
-                          DESCRIPTION calculated values for the log(1 + exp(-x)) function
+    calculated function : TYPE float
+                          DESCRIPTION calculated value for the log(1 + exp(-x)) function
 
     """
     
@@ -41,14 +41,14 @@ def exp1(x):
 
     Parameters
     ----------
-    x : TYPE nd.ndarray
+    x : TYPE float
         DESCRIPTION variable that in later calculations will be given
         by the difference between the chemical potential and the energy gap
 
     Returns
     -------
-    calculated function : TYPE nd.ndarray
-                          DESCRIPTION calculated values for the [exp(x) + 1] function
+    calculated function : TYPE float
+                          DESCRIPTION calculated value for the [exp(x) + 1] function
 
     """
     
@@ -65,15 +65,15 @@ def F0c(delta,
 
     Parameters
     ----------
-    delta : TYPE nd.ndarray
+    delta : TYPE float
             DESCRIPTION energy gap value to be entered in the function
-    eta : TYPE nd.ndarray
+    eta : TYPE float
           DESCRIPTION chemical potential value to be entered in the function
 
     Returns
     -------
-    calculated function : TYPE nd.ndarray
-                          DESCRIPTION calculated values for the F_0 function for the conduction band 
+    calculated function : TYPE float
+                          DESCRIPTION calculated value for the F_0 function for the conduction band 
 
     """
     
@@ -87,15 +87,15 @@ def F1c(delta,
 
     Parameters
     ----------
-    delta : TYPE nd.ndarray
+    delta : TYPE float
             DESCRIPTION energy gap value to be entered in the function
-    eta : TYPE nd.ndarray
+    eta : TYPE float
           DESCRIPTION chemical potential value to be entered in the function
 
     Returns
     -------
-    calculated function : TYPE nd.ndarray
-                          DESCRIPTION calculated values for the F_1 function for the conduction band  
+    calculated function : TYPE float
+                          DESCRIPTION calculated value for the F_1 function for the conduction band  
 
     """
     
@@ -112,15 +112,15 @@ def F2c(delta,
 
     Parameters
     ----------
-    delta : TYPE nd.ndarray
+    delta : TYPE float
             DESCRIPTION energy gap value to be entered in the function
-    eta : TYPE nd.ndarray
+    eta : TYPE float
           DESCRIPTION chemical potential value to be entered in the function
 
     Returns
     -------
-    calculated function : TYPE nd.ndarray
-                          DESCRIPTION calculated values for the F_2 function for the conduction band 
+    calculated function : TYPE float
+                          DESCRIPTION calculated value for the F_2 function for the conduction band 
 
     """
     
@@ -139,15 +139,15 @@ def F3c(delta,
 
     Parameters
     ----------
-    delta : TYPE nd.ndarray
+    delta : TYPE float
             DESCRIPTION energy gap value to be entered in the function
-    eta : TYPE nd.ndarray
+    eta : TYPE float
             DESCRIPTION chemical potential value to be entered in the function
 
     Returns
     -------
-    calculated function : TYPE nd.ndarray
-                          DESCRIPTION calculated values for the F_3 function for the conduction band  
+    calculated function : TYPE float
+                          DESCRIPTION calculated value for the F_3 function for the conduction band  
 
     """
     
@@ -168,15 +168,15 @@ def F0v(delta,
 
     Parameters
     ----------
-    delta : TYPE nd.ndarray
+    delta : TYPE float
             DESCRIPTION energy gap value to be entered in the function
-    eta : TYPE nd.ndarray
+    eta : TYPE float
             DESCRIPTION chemical potential value to be entered in the function
 
     Returns
     -------
-    calculated function : TYPE nd.ndarray
-                          DESCRIPTION calculated values for the F_0 function for the valence band 
+    calculated function : TYPE float
+                          DESCRIPTION calculated value for the F_0 function for the valence band 
 
     """
     
@@ -190,15 +190,15 @@ def F1v(delta,
 
     Parameters
     ----------
-    delta : TYPE nd.ndarray
+    delta : TYPE float
             DESCRIPTION energy gap value to be entered in the function
-    eta : TYPE nd.ndarray
+    eta : TYPE float
             DESCRIPTION chemical potential value to be entered in the function
 
     Returns
     -------
-    calculated function : TYPE nd.ndarray
-                          DESCRIPTION calculated values for the F_1 function for the valence band  
+    calculated function : TYPE float
+                          DESCRIPTION calculated value for the F_1 function for the valence band  
 
     """
     
@@ -215,15 +215,15 @@ def F2v(delta,
 
     Parameters
     ----------
-    delta : TYPE nd.ndarray
+    delta : TYPE float
             DESCRIPTION energy gap value to be entered in the function
-    eta : TYPE nd.ndarray
+    eta : TYPE float
             DESCRIPTION chemical potential value to be entered in the function
 
     Returns
     -------
-    calculated function : TYPE nd.ndarray
-                          DESCRIPTION calculated values for the F_2 function for the valence band   
+    calculated function : TYPE float
+                          DESCRIPTION calculated value for the F_2 function for the valence band   
 
     """
     
@@ -241,15 +241,15 @@ def F3v(delta,
 
     Parameters
     ----------
-    delta : TYPE nd.ndarray
+    delta : TYPE float
             DESCRIPTION energy gap value to be entered in the function
-    eta : TYPE nd.ndarray
+    eta : TYPE float
             DESCRIPTION chemical potential value to be entered in the function
 
     Returns
     -------
-    calculated function : TYPE nd.ndarray
-                          DESCRIPTION calculated values for the F_3 function for the valence band   
+    calculated function : TYPE float
+                          DESCRIPTION calculated value for the F_3 function for the valence band   
 
     """
     
@@ -278,15 +278,15 @@ def func_Gi(x,
     i : TYPE int
         DESCRIPTION index parameter to be entered in the function,
         indicating the corresponding transport integral
-    delta : TYPE nd.ndarray
+    delta : TYPE float
             DESCRIPTION energy gap value to be entered in the function
-    eta : TYPE nd.ndarray
+    eta : TYPE float
             DESCRIPTION chemical potential value to be entered in the function
 
     Returns
     -------
-    calculated function : TYPE nd.ndarray
-                          DESCRIPTION calculated values for the G_i function integrand 
+    calculated function : TYPE float
+                          DESCRIPTION calculated value for the G_i function integrand 
 
     """
     
@@ -313,15 +313,15 @@ def Gic(func_Gi,
     i : TYPE int
         DESCRIPTION index parameter to be entered in the function,
         indicating the corresponding transport integral
-    delta : TYPE nd.ndarray
+    delta : TYPE float
             DESCRIPTION energy gap value to be entered in the function
-    eta : TYPE nd.ndarray
+    eta : TYPE float
             DESCRIPTION chemical potential value to be entered in the function
 
     Returns
     -------
-    calculated function : TYPE nd.ndarray
-                          DESCRIPTION calculated values for the G_i function for the conduction band   
+    calculated function : TYPE float
+                          DESCRIPTION calculated value for the G_i function for the conduction band   
 
     """
     
@@ -346,15 +346,15 @@ def Giv(func_Gi,
     i : TYPE int
         DESCRIPTION index parameter to be entered in the function,
         indicating the corresponding transport integral
-    delta : TYPE nd.ndarray
+    delta : TYPE float
             DESCRIPTION energy gap value to be entered in the function
-    eta : TYPE nd.ndarray
+    eta : TYPE float
             DESCRIPTION chemical potential value to be entered in the function
 
     Returns
     -------
-    calculated function : TYPE nd.ndarray
-                          DESCRIPTION calculated values for the G_i function for the conduction band  
+    calculated function : TYPE float
+                          DESCRIPTION calculated value for the G_i function for the conduction band  
 
     """
     

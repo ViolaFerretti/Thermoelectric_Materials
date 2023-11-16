@@ -31,13 +31,13 @@ def func_Fi(x,
     i : TYPE int
         DESCRIPTION index parameter to be entered in the function,
         indicating the corresponding transport integral
-    eta : TYPE nd.ndarray
+    eta : TYPE float
           DESCRIPTION chemical potential value to be entered in the function
 
     Returns
     -------
-    calculated function : TYPE nd.ndarray
-                          DESCRIPTION calculated values for the F_i function integrand  
+    calculated function : TYPE float
+                          DESCRIPTION calculated value for the F_i function integrand  
 
     """
     
@@ -56,13 +56,13 @@ def Fic(func_Fi,
     i : TYPE int
         DESCRIPTION index parameter to be entered in the function,
         indicating the corresponding transport integral
-    eta : TYPE nd.ndarray
+    eta : TYPE float
           DESCRIPTION chemical potential value to be entered in the function
 
     Returns
     -------
-    calculated function : TYPE nd.ndarray
-                          DESCRIPTION calculated values for the F_i function 
+    calculated function : TYPE float
+                          DESCRIPTION calculated value for the F_i function 
 
     """
     
@@ -78,13 +78,13 @@ def sigma_SBMP(eta):
 
     Parameters
     ----------
-    eta : TYPE nd.ndarray
+    eta : TYPE float
           DESCRIPTION chemical potential value to be entered in the function
 
     Returns
     -------
-    calculated function : TYPE nd.ndarray
-                          DESCRIPTION calculated values for sigma  
+    calculated function : TYPE float
+                          DESCRIPTION calculated value for sigma  
 
     """
     
@@ -98,13 +98,13 @@ def S_SBMP(eta):
 
     Parameters
     ----------
-    eta : TYPE nd.ndarray
+    eta : TYPE float
           DESCRIPTION chemical potential value to be entered in the function
 
     Returns
     -------
-    calculated function : TYPE nd.ndarray
-                          DESCRIPTION calculated values for S  
+    calculated function : TYPE float
+                          DESCRIPTION calculated value for S  
 
     """
     
@@ -118,13 +118,13 @@ def ke_SBMP(eta):
 
     Parameters
     ----------
-    eta : TYPE nd.ndarray
+    eta : TYPE float
           DESCRIPTION chemical potential value to be entered in the function
 
     Returns
     -------
-    calculated function : TYPE nd.ndarray
-                          DESCRIPTION calculated values for k_e  
+    calculated function : TYPE float
+                          DESCRIPTION calculated value for k_e  
 
     """
     
@@ -143,15 +143,15 @@ def ZT_SBMP(eta,
 
     Parameters
     ----------
-    eta : TYPE nd.ndarray
+    eta : TYPE float
           DESCRIPTION chemical potential value to be entered in the function
     rk : TYPE float
          DESCRIPTION thermal lattice conductivity value to be entered in the function
 
     Returns
     -------
-    calculated function : TYPE nd.ndarray
-                          DESCRIPTION calculated values for ZT  
+    calculated function : TYPE float
+                          DESCRIPTION calculated value for ZT  
 
     """
     

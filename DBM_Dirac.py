@@ -8,7 +8,7 @@ Created on Wed Aug 16 11:11:30 2023
 # 2D DOUBLE-DIRAC-BAND MATERIALS #
 
 # import necessary functions
-from functions import F0c, F1c, F2c, F0v, F1v, F2v, Gic, Giv
+from functions import F0c, F1c, F2c, F0v, F1v, F2v, Gic, Giv, func_Gi
 
 # TE QUANTITIES - CONDUCTION BAND 
 
@@ -21,19 +21,19 @@ def sigmac_DBMD(delta,
 
     Parameters
     ----------
-    delta : TYPE nd.ndarray
+    delta : TYPE float
             DESCRIPTION energy gap value to be entered in the function
-    eta : TYPE nd.ndarray
+    eta : TYPE float
           DESCRIPTION chemical potential value to be entered in the function
 
     Returns
     -------
-    calculated function : TYPE nd.ndarray
+    calculated function : TYPE float
                           DESCRIPTION calculated values for sigma of the conduction band  
 
     """ 
     
-    return F0c(delta, eta) - Gic(0, delta, eta)
+    return F0c(delta, eta) - Gic(func_Gi, 0, delta, eta)
 
 def Sc_DBMD(delta,
             eta):
@@ -44,20 +44,20 @@ def Sc_DBMD(delta,
 
     Parameters
     ----------
-    delta : TYPE nd.ndarray
+    delta : TYPE float
             DESCRIPTION energy gap value to be entered in the function
-    eta : TYPE nd.ndarray
+    eta : TYPE float
           DESCRIPTION chemical potential value to be entered in the function
 
     Returns
     -------
-    calculated function : TYPE nd.ndarray
+    calculated function : TYPE float
                           DESCRIPTION calculated values for S of the conduction band  
 
     """
     
-    F_G_0 = F0c(delta, eta) - Gic(0, delta, eta) # numerator (F0, G0 contribution)
-    F_G_1 = F1c(delta, eta) - Gic(1, delta, eta) # denominator (F1, G1 contribution)
+    F_G_0 = F0c(delta, eta) - Gic(func_Gi, 0, delta, eta) # numerator (F0, G0 contribution)
+    F_G_1 = F1c(delta, eta) - Gic(func_Gi, 1, delta, eta) # denominator (F1, G1 contribution)
     
     return -F_G_1/F_G_0
 
@@ -70,21 +70,21 @@ def kec_DBMD(delta,
 
     Parameters
     ----------
-    delta : TYPE nd.ndarray
+    delta : TYPE float
             DESCRIPTION energy gap value to be entered in the function
-    eta : TYPE nd.ndarray
+    eta : TYPE float
           DESCRIPTION chemical potential value to be entered in the function
 
     Returns
     -------
-    calculated function : TYPE nd.ndarray
+    calculated function : TYPE float
                           DESCRIPTION calculated values for k_e of the conduction band 
 
     """ 
     
-    F_G_2 = F2c(delta, eta) - Gic(2, delta, eta) # 1st term (F2, G2 contribution)
-    F_G_1 = (F1c(delta, eta) - Gic(1, delta, eta))**2 # 2nd term numerator (F1, G1 contribution)
-    F_G_0 = F0c(delta, eta) - Gic(0, delta, eta) # 2nd term denominator (F0, G0 contribution)
+    F_G_2 = F2c(delta, eta) - Gic(func_Gi, 2, delta, eta) # 1st term (F2, G2 contribution)
+    F_G_1 = (F1c(delta, eta) - Gic(func_Gi, 1, delta, eta))**2 # 2nd term numerator (F1, G1 contribution)
+    F_G_0 = F0c(delta, eta) - Gic(func_Gi, 0, delta, eta) # 2nd term denominator (F0, G0 contribution)
     
     return F_G_2 - F_G_1/F_G_0
 
@@ -99,19 +99,19 @@ def sigmav_DBMD(delta,
 
     Parameters
     ----------
-    delta : TYPE nd.ndarray
+    delta : TYPE float
             DESCRIPTION energy gap value to be entered in the function
-    eta : TYPE nd.ndarray
+    eta : TYPE float
           DESCRIPTION chemical potential value to be entered in the function
 
     Returns
     -------
-    calculated function : TYPE nd.ndarray
+    calculated function : TYPE float
                           DESCRIPTION calculated values for sigma of the valence band  
 
     """
     
-    return F0v(delta, eta) - Giv(0, delta, eta)
+    return F0v(delta, eta) - Giv(func_Gi, 0, delta, eta)
 
 def Sv_DBMD(delta,
             eta):
@@ -122,20 +122,20 @@ def Sv_DBMD(delta,
 
     Parameters
     ----------
-    delta : TYPE nd.ndarray
+    delta : TYPE float
             DESCRIPTION energy gap value to be entered in the function
-    eta : TYPE nd.ndarray
+    eta : TYPE float
           DESCRIPTION chemical potential value to be entered in the function
 
     Returns
     -------
-    calculated function : TYPE nd.ndarray
+    calculated function : TYPE float
                           DESCRIPTION calculated values for S of the valence band  
 
     """
     
-    F_G_1 = F1v(delta, eta) - Giv(1, delta, eta) # numerator (F1, G1 contribution)
-    F_G_0 = F0v(delta, eta) - Giv(0, delta, eta) # denominator (F0, G0 contribution)
+    F_G_1 = F1v(delta, eta) - Giv(func_Gi, 1, delta, eta) # numerator (F1, G1 contribution)
+    F_G_0 = F0v(delta, eta) - Giv(func_Gi, 0, delta, eta) # denominator (F0, G0 contribution)
     
     return - F_G_1/F_G_0
 
@@ -148,21 +148,21 @@ def kev_DBMD(delta,
 
     Parameters
     ----------
-    delta : TYPE nd.ndarray
+    delta : TYPE float
             DESCRIPTION energy gap value to be entered in the function
-    eta : TYPE nd.ndarray
+    eta : TYPE float
           DESCRIPTION chemical potential value to be entered in the function
 
     Returns
     -------
-    calculated function : TYPE nd.ndarray
+    calculated function : TYPE float
                           DESCRIPTION calculated values for k_e of the valence band  
 
     """
     
-    F_G_2 = F2v(delta, eta) - Giv(2, delta, eta) # 1st term (F2, G2 contribution)
-    F_G_1 = (F1v(delta, eta) - Giv(1, delta, eta))**2 # 2nd term numerator (F1, G1 contribution)
-    F_G_0 = F0v(delta, eta) - Giv(0, delta, eta) # 2nd term denominator (F0, G0 contribution)
+    F_G_2 = F2v(delta, eta) - Giv(func_Gi, 2, delta, eta) # 1st term (F2, G2 contribution)
+    F_G_1 = (F1v(delta, eta) - Giv(func_Gi, 1, delta, eta))**2 # 2nd term numerator (F1, G1 contribution)
+    F_G_0 = F0v(delta, eta) - Giv(func_Gi, 0, delta, eta) # 2nd term denominator (F0, G0 contribution)
     
     return F_G_2 - F_G_1/F_G_0
 
@@ -177,14 +177,14 @@ def sigma_DBMD(delta,
 
     Parameters
     ----------
-    delta : TYPE nd.ndarray
+    delta : TYPE float
             DESCRIPTION energy gap value to be entered in the function
-    eta : TYPE nd.ndarray
+    eta : TYPE float
           DESCRIPTION chemical potential value to be entered in the function
 
     Returns
     -------
-    calculated function : TYPE nd.ndarray
+    calculated function : TYPE float
                           DESCRIPTION calculated values for sigma of the material   
 
     """
@@ -200,14 +200,14 @@ def S_DBMD(delta,
 
     Parameters
     ----------
-    delta : TYPE nd.ndarray
+    delta : TYPE float
             DESCRIPTION energy gap value to be entered in the function
-    eta : TYPE nd.ndarray
+    eta : TYPE float
           DESCRIPTION chemical potential value to be entered in the function
 
     Returns
     -------
-    calculated function : TYPE nd.ndarray
+    calculated function : TYPE float
                           DESCRIPTION calculated values for S of the material   
 
     """
@@ -226,14 +226,14 @@ def ke_DBMD(delta,
 
     Parameters
     ----------
-    delta : TYPE nd.ndarray
+    delta : TYPE float
             DESCRIPTION energy gap value to be entered in the function
-    eta : TYPE nd.ndarray
+    eta : TYPE float
           DESCRIPTION chemical potential value to be entered in the function
 
     Returns
     -------
-    calculated function : TYPE nd.ndarray
+    calculated function : TYPE float
                           DESCRIPTION calculated values for k_e of the material   
 
     """
@@ -253,16 +253,16 @@ def ZT_DBMD(delta,
 
     Parameters
     ----------
-    delta : TYPE nd.ndarray
+    delta : TYPE float
             DESCRIPTION energy gap value to be entered in the function
-    eta : TYPE nd.ndarray
+    eta : TYPE float
           DESCRIPTION chemical potential value to be entered in the function
     rk : TYPE float
          DESCRIPTION thermal lattice conductivity value to be entered in the function
 
     Returns
     -------
-    calculated function : TYPE nd.ndarray
+    calculated function : TYPE float
                           DESCRIPTION calculated values for ZT of the material   
 
     """
