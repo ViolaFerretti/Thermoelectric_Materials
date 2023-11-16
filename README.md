@@ -83,6 +83,15 @@ Write:
 python GUI.py
 ```
 # 3. Start
+## 3.0 Configuration
+The user can load a set of data from the "load_data.txt" file to configure the software. This can be done by entering the path to the configuration file and by selecting "Load Configuration". In this way, the file will pre-fill all the parameters; then, the user can change those parameters by modifying the example data in the file or from the sofware windows.
+
+*Example: configuration window*
+
+![Screenshot0](screenshots_for_readme/0_configuration.png) 
+
+By selecting "Next >", the user can start working with the software.
+
 ## 3.1 Select the model
 ### Single-parabolic-band model
 The single-parabolic-band model assumes that only one band participates in the charge transport. This assumption can be justied in materials with relatively large band gaps (with respect to the targeted operational temperature range). S-parabolic-band modeling has been employed successfully
