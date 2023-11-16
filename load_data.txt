@@ -1,0 +1,15 @@
+%DBM1
+delta_min,0
+delta_max,11
+delta_step,1
+eta_min,-10
+eta_max,11
+eta_step,1
+rk,1
+
+%DBM2
+rk_min,1
+rk_max,4
+rk_step,0.5
+
+
