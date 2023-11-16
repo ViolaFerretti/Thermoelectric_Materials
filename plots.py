@@ -112,10 +112,12 @@ def subplots_2D_graph(fig,
     ax1 = fig.add_subplot(2, 2, sub) # subplot
     ax1.grid() # add grid to subplot
     if delta is not None: #create subplot
+        ax1.plot(eta, Y)
+        ax1.set_prop_cycle(None)
         for j in range(delta[0].size):
-            ax1.plot(eta, Y, label="\u0394=%f" % delta[0][j]) # and plot it for different chemical potentials
-        if sub == 1: # legend with delta values only on the first subplot 
-            ax1.legend(fontsize="6", loc="upper right")
+            ax1.plot(eta[j][0], Y[j][0], label="\u0394=%f" % delta[0][j]) # and plot it wrt chemical potentials, for different energy gap values
+            if sub == 1: # legend with delta values only on the first subplot 
+                ax1.legend(fontsize="6", loc="upper right")
     else: 
         ax1.plot(eta, Y, color='orange', linestyle='-', linewidth=1.5) # plot data
     # set ticks on axes
