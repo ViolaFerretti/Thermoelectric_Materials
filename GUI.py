@@ -31,11 +31,10 @@ def make_window0():
             DESCRIPTION. Window created
 
     """
-    layout = [
-    [sg.Text('Configuration File Path:'), sg.Input(key='-FILE-'), sg.FileBrowse()],
-    [sg.Button('Load Configuration'),sg.Button('Next >')]]
+    layout = [[sg.Text('Configuration File Path:'), sg.Input(key='-FILE-'), sg.FileBrowse()],
+              [sg.Button('Load Configuration'),sg.Button('Next >')]]
     
-    window = sg.Window("Configuration",
+    window = sg.Window("Thermoelectric materials performance - Configuration",
                        layout,
                        location=(0, 0),
                        finalize=True,
