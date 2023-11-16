@@ -24,24 +24,24 @@ def make_window0():
     """
     Make the initial window of the GUI
     in which the user can enter the configuration file
+    
     Returns
     -------
-    TYPE
-        DESCRIPTION.
+    window: TYPE PySimpleGUI.Window(title, layout, location, finalize, element_justification)
+            DESCRIPTION. Window created
 
     """
     layout = [
     [sg.Text('Configuration File Path:'), sg.Input(key='-FILE-'), sg.FileBrowse()],
     [sg.Button('Load Configuration'),sg.Button('Next >')]]
-
-    return sg.Window(
-        "Configuration reader",
-        layout,
-        location=(0, 0),
-        finalize=True,
-        element_justification="center")
-
-  
+    
+    window = sg.Window("Configuration",
+                       layout,
+                       location=(0, 0),
+                       finalize=True,
+                       element_justification="center")
+    
+    return window 
 
 def make_window1(): # model selection
     """
@@ -619,14 +619,14 @@ while True:
             
             file_path = values['-FILE-']
             names, load_values=load_configuration(file_path)
-            #assigning the str values from the configuration file
+            #assigning the values from the configuration file
             #1st part
             delta_1 = np.arange(load_values[0], load_values[1], load_values[2])
             eta_1 = np.arange(load_values[3], load_values[4], load_values[5])
             rk_1 = load_values[6]
             #2nd part
             rk_2 = np.arange(load_values[7], load_values[8], load_values[9])
-            
+            print('Configuration done!')
             
         elif event == 'Next >':
             
@@ -660,11 +660,11 @@ while True:
             S = create_matrix(S_DBMD, [delta, eta], None)
             sigma = create_matrix(sigma_DBMD, [delta, eta], None)
             ke = create_matrix(ke_DBMD, [delta, eta], None)
-            ZT = create_matrix(ZT_DBMD, [delta, eta], rk)
-            inputs = [delta, eta, rk]
+            ZT = create_matrix(ZT_DBMD, [delta, eta], rk_1)
+            inputs = [delta, eta, rk_1]
             outputs = [sigma, S, ke, ZT]
             if event == 'Show 2D Plots': # if user clicks on  button 'Show 2D Plots', show plot
-                plot_clear_draw(complete_2d_plot, [S, sigma, ke, ZT, delta, eta, rk, 'TE quantities of 2D Dirac double-band material'], figure_canvas_agg0, '-FIG0-')    
+                plot_clear_draw(complete_2d_plot, [S, sigma, ke, ZT, delta, eta, rk_1, 'TE quantities of 2D Dirac double-band material'], figure_canvas_agg0, '-FIG0-')    
             if event == 'Show 3D Plots >': #if user clicks on button 'Show 3D Plots >',
                 window2.hide() # hide current window
                 window2_3d = make_window2_3d() # open window to show 3D plot
@@ -716,11 +716,11 @@ while True:
             S = create_matrix(S_DBMP, [delta, eta], None)
             sigma = create_matrix(sigma_DBMP, [delta, eta], None)
             ke = create_matrix(ke_DBMP, [delta, eta], None)
-            ZT = create_matrix(ZT_DBMP, [delta, eta], rk)
-            inputs = [delta, eta, rk]
+            ZT = create_matrix(ZT_DBMP, [delta, eta], rk_1)
+            inputs = [delta, eta, rk_1]
             outputs = [sigma, S, ke, ZT]
             if event == 'Show 2D Plots': #if user clicks on button 'Show 2D plots', show plot
-                    plot_clear_draw(complete_2d_plot, [S, sigma, ke, ZT, delta, eta, rk, 'TE quantities of 2D Dirac double-band material'], figure_canvas_agg0, '-FIG0-')
+                    plot_clear_draw(complete_2d_plot, [S, sigma, ke, ZT, delta, eta, rk_1, 'TE quantities of 2D Dirac double-band material'], figure_canvas_agg0, '-FIG0-')
             if event == 'Show 3D Plots >': # if user clicks on button 'Show 3D plots >',
                     window3.hide() # hide current window
                     window3_3d = make_window3_3d() # and open window to show 3D plots
@@ -766,7 +766,7 @@ while True:
             # take input data and compute thermoelectric quantities as outputs
             if all(item is None for item in [eta_1, rk_1]): # if load_data file not used in the configuration, get input data
                 eta_1, rk_1 = get_inputs_first_part(window4)[1], get_inputs_first_part(window4)[2]
-            eta, rk = np.meshgrid(delta_1, eta_1)
+            eta, rk = np.meshgrid(eta_1, rk_1)
             S = create_matrix(S_SBMP, [eta], None)
             sigma = create_matrix(sigma_SBMP, [eta], None)
             ke = create_matrix(ke_SBMP, [eta], None)
