@@ -6,10 +6,8 @@ Created on Mon Aug 21 11:13:54 2023
 """
 
 # import
-import functions
-from functions import *
 import numpy as np
-
+from functions import *
 
 # test of elementary functions
 def test_log1():
@@ -32,12 +30,45 @@ def test_log1():
     expected_output = [np.infty, 1.00000454e+01, 6.93147181e-01, 4.53988992e-05, 0.00000000e+00] # expected results
     
     assert np.allclose(log1(value).astype(float), expected_output, atol=1e-10)
+
+def test_log1_nan():
+    """
+    function to test the log[1 + exp(-x)] calculation when inputs are np.nan
     
+    ----------
+    Given a nan input value,
+    when the log1 function is applied, it gives an array containing the expected results
+    - input = nan -> expected output = nan
+    -------
+   
+    """
+    
+    value = np.nan #input value
+    expected_output = np.nan # expected results
+    
+    np.testing.assert_equal(log1(value), expected_output)
+
+def test_log1_empty():
+    """
+    function to test the log[1 + exp(-x)] calculation when inputs are empty
+    
+    ----------
+    Given an empty input,
+    when the log1 function is applied, it gives an array containing the expected results
+    - input = [] -> expected output = nan
+    -------
+   
+    """
+    
+    value = np.array([]) #input value
+    expected_output = np.nan # expected results
+    
+    np.testing.assert_equal(log1(value), expected_output)
 
 def test_exp1():
     
     """
-    function to test the  [exp(x) + 1] calculation
+    function to test the [exp(x) + 1] calculation
     
     ----------
     Given an array of input values (which comprehends infinite, zero, positive and negative values),
@@ -53,6 +84,40 @@ def test_exp1():
     expected_output = [1.00000000e+00, 1.00004540e+00, 2.00000000e+00, 2.20274658e+04, np.infty] # expected results
     
     assert np.allclose(exp1(value).astype(float), expected_output, atol=1e-10)
+
+def test_exp1_nan():
+    """
+    function to test the [exp(x) + 1] calculation when inputs are np.nan
+    
+    ----------
+    Given a nan input value,
+    when the log1 function is applied, it gives an array containing the expected results
+    - input = nan -> expected output = nan
+    -------
+   
+    """
+    
+    value = np.nan #input value
+    expected_output = np.nan # expected results
+    
+    np.testing.assert_equal(exp1(value), expected_output)
+
+def test_exp1_empty():
+    """
+    function to test the [exp(x) + 1] calculation when inputs are empty
+    
+    ----------
+    Given an empty input,
+    when the log1 function is applied, it gives an array containing the expected results
+    - input = [] -> expected output = nan
+    -------
+   
+    """
+    
+    value = np.array([]) #input value
+    expected_output = np.nan # expected results
+    
+    np.testing.assert_equal(log1(value), expected_output)
 
 # test of F functions of the conduction band
 def test_F0c():
@@ -146,7 +211,6 @@ def test_F3c():
     assert np.allclose(F3c(value1, value2).astype(float), expected_output, atol=1e-10)
 
 # test of F functions of valence band
-
 def test_F0v():
     
     """
@@ -260,7 +324,7 @@ def test_func_Gi_0_pole():
     value3 = 5 # input x value
     expected_output = ZeroDivisionError # expected result
     
-    assert func_Gi(value3,0,value1,value2) == expected_output
+    assert func_Gi(value3, 0, value1, value2) == expected_output
 
 def test_func_Gi_1_pole():
             
@@ -279,7 +343,7 @@ def test_func_Gi_1_pole():
     value3 = 13.6 # input x value
     expected_output = ZeroDivisionError # expected result
     
-    assert func_Gi(value3,1,value1,value2) == expected_output
+    assert func_Gi(value3, 1, value1, value2) == expected_output
         
 def test_func_Gi_2_pole():
             
@@ -298,7 +362,7 @@ def test_func_Gi_2_pole():
     value3 = -0.2 # input x value
     expected_output = ZeroDivisionError # expected result
     
-    assert func_Gi(value3,2,value1,value2) == expected_output
+    assert func_Gi(value3, 2, value1, value2) == expected_output
         
 def test_func_Gi_3_pole():
             
@@ -317,7 +381,7 @@ def test_func_Gi_3_pole():
     value3 = -19 # input x value
     expected_output = ZeroDivisionError # expected result
     
-    assert func_Gi(value3,3,value1,value2) == expected_output
+    assert func_Gi(value3, 3, value1, value2) == expected_output
         
 def test_func_Gi_0_largex_pos():
             
@@ -338,7 +402,7 @@ def test_func_Gi_0_largex_pos():
     value3 = 200 # input x value
     expected_output = 5.240791580541492e-90 # expected result
     
-    assert np.isclose(func_Gi(value3,0,value1,value2), expected_output, atol=1e-10)
+    assert np.isclose(func_Gi(value3, 0, value1, value2), expected_output, atol=1e-10)
     
 def test_func_Gi_1_largex_pos():
             
@@ -359,7 +423,7 @@ def test_func_Gi_1_largex_pos():
     value3 = 200 # input x value
     expected_output = 1.0481583161082983e-87 # expected result
     
-    assert np.isclose(func_Gi(value3,1,value1,value2), expected_output, atol=1e-10)
+    assert np.isclose(func_Gi(value3, 1, value1, value2), expected_output, atol=1e-10)
     
 def test_func_Gi_2_largex_pos():
             
@@ -380,7 +444,7 @@ def test_func_Gi_2_largex_pos():
     value3 = 200 # input x value
     expected_output = 2.0963166322165967e-85 # expected result
     
-    assert np.isclose(func_Gi(value3,2,value1,value2), expected_output, atol=1e-10)
+    assert np.isclose(func_Gi(value3, 2, value1, value2), expected_output, atol=1e-10)
     
 def test_func_Gi_3_largex_pos():
             
@@ -401,7 +465,7 @@ def test_func_Gi_3_largex_pos():
     value3 = 200 # input x value
     expected_output = 4.192633264433194e-83 # expected result
     
-    assert np.isclose(func_Gi(value3,3,value1,value2), expected_output, atol=1e-10)
+    assert np.isclose(func_Gi(value3, 3, value1, value2), expected_output, atol=1e-10)
     
 def test_func_Gi_0_largex_neg():
             
@@ -422,7 +486,7 @@ def test_func_Gi_0_largex_neg():
     value3 = -200 # input x value
     expected_output = 4.741965493160981e-90 # expected result
     
-    assert np.isclose(func_Gi(value3,0,value1,value2), expected_output, atol=1e-10)
+    assert np.isclose(func_Gi(value3, 0, value1, value2), expected_output, atol=1e-10)
     
 def test_func_Gi_1_largex_neg():
             
@@ -443,7 +507,7 @@ def test_func_Gi_1_largex_neg():
     value3 = -200 # input x value
     expected_output = -9.48393098632196e-88 # expected result
     
-    assert np.isclose(func_Gi(value3,1,value1,value2), expected_output, atol=1e-10)
+    assert np.isclose(func_Gi(value3, 1, value1, value2), expected_output, atol=1e-10)
     
 def test_func_Gi_2_largex_neg():
             
@@ -464,7 +528,7 @@ def test_func_Gi_2_largex_neg():
     value3 = -200 # input x value
     expected_output = 1.8967861972643923e-85 # expected result
     
-    assert np.isclose(func_Gi(value3,2,value1,value2), expected_output, atol=1e-10)
+    assert np.isclose(func_Gi(value3, 2, value1, value2), expected_output, atol=1e-10)
     
 def test_func_Gi_3_largex_neg():
             
@@ -485,7 +549,7 @@ def test_func_Gi_3_largex_neg():
     value3 = -200 # input x value
     expected_output = -3.793572394528785e-83 # expected result
     
-    assert np.isclose(func_Gi(value3,3,value1,value2), expected_output, atol=1e-10)
+    assert np.isclose(func_Gi(value3, 3, value1, value2), expected_output, atol=1e-10)
     
 def test_func_Gi_0_smallx_pos():
             
@@ -506,7 +570,7 @@ def test_func_Gi_0_smallx_pos():
     value3 = 0.003 # input x value
     expected_output = 1.441726312558458 # expected result
     
-    assert np.isclose(func_Gi(value3,0,value1,value2), expected_output, atol=1e-10)
+    assert np.isclose(func_Gi(value3, 0, value1, value2), expected_output, atol=1e-10)
     
 def test_func_Gi_1_smallx_pos():
             
@@ -527,7 +591,7 @@ def test_func_Gi_1_smallx_pos():
     value3 = 0.003 # input x value
     expected_output = 0.004325178937675374 # expected result
     
-    assert np.isclose(func_Gi(value3,1,value1,value2), expected_output, atol=1e-10)
+    assert np.isclose(func_Gi(value3, 1, value1, value2), expected_output, atol=1e-10)
     
 def test_func_Gi_2_smallx_pos():
             
@@ -548,7 +612,7 @@ def test_func_Gi_2_smallx_pos():
     value3 = 0.003 # input x value
     expected_output = 1.2975536813026123e-05 # expected result
     
-    assert np.isclose(func_Gi(value3,2,value1,value2), expected_output, atol=1e-10)
+    assert np.isclose(func_Gi(value3, 2, value1, value2), expected_output, atol=1e-10)
     
 def test_func_Gi_3_smallx_pos():
             
@@ -569,7 +633,7 @@ def test_func_Gi_3_smallx_pos():
     value3 = 0.003 # input x value
     expected_output = 3.8926610439078365e-08 # expected result
     
-    assert np.isclose(func_Gi(value3,3,value1,value2), expected_output, atol=1e-10)
+    assert np.isclose(func_Gi(value3, 3, value1, value2), expected_output, atol=1e-10)
     
 def test_func_Gi_0_smallx_neg():
             
@@ -590,7 +654,7 @@ def test_func_Gi_0_smallx_neg():
     value3 = -0.003 # input x value
     expected_output = 1.43827031784613 # expected result
     
-    assert np.isclose(func_Gi(value3,0,value1,value2), expected_output, atol=1e-10)
+    assert np.isclose(func_Gi(value3, 0, value1, value2), expected_output, atol=1e-10)
     
 def test_func_Gi_1_smallx_neg():
             
@@ -611,7 +675,7 @@ def test_func_Gi_1_smallx_neg():
     value3 = -0.003 # input x value
     expected_output = -0.00431481095353839 # expected result
     
-    assert np.isclose(func_Gi(value3,1,value1,value2), expected_output, atol=1e-10)
+    assert np.isclose(func_Gi(value3, 1, value1, value2), expected_output, atol=1e-10)
     
 def test_func_Gi_2_smallx_neg():
             
@@ -632,7 +696,7 @@ def test_func_Gi_2_smallx_neg():
     value3 = -0.003 # input x value
     expected_output = 1.2944432860615173e-05 # expected result
     
-    assert np.isclose(func_Gi(value3,2,value1,value2), expected_output, atol=1e-10)
+    assert np.isclose(func_Gi(value3, 2, value1, value2), expected_output, atol=1e-10)
     
 def test_func_Gi_3_smallx_neg():
             
@@ -653,8 +717,168 @@ def test_func_Gi_3_smallx_neg():
     value3 = -0.003 # input x value
     expected_output = -3.883329858184551e-08 # expected result
     
-    assert np.isclose(func_Gi(value3,3,value1,value2), expected_output, atol=1e-10)
+    assert np.isclose(func_Gi(value3, 3, value1, value2), expected_output, atol=1e-10)
+
+def test_func_Gi_0_nan():
+            
+    """
+    function to test the function to calculate the G_i function integrand
+    when i = 0 when input is np.nan
+
+    ----------    
+    Given a nan input value,
+    when the G_i function integrand is computed,
+    it returns a nan value
+    ----------
+
+    """
+    value1 = np.nan # input energy gap value
+    value2 = np.nan # input chemical potential value
+    value3 = np.nan # input x value
+    expected_output = np.nan # expected result
     
+    np.testing.assert_equal(func_Gi(value3, 0, value1, value2), expected_output)
+
+def test_func_Gi_1_nan():
+            
+    """
+    function to test the function to calculate the G_i function integrand
+    when i = 1 when input is np.nan
+
+    ----------    
+    Given a nan input value,
+    when the G_i function integrand is computed,
+    it returns a nan value
+    ----------
+
+    """
+    value1 = np.nan # input energy gap value
+    value2 = np.nan # input chemical potential value
+    value3 = np.nan # input x value
+    expected_output = np.nan # expected result
+    
+    np.testing.assert_equal(func_Gi(value3, 1, value1, value2), expected_output)
+
+def test_func_Gi_2_nan():
+            
+    """
+    function to test the function to calculate the G_i function integrand
+    when i = 2 when input is np.nan
+
+    ----------    
+    Given a nan input value,
+    when the G_i function integrand is computed,
+    it returns a nan value
+    ----------
+
+    """
+    value1 = np.nan # input energy gap value
+    value2 = np.nan # input chemical potential value
+    value3 = np.nan # input x value
+    expected_output = np.nan # expected result
+    
+    np.testing.assert_equal(func_Gi(value3, 2, value1, value2), expected_output)
+
+def test_func_Gi_3_nan():
+            
+    """
+    function to test the function to calculate the G_i function integrand
+    when i = 3 when input is np.nan
+
+    ----------    
+    Given a nan input value,
+    when the G_i function integrand is computed,
+    it returns a nan value
+    ----------
+
+    """
+    value1 = np.nan # input energy gap value
+    value2 = np.nan # input chemical potential value
+    value3 = np.nan # input x value
+    expected_output = np.nan # expected result
+    
+    np.testing.assert_equal(func_Gi(value3, 3, value1, value2), expected_output)
+
+def test_func_Gi_0_empty():
+            
+    """
+    function to test the function to calculate the G_i function integrand
+    when i = 0 when input is empty
+
+    ----------    
+    Given an empty input value,
+    when the G_i function integrand is computed,
+    it returns a nan value
+    ----------
+
+    """
+    value1 = np.array([]) # input energy gap value
+    value2 = np.array([]) # input chemical potential value
+    value3 = np.array([]) # input x value
+    expected_output = np.nan # expected result
+    
+    np.testing.assert_equal(func_Gi(value3, 0, value1, value2), expected_output)
+
+def test_func_Gi_1_empty():
+            
+    """
+    function to test the function to calculate the G_i function integrand
+    when i = 1 when input is empty
+
+    ----------    
+    Given an empty input value,
+    when the G_i function integrand is computed,
+    it returns a nan value
+    ----------
+
+    """
+    value1 = np.array([]) # input energy gap value
+    value2 = np.array([]) # input chemical potential value
+    value3 = np.array([]) # input x value
+    expected_output = np.nan # expected result
+    
+    np.testing.assert_equal(func_Gi(value3, 1, value1, value2), expected_output)
+
+def test_func_Gi_2_empty():
+            
+    """
+    function to test the function to calculate the G_i function integrand
+    when i = 2 when input is empty
+
+    ----------    
+    Given an empty input value,
+    when the G_i function integrand is computed,
+    it returns a nan value
+    ----------
+
+    """
+    value1 = np.array([]) # input energy gap value
+    value2 = np.array([]) # input chemical potential value
+    value3 = np.array([]) # input x value
+    expected_output = np.nan # expected result
+    
+    np.testing.assert_equal(func_Gi(value3, 2, value1, value2), expected_output)
+
+def test_func_Gi_3_empty():
+            
+    """
+    function to test the function to calculate the G_i function integrand
+    when i = 3 when input is empty
+
+    ----------    
+    Given an empty input value,
+    when the G_i function integrand is computed,
+    it returns a nan value
+    ----------
+
+    """
+    value1 = np.array([]) # input energy gap value
+    value2 = np.array([]) # input chemical potential value
+    value3 = np.array([]) # input x value
+    expected_output = np.nan # expected result
+    
+    np.testing.assert_equal(func_Gi(value3, 3, value1, value2), expected_output)
+
 def test_Gic_0_neg():
     
     """

@@ -6,11 +6,9 @@ Created on Fri Oct 27 15:18:13 2023
 """
 
 # import necessary modules 
-import functions
-from functions import *
 import numpy as np
 from mpmath import *
-
+from functions import *
 from SBM_Parabolic import *
 
 # test of F integrand
@@ -253,6 +251,114 @@ def test_func_Fi_2_smallx_neg():
     expected_output = 6.041542174960951e-08 # expected result
     
     assert np.isclose(func_Fi(value2, 2, value1), expected_output, atol=1e-10)
+
+def test_func_Fi_0_nan():
+            
+    """
+    function to test the calculation of the F_i function integrand
+    when i = 0 when input is np.nan
+
+    ----------    
+    Given nan input values, 
+    when the function is applied, it gives nan as a result
+    ----------
+
+    """
+    value1 = np.nan # input chemical potential value
+    value2 = np.nan # input x value
+    expected_output = np.nan # expected result
+    
+    np.testing.assert_equal(func_Fi(value2, 0, value1), expected_output)
+
+def test_func_Fi_1_nan():
+            
+    """
+    function to test the calculation of the F_i function integrand
+    when i = 1 when input is np.nan
+
+    ----------    
+    Given nan input values, 
+    when the function is applied, it gives nan as a result
+    ----------
+
+    """
+    value1 = np.nan # input chemical potential value
+    value2 = np.nan # input x value
+    expected_output = np.nan # expected result
+    
+    np.testing.assert_equal(func_Fi(value2, 1, value1), expected_output)
+
+def test_func_Fi_2_nan():
+            
+    """
+    function to test the calculation of the F_i function integrand
+    when i = 2 when input is np.nan
+
+    ----------    
+    Given nan input values, 
+    when the function is applied, it gives nan as a result
+    ----------
+
+    """
+    value1 = np.nan # input chemical potential value
+    value2 = np.nan # input x value
+    expected_output = np.nan # expected result
+    
+    np.testing.assert_equal(func_Fi(value2, 2, value1), expected_output)
+
+def test_func_Fi_0_empty():
+            
+    """
+    function to test the calculation of the F_i function integrand
+    when i = 0 when input is empty
+
+    ----------    
+    Given empty input values, 
+    when the function is applied, it gives nan as a result
+    ----------
+
+    """
+    value1 = np.array([]) # input chemical potential value
+    value2 = np.array([]) # input x value
+    expected_output = np.nan # expected result
+    
+    np.testing.assert_equal(func_Fi(value2, 0, value1), expected_output)
+
+def test_func_Fi_1_empty():
+            
+    """
+    function to test the calculation of the F_i function integrand
+    when i = 1 when input is empty
+
+    ----------    
+    Given empty input values, 
+    when the function is applied, it gives nan as a result
+    ----------
+
+    """
+    value1 = np.array([]) # input chemical potential value
+    value2 = np.array([]) # input x value
+    expected_output = np.nan # expected result
+    
+    np.testing.assert_equal(func_Fi(value2, 1, value1), expected_output)
+
+def test_func_Fi_2_empty():
+            
+    """
+    function to test the calculation of the F_i function integrand
+    when i = 2 when input is empty
+
+    ----------    
+    Given empty input values, 
+    when the function is applied, it gives nan as a result
+    ----------
+
+    """
+    value1 = np.array([]) # input chemical potential value
+    value2 = np.array([]) # input x value
+    expected_output = np.nan # expected result
+    
+    np.testing.assert_equal(func_Fi(value2, 2, value1), expected_output)
 
 # test of Fi function for conduction band
 def test_Fic_0_neg():
