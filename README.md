@@ -24,8 +24,8 @@ All three models are based on Boltzmann transport theory in the linear response 
 In the end, the computed thermoelectric quantities depend on three main parameters of the material: the energy gap, the chemical potential and on the thermal lattice conductivity.
 
 # 2. Setup
-## 2.1 Using Anaconda
-In the Anaconda Prompt, do the following steps.
+## Using Anaconda or Windows
+Do the following steps, either in the Anaconda Prompt or in the Windows Prompt.
 ### (a) Clone the repository
 Write:
 ```
@@ -33,36 +33,7 @@ git clone https://github.com/ViolaFerretti/Thermoelectric_Materials.git
 
 ```
 ### (b) Install packages
-Install the necessary packages in python3: 
-- to manage calculations:
-```
-conda install numpy
-conda install scipy
-conda install mpmath
-```
-- to visualize data
-```
-conda install matplotlib
-```
-- to set parameters and perform the simulations
-```
-conda install -c conda-forge pysimplegui
-```
-### (c) Run the software
-Write:
-```
-python GUI.py
-```
-## 2.2 Using Windows
-In the Windows Prompt, do the following steps.
-### (a) Clone the repository
-Write:
-```
-git clone https://github.com/ViolaFerretti/Thermoelectric_Materials.git
-
-```
-### (b) Install packages
-Install all the needed packages in python3: 
+Install the necessary packages in python3 using the pip command: 
 - to manage calculations:
 ```
 pip install numpy
@@ -78,7 +49,7 @@ pip install matplotlib
 pip install PySimpleGUI
 ```
 ### (c) Run the software
-Write:
+Navigate to the project directory with the cd command and then write:
 ```
 python GUI.py
 ```
