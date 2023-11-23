@@ -73,8 +73,7 @@ def Fic(func_Fi,
 def sigma_SBMP(eta):
     
     """
-    function to calculate the electrical conductivity sigma of the material,
-    if the input is an array
+    function to calculate the electrical conductivity sigma of the material
 
     Parameters
     ----------
@@ -93,8 +92,7 @@ def sigma_SBMP(eta):
 def S_SBMP(eta):
     
     """
-    function to calculate the Seebeck coefficient of the material, 
-    if the input is an array
+    function to calculate the Seebeck coefficient of the material
 
     Parameters
     ----------
@@ -113,8 +111,7 @@ def S_SBMP(eta):
 def ke_SBMP(eta):
     
     """
-    function to calculate the thermal electronic conductivity k_e of the material, 
-    if the input is an array
+    function to calculate the thermal electronic conductivity k_e of the material
 
     Parameters
     ----------

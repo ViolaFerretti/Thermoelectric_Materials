@@ -60,8 +60,7 @@ def F0c(delta,
         eta):
     
     """
-    function to calculate the F_0 function for the conduction band,
-    if inputs are arrays
+    function to calculate the F_0 function for the conduction band
 
     Parameters
     ----------
@@ -83,7 +82,7 @@ def F1c(delta,
         eta):
     
     """
-    function to calculate the F_1 function for the conduction band, if inputs are arrays
+    function to calculate the F_1 function for the conduction band
 
     Parameters
     ----------
@@ -108,7 +107,7 @@ def F2c(delta,
         eta):
     
     """
-    function to calculate the F_2 function for the conduction band, if inputs are arrays
+    function to calculate the F_2 function for the conduction band
 
     Parameters
     ----------
@@ -135,7 +134,7 @@ def F3c(delta,
         eta):
     
     """
-    function to calculate theF_3 function for the conduction band, if inputs are arrays
+    function to calculate theF_3 function for the conduction band
 
     Parameters
     ----------
@@ -164,7 +163,7 @@ def F0v(delta,
         eta):
     
     """
-    function to calculate the F_0 function for the valence band, if inputs are arrays
+    function to calculate the F_0 function for the valence band
 
     Parameters
     ----------
@@ -186,7 +185,7 @@ def F1v(delta,
         eta):
     
     """
-    function to calculate the F_1 function for the valence band, if inputs are arrays
+    function to calculate the F_1 function for the valence band
 
     Parameters
     ----------
@@ -211,7 +210,7 @@ def F2v(delta,
         eta):
     
     """
-    function to calculate the F_2 function for the valence band, if inputs are arrays
+    function to calculate the F_2 function for the valence band
 
     Parameters
     ----------
@@ -237,7 +236,7 @@ def F3v(delta,
         eta):
     
     """
-    function to calculate the F_3 function for the valence band, if inputs are arrays
+    function to calculate the F_3 function for the valence band
 
     Parameters
     ----------

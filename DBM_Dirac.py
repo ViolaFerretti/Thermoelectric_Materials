@@ -16,8 +16,7 @@ def sigmac_DBMD(delta,
                 eta):
     
     """
-    function to calculate the electrical conductivity sigma for the conduction band,
-    if inputs are arrays
+    function to calculate the electrical conductivity sigma for the conduction band
 
     Parameters
     ----------
@@ -39,8 +38,7 @@ def Sc_DBMD(delta,
             eta):
     
     """
-    function to calculate the Seebeck coefficient S for the conduction band,
-    if inputs are arrays
+    function to calculate the Seebeck coefficient S for the conduction band
 
     Parameters
     ----------
@@ -65,8 +63,7 @@ def kec_DBMD(delta,
              eta):
     
     """
-    function to calculate the thermal electronic conductivity k_e sigma for the conduction band,
-    if inputs are arrays
+    function to calculate the thermal electronic conductivity k_e sigma for the conduction band
 
     Parameters
     ----------
@@ -94,8 +91,7 @@ def sigmav_DBMD(delta,
                 eta):
     
     """
-    function to calculate the electrical conductivity sigma for the valence band,
-    if inputs are arrays
+    function to calculate the electrical conductivity sigma for the valence band
 
     Parameters
     ----------
@@ -117,8 +113,7 @@ def Sv_DBMD(delta,
             eta):
     
     """
-    function to calculate the Seebeck coefficient S for the valence band,
-    if inputs are arrays
+    function to calculate the Seebeck coefficient S for the valence band
 
     Parameters
     ----------
@@ -143,8 +138,7 @@ def kev_DBMD(delta,
              eta):
     
     """
-    function to calculate the thermal electronic conductivity k_e for the valence band,
-    if inputs are arrays
+    function to calculate the thermal electronic conductivity k_e for the valence band
 
     Parameters
     ----------
@@ -172,8 +166,7 @@ def sigma_DBMD(delta,
                eta):
     
     """
-    function to calculate the electrical conductivity sigma of the material,
-    if inputs are arrays
+    function to calculate the electrical conductivity sigma of the material
 
     Parameters
     ----------
@@ -195,8 +188,7 @@ def S_DBMD(delta,
            eta):
     
     """
-    function to calculate the Sebeck coefficient S of the material,
-    if inputs are arrays
+    function to calculate the Sebeck coefficient S of the material
 
     Parameters
     ----------
@@ -221,8 +213,7 @@ def ke_DBMD(delta,
             eta):
     
     """
-    function to calculate the themal electronic conductivity k_e of the material,
-    if inputs are arrays
+    function to calculate the themal electronic conductivity k_e of the material
 
     Parameters
     ----------
