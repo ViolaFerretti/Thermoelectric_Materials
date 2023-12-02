@@ -9,6 +9,7 @@ from matplotlib import cm
 from matplotlib.figure import Figure
 from matplotlib.ticker import AutoMinorLocator
 import numpy as np
+from random import randint
 
 # functions to create necessary matrices/arrays
 def create_matrix(function,
@@ -73,6 +74,11 @@ def generate_arrays(npoint):
     return [delta, eta]
 
 # 2D plots
+
+colors = []
+for i in range(50):
+    colors.append('#%06X' % randint(0, 0xFFFFFF))
+
 def subplots_2D_graph(fig,
                       Y, 
                       ylabel,
@@ -112,10 +118,12 @@ def subplots_2D_graph(fig,
     ax1 = fig.add_subplot(2, 2, sub) # subplot
     ax1.grid() # add grid to subplot
     if delta is not None: #create subplot
+        ax1.set_prop_cycle(color=colors)
         ax1.plot(eta, Y)
-        ax1.set_prop_cycle(None)
-        for j in range(delta[0].size):
-            ax1.plot(eta[j][0], Y[j][0], label="\u0394=%f" % delta[0][j]) # and plot it wrt chemical potentials, for different energy gap values
+        ax1.set_prop_cycle(color=colors)
+        increment = delta[0].size//10
+        for j in range(0, delta[0].size, increment):
+            ax1.plot(eta[0][j], Y[0][j], color=colors[j], label="\u0394=%f" % delta[0][j]) # and plot it wrt chemical potentials, for different energy gap values
             if sub == 1: # legend with delta values only on the first subplot 
                 ax1.legend(fontsize="6", loc="upper right")
     else: 

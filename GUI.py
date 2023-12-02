@@ -628,13 +628,14 @@ while True:
             print('Configuration done!')
             
         elif event == 'Next >':
-            
+            delta_1, eta_1, rk_1, rk_2 = None, None, None, None
             window0.hide()
             window1 = make_window1()
     
     if window == window1:
               
         user_operations(window1)
+        delta_1, eta_1, rk_1, rk_2 = None, None, None, None
         if event == 'Next >': # if user clicks on the button 'Next >'
             model = (values['-IN_Model-'])
             window1.hide()
@@ -719,7 +720,7 @@ while True:
             inputs = [delta, eta, rk_1]
             outputs = [sigma, S, ke, ZT]
             if event == 'Show 2D Plots': #if user clicks on button 'Show 2D plots', show plot
-                    plot_clear_draw(complete_2d_plot, [S, sigma, ke, ZT, delta, eta, rk_1, 'TE quantities of 2D Dirac double-band material'], figure_canvas_agg0, '-FIG0-')
+                    plot_clear_draw(complete_2d_plot, [S, sigma, ke, ZT, delta, eta, rk_1, 'TE quantities of 2D double-parabolic-band material'], figure_canvas_agg0, '-FIG0-')
             if event == 'Show 3D Plots >': # if user clicks on button 'Show 3D plots >',
                     window3.hide() # hide current window
                     window3_3d = make_window3_3d() # and open window to show 3D plots
