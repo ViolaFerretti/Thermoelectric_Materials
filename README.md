@@ -201,6 +201,7 @@ By clicking on "Save", the user can save the data by specifying:
 
 In this way, for the first part, the software will save chemical potential and thermoelectric quantities in the case of single-parabolic-band model, and also the energy gap in the case of double-band models. 
 
+
 For the second part, the software will save chemical potential, thermal lattice conductivity and $ZT$ in the case of single-parabolic band, or thermal lattice conductivity, energy gap and $ZT$ for double-band models.
 
 *Example: save data of the second part of the study with Double-Parabolic-Band model*
@@ -214,4 +215,4 @@ For the second part, the software will save chemical potential, thermal lattice 
 - Naithani, Harshita, Eckhard Müller, and Johannes de Boor. "Developing a two-parabolic band model for thermoelectric transport modelling using $Mg_2Sn$ as an example." Journal of Physics: Energy 4.4 (2022): 045002.
 - Hasdeo, Eddwi H., et al. "Optimal band gap for improved thermoelectric performance of two-dimensional Dirac materials." Journal of Applied Physics 126.3 (2019).
 
-For details about the calculations: [Details on the calculations.pdf](https://github.com/ViolaFerretti/Thermoelectric_Quantities_Simulation/files/13061771/Details.on.the.calculations.pdf)
+For details about the calculations: [Details of calculations.pdf](https://github.com/ViolaFerretti/Thermoelectric_Materials/files/13539907/Details.of.calculations.pdf)
