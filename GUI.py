@@ -766,7 +766,8 @@ while True:
             # take input data and compute thermoelectric quantities as outputs
             if all(item is None for item in [eta_1, rk_1]): # if load_data file not used in the configuration, get input data
                 eta_1, rk_1 = get_inputs_first_part(window4)[1], get_inputs_first_part(window4)[2]
-            eta, rk = np.meshgrid(eta_1, rk_1)
+            #eta, rk = np.meshgrid(eta_1, rk_1)
+            eta, rk = eta_1, rk_1
             S = create_matrix(S_SBMP, [eta], None)
             sigma = create_matrix(sigma_SBMP, [eta], None)
             ke = create_matrix(ke_SBMP, [eta], None)

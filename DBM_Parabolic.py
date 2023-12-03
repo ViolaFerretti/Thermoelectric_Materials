@@ -32,8 +32,8 @@ def sigmac_DBMP(delta,
 
     """
     
-    F_1 = 2*F1c(delta, eta) # 1st term (F1 contribution)
-    F_0 = (eta - delta)*2*F0c(delta, eta) # 2nd term (F0 contribution)
+    F_1 = F1c(delta, eta) # 1st term (F1 contribution)
+    F_0 = (eta - delta)*F0c(delta, eta) # 2nd term (F0 contribution)
     
     return F_1 + F_0
 
@@ -57,8 +57,8 @@ def Sc_DBMP(delta,
 
     """
     
-    F_1_2 = (2*F2c(delta ,eta) + (eta - delta)*2*F1c(delta, eta)) # numerator (F2 and F1 contribution)
-    F_1_0 = (2*F1c(delta, eta) + (eta - delta)*2*F0c(delta, eta)) # denominator (F1 and F0 contribution)
+    F_1_2 = (F2c(delta ,eta) + (eta - delta)*F1c(delta, eta)) # numerator (F2 and F1 contribution)
+    F_1_0 = (F1c(delta, eta) + (eta - delta)*F0c(delta, eta)) # denominator (F1 and F0 contribution)
     
     return - F_1_2/F_1_0
 
@@ -82,9 +82,9 @@ def kec_DBMP(delta,
 
     """
     
-    F_3_2 = (F3c(delta, eta) + (eta - delta)*2*F2c(delta, eta)) # 1st term (F3 and F2 contribution)
-    F_2_1 = (2*F2c(delta, eta) + (eta - delta)*2*F1c(delta, eta))**2 # numerator of 2nd term (F2 and F1 contribution)
-    F_1_0 = (2*F1c(delta, eta) + (eta - delta)*2*F0c(delta, eta)) #denominator of 2nd term (F1 and F2 contribution)
+    F_3_2 = (F3c(delta, eta) + (eta - delta)*F2c(delta, eta)) # 1st term (F3 and F2 contribution)
+    F_2_1 = (F2c(delta, eta) + (eta - delta)*F1c(delta, eta))**2 # numerator of 2nd term (F2 and F1 contribution)
+    F_1_0 = (F1c(delta, eta) + (eta - delta)*F0c(delta, eta)) #denominator of 2nd term (F1 and F2 contribution)
     return F_3_2 - F_2_1/F_1_0
 
 # TE QUANTITIES - VALENCE BAND 
@@ -109,10 +109,10 @@ def sigmav_DBMP(delta,
 
     """
     
-    F_1 = 2*F1v(delta, eta) # 1st term (F1 contribution)
-    F_2 = (eta + delta)*(-2)*F0v(delta, eta) # 2nd term (F0 contribution)
+    F_1 = -F1v(delta, eta) # 1st term (F1 contribution)
+    F_2 = (eta + delta)*(-1)*F0v(delta, eta) # 2nd term (F0 contribution)
     
-    return - F_1 + F_2
+    return F_1 + F_2
 
 def Sv_DBMP(delta,
             eta):
@@ -134,8 +134,8 @@ def Sv_DBMP(delta,
 
     """
     
-    F_2_1 = -2*F2v(delta, eta) + (eta + delta)*(-2)*F1v(delta, eta) # numerator (F2 and F1 contribution)
-    F_1_0 = -2*F1v(delta, eta) + (eta + delta)*(-2)*F0v(delta, eta) # denominator (F1 and F0 contribution)
+    F_2_1 = -1*F2v(delta, eta) + (eta + delta)*(-1)*F1v(delta, eta) # numerator (F2 and F1 contribution)
+    F_1_0 = -1*F1v(delta, eta) + (eta + delta)*(-1)*F0v(delta, eta) # denominator (F1 and F0 contribution)
     
     return - F_2_1/F_1_0
 
@@ -159,9 +159,9 @@ def kev_DBMP(delta,
 
     """
     
-    F_3_2 = F3v(delta, eta) + (eta + delta)*(- 2)*F2v(delta, eta) # 1st term (F3 and F2 contribution)
-    F_2_1 = (-2*F2v(delta, eta) + (eta + delta)*(-2)*F1v(delta, eta))**2 # numerator of 2nd term (F2 and F1 contribution)
-    F_1_0 = -2*F1v(delta, eta) + (eta + delta)*(-2)*F0v(delta, eta) # denominator of 3rd term (F1 and F0 contribution)
+    F_3_2 = F3v(delta, eta) + (eta + delta)*(-1)*F2v(delta, eta) # 1st term (F3 and F2 contribution)
+    F_2_1 = (-1*F2v(delta, eta) + (eta + delta)*(-1)*F1v(delta, eta))**2 # numerator of 2nd term (F2 and F1 contribution)
+    F_1_0 = -1*F1v(delta, eta) + (eta + delta)*(-1)*F0v(delta, eta) # denominator of 3rd term (F1 and F0 contribution)
     
     return F_3_2 - F_2_1/F_1_0
 
